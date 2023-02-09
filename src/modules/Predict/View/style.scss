@@ -1,0 +1,120 @@
+//layout sider trigger
+.ant-layout .ant-layout-sider-trigger {
+    background:  linear-gradient(323deg, rgba(13,30,46,1) 0%, rgba(32,116,145,1) 99%);
+    border: 1px solid #e8e8e8;
+    border-radius: 0;
+    color: #2e2f30;
+    font-size: 18px;
+}
+// //menu.item class active
+// .ant-menu-item-selected {
+//     background:  linear-gradient(323deg, rgba(13,30,46,1) 0%, rgba(46,177,222,1) 99%);
+// }
+// .navItem {
+//     color: rgb(235, 184, 16);
+    
+// }
+$sky_color_dark: #1F2023;
+$sky_color_light: #424472;
+
+
+
+.light {
+  height: 100%;
+  width: 100%;
+  &:after, &:before {
+    content: "";
+    display: block;
+    position: absolute;
+  }
+  &:before {
+    width: 120%;
+    height: 120%;
+    top: 40%;
+    left: -25%;
+    background: radial-gradient(48.58% 48.58% at 49.96% 59.07%, #927CFF 0%, rgba(142, 133, 190, 0.4) 43.23%, rgba(59, 61, 70, 0) 100%);
+  }
+  &:after {
+    width: 120%;
+    height: 100%;
+    top: 65%;
+    left: 25%;
+    background: radial-gradient(48.58% 48.58% at 49.96% 59.07%, #FFF38B 0%, rgba(180, 174, 113, 0.45) 38.02%, rgba(59, 61, 70, 0) 100%);
+  }
+}
+
+.star1 {
+  animation: 3s linear 1s infinite alternate twinkle;
+}
+
+.star2 {
+  animation: 4s linear 0s infinite alternate twinkle;
+}
+
+.star3 {
+  animation: 3.5s linear 0.5s infinite alternate twinkle;
+}
+
+.star4 {
+  animation: 1.25s linear 1.5s infinite alternate twinkle;
+}
+
+.star5 {
+  animation: 4s linear 2s infinite alternate twinkle;
+}
+
+.star6 {
+  animation: 2.5s linear 1s infinite alternate twinkle;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+p {
+  // first we make all instances of this transparent. 
+  opacity: 0; 
+  // as we're using the same animation for each instance, call it here so we're not repeating it
+  animation: fadeInUp 1s ease-in-out 0s forwards;
+
+  // then define the animation delay in each class
+  &.first {
+    animation-delay: 1s;
+  }
+  &.second {
+    animation-delay: 2s;
+  }
+  &.third {
+    animation-delay: 3s;
+  }
+  &.fourth {
+    animation-delay: 4s;
+  }
+  &.fifth {
+    animation-delay: 6s;
+  }
+  &.sixth {
+    animation-delay: 11s;
+  }
+ }
+ .glow {
+  font-size: 50px;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}

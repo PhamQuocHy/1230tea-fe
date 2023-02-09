@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body, #root, #app {
+  margin: 0;
+  height: 100% !important;
+  font-family: 'Poppins', sans-serif;
+}
+
+ 
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+ 
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: #ffffff;
+}
+
+.site-layout .site-layout-background {
+  background: rgba(255, 255, 255, 0.774);
+}
+
+[data-theme="light"] .site-layout .site-layout-background {
+  background: #fff;
+}
+
+.site-card-wrapper {
+  padding: 5px;
+  margin: 0px;
+  background: #fff;
+  text-align: center;
+font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-style: bold;
+  border-Radius: 20,
+}

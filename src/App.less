@@ -1,0 +1,63 @@
+@import '~antd/dist/antd.css';
+@import './theme.less';
+
+@page {
+  size: auto !important;
+  margin-left: 1.5cm;
+  margin-right: 1.5cm;
+
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@page {
+  size: auto !important;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.react-calendar-timeline .rct-outer {
+  height: 500px !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.react-calendar-timeline .rct-scroll {
+  display: inline-block;
+  white-space: normal;
+  vertical-align: top;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  touch-action: none;
+}

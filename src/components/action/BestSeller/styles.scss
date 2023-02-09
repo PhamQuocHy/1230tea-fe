@@ -1,0 +1,32 @@
+.slide-item {
+  padding: 0 12px;
+}
+
+.slick-arrow {
+  background-color: #FAA31B;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.slick-arrow::before {
+  position: relative;
+  top: 1px;
+}
+
+.slick-prev {
+  left: -50px;
+  background-color: #FAA31B;
+}
+.slick-next {
+  right: -50px;
+  background-color: #FAA31B;
+}
+
+.slick-prev:hover, .slick-next:hover, .slick-prev:focus, .slick-next:focus {
+  background-color: #002D45;
+}
+
+.slick-list {
+  padding: 12px 0;
+}

@@ -1,0 +1,72 @@
+.content-bg {
+    background-image: 
+    // linear-gradient(to right bottom, rgba(0, 20, 40, 0.4),rgba(0, 20, 40, 0.4)),
+    url(../../../../public/image/star_background.jpg);
+    // background-image: 
+    // linear-gradient(to right bottom, rgba(2, 33, 50, 0.4),rgba(2, 33, 50, 0.4)),
+    // url(../../../../public/image/star_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.list-cate {
+    // max-width: 100%;
+    overflow-x : auto;
+}
+
+.list-cate::-webkit-scrollbar {
+    height: 10px;
+    background-color: #FAA31B;
+    box-shadow: 1px 1px 1px 1px solid rgba(0, 0, 0, 0.5);
+
+    border-radius: 10px;
+}
+
+.list-cate::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    box-shadow: 1px 1px 1px 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: #999;
+    box-shadow: 1px 1px 1px 1px solid rgba(0, 0, 0, 0.5);
+
+    border-radius: 10px;
+}
+
+// .content-bg::before {
+//     content: "";
+//     display: block;
+//     background-color: rgba(0, 20, 40, 0.4);
+//     --background-overlay: '';
+// }
+
+// .overLay__content {
+//     // background-color: rgba(0, 9, 18, 0.4);
+//     background-color: #022132;
+//     opacity: 0.6;
+//     --background-overlay: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+// }
+
+.name-product__box {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    --webkit-user-select: none;
+}
+
+.subname-product__box {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    --webkit-user-select: none;
+}

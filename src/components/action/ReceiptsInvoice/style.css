@@ -1,0 +1,139 @@
+@media print {
+  @page {
+    size: 210mm 148mm;
+    margin: 1cm;
+  }
+
+  html,
+  body {
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
+    font-family: "Arial", Times, serif;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .layout {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    height: 100vh;
+    padding: 5px 15px;
+  }
+
+  .d-block {
+    display: block;
+  }
+
+  .heading-0 {
+    font-size: 16px;
+  }
+
+  .heading-1 {
+    font-size: 14px;
+  }
+
+  .heading-2 {
+    font-size: 12px;
+  }
+
+  .content-1 {
+    font-size: 11px;
+  }
+
+  .content-2 {
+    font-size: 10px;
+  }
+
+  .content-3 {
+    font-size: 8px;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+
+  .letter-uppercase::first-letter {
+    text-transform: uppercase;
+  }
+
+  .mb-0 {
+    margin-bottom: 0;
+  }
+
+  .mb-5 {
+    margin-bottom: 5px;
+  }
+
+  .mb-10 {
+    margin-bottom: 10px;
+  }
+
+  .mb-15 {
+    margin-bottom: 15px;
+  }
+
+  .mb-80 {
+    margin-bottom: 80px;
+  }
+
+  .mr-50 {
+    margin-right: 50px;
+  }
+
+  .content-center-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-break {
+    display: block;
+    page-break-before: always;
+    page-break-after: always;
+  }
+
+  .table-info {
+    border: 0;
+  }
+
+  .table-info tr td {
+    padding: 0px 0px 5px 0px;
+    vertical-align: top;
+  }
+
+  .table-info tr td:first-child {
+    width: 120px;
+  }
+
+  .content-desc {
+    position: relative;
+  }
+
+  .content-title {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    background-color: #ffffff;
+    padding: 5px;
+  }
+
+  .line-dashed {
+    border-bottom: 1px dashed #dddddd;
+    margin-bottom: 25px;
+  }
+}

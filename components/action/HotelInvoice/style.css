@@ -1,0 +1,112 @@
+@media all and (min-width: 480px) {
+  .invoice .label {
+    text-align: right;
+    margin: 0px;
+  }
+
+  .invoice .price {
+    text-align: right;
+    margin: 0px;
+  }
+  .invoice .table-price {
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+
+  .invoice .table-price td,
+  .table-price th {
+    border: 0.5px solid rgb(138, 138, 138);
+    padding: 0px;
+  }
+}
+
+@media print {
+  @page {
+    size: 210mm 148mm;
+    margin: 1cm;
+  }
+
+  html,
+  body {
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
+    font-family: "Arial", Times, serif;
+    background-color: #fff !important;
+  }
+  .page-break {
+    display: block;
+    page-break-before: always;
+    page-break-after: always;
+  }
+
+  .invoice .label {
+    text-align: right;
+    margin: 0px;
+  }
+
+  .invoice .price {
+    text-align: right;
+    margin: 0px;
+  }
+  .invoice .table-price {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+
+  .invoice .table-price td,
+  .table-price th {
+    border: 1px solid black;
+    padding: px;
+  }
+
+  table {
+    width: 100% !important;
+    font-size: 12px;
+    padding: 0px;
+  }
+
+  .table-list {
+    border: 0;
+  }
+
+  .table-list tr td:first-child {
+    width: 150px;
+  }
+
+  .table-list tr td {
+    padding: 6px 0;
+  }
+
+  .mb-16 {
+    margin-bottom: 12px;
+  }
+
+  .mb-16 tr {
+    padding: 0px;
+  }
+
+  .mb-16 td {
+    padding: 0px;
+  }
+
+  .table-price table {
+    page-break-after: auto;
+  }
+  .table-price tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  .table-price td {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+  .table-price thead {
+    display: table-header-group;
+  }
+  .table-price tfoot {
+    display: table-footer-group;
+  }
+}

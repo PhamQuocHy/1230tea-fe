@@ -1,0 +1,22 @@
+.w-100 {
+    width: 100%;
+}
+
+.select-add {
+    &__wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        padding: 8px 0;
+    }
+
+    &_btn {
+        flex: none;
+        padding: 8px;
+        display: block;
+        cursor: pointer;
+    }
+}
+
+.my-4 {
+    margin: 4px 0;
+}
