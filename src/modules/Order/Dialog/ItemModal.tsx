@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { formatNumberToMoney } from "../../../utils/numbers";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
+import "./styles.scss";
 
 type Props = {
   selectedProductKey?: any;
@@ -131,7 +132,7 @@ const ItemModal = (props: Props) => {
   return (
     <Modal
       title={
-        <div className="text-2xl font-semibold text-OnBackgroundLight/70">
+        <div className="text-2xl font-semibold text-color-yelow bg-background-blue-dark py-3 px-5 text-[20px]  capitalize">
           {props.item.name}
         </div>
       }
@@ -144,86 +145,98 @@ const ItemModal = (props: Props) => {
         props.handleClose();
       }}
       style={{
-        top: 50,
+        // bottom: "50px",
+        // marginTop: "74px",
+        padding: 0,
+        borderRadius: "8px",
       }}
       bodyStyle={{
-        height: "75vh",
+        height: "70vh",
+        padding: 0,
       }}
-      width={window.innerWidth <= 760 ? "100%" : "38%"}
+      width={window.innerWidth <= 760 ? "100%" : "48%"}
     >
-      <div className="flex flex-col h-5/6 gap-8 px-2 scrollbar-hide overflow-y-scroll">
-        <div className="flex flex-row items-center pt-2">
-          <div className="text-xl font-semibold">Lượng đá</div>
-          <div className="grow"></div>
+      <div className="flex flex-col gap-8 px-5 scrollbar-hide overflow-y-scroll">
+        <div>
+          <div className="">
+            <p className="text-[20px] font-bold my-1">Tùy chọn</p>
+          </div>
+          <div className="pl-5 pr-2">
+            <div className="flex flex-row items-center">
+              <div className="text-[16px] font-semibold pr-2">Lượng đá</div>
+              <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
-          <Select
-            className=""
-            options={iceOptions}
-            bordered={false}
-            defaultValue={orderedItem.ice}
-            value={orderedItem.ice}
-            onChange={(value) => {
-              setOrderedItem((prev: any) => {
-                return { ...prev, ice: value };
-              });
-            }}
-            size={"large"}
-          />
-        </div>
-        <div className="flex flex-row items-center">
-          <div className="text-xl font-semibold">Đá chung</div>
-          <div className="grow"></div>
+              <Select
+                className=""
+                options={iceOptions}
+                bordered={false}
+                defaultValue={orderedItem.ice}
+                value={orderedItem.ice}
+                onChange={(value) => {
+                  setOrderedItem((prev: any) => {
+                    return { ...prev, ice: value };
+                  });
+                }}
+                size={"large"}
+              />
+            </div>
+            <div className="flex flex-row items-center">
+              <div className="text-[16px] font-semibold pr-2">Đá chung</div>
+              <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
-          <input
-            type="Checkbox"
-            className="text-xl p-4 w-6 h-6"
-            value={orderedItem.includedIce}
-            defaultChecked={orderedItem.includedIce}
-            onChange={() => {
-              setOrderedItem((prev: any) => {
-                return { ...prev, includedIce: !prev.includedIce };
-              });
-            }}
-          />
-        </div>
-        <div className="flex flex-row items-center">
-          <div className="text-xl font-semibold">Lượng đường</div>
-          <div className="grow"></div>
+              <input
+                type="Checkbox"
+                className="text-xl my-0 mr-[11px] ml-4 w-5 h-5"
+                value={orderedItem.includedIce}
+                defaultChecked={orderedItem.includedIce}
+                onChange={() => {
+                  setOrderedItem((prev: any) => {
+                    return { ...prev, includedIce: !prev.includedIce };
+                  });
+                }}
+              />
+            </div>
+            <div className="flex flex-row items-center">
+              <div className="text-[16px] font-semibold pr-2">Lượng đường</div>
+              <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
-          <Select
-            options={sugarOptions}
-            bordered={false}
-            defaultValue={orderedItem.sugar}
-            onChange={(value) => {
-              setOrderedItem((prev: any) => {
-                return { ...prev, sugar: value };
-              });
-            }}
-            size={"large"}
-          />
-        </div>
-        <div className="flex flex-row items-center">
-          <div className="text-xl font-semibold">Loại ly</div>
-          <div className="grow"></div>
+              <Select
+                options={sugarOptions}
+                bordered={false}
+                defaultValue={orderedItem.sugar}
+                onChange={(value) => {
+                  setOrderedItem((prev: any) => {
+                    return { ...prev, sugar: value };
+                  });
+                }}
+                size={"large"}
+              />
+            </div>
+            <div className="flex flex-row items-center">
+              <div className="text-[16px] font-semibold pr-2">Loại ly</div>
+              <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
-          <Select
-            options={cupOptions}
-            bordered={false}
-            defaultValue={orderedItem.cup}
-            onChange={(value) => {
-              setOrderedItem((prev: any) => {
-                return { ...prev, cup: value };
-              });
-            }}
-            size={"large"}
-          />
+              <Select
+                options={cupOptions}
+                bordered={false}
+                defaultValue={orderedItem.cup}
+                onChange={(value) => {
+                  setOrderedItem((prev: any) => {
+                    return { ...prev, cup: value };
+                  });
+                }}
+                size={"large"}
+              />
+            </div>
+          </div>
         </div>
+
         <div>
           <div className="flex flex-row items-center pb-4">
-            <div className="text-xl font-semibold">Topping</div>
+            <div className="text-[20px] font-bold my-1">Topping</div>
             <div className="grow"></div>
           </div>
-          <div className="grid grid-cols-1 gap-3 divide-y divide-x-0 divide-solid divide-TertiaryLight/10">
+          <div className="grid grid-cols-1 gap-3 h-[30%] divide-y divide-x-0 divide-solid divide-TertiaryLight/10">
             {orderedItem.topping.map((item: any) => {
               return (
                 <div

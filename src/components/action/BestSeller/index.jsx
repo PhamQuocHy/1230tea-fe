@@ -17,7 +17,7 @@ const Banner = () => {
     cssEase: "linear",
   };
   return (
-    <div className="w-full py-6">
+    <div className="w-full py-6 transition-all duration-300 ease-linear">
       <div>
         <div className="w-width-layout mx-auto my-0 pb-3">
           <div className="text-center">

@@ -15,6 +15,28 @@
     overflow-x : auto;
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+   
+    background-color: #002D45;
+
+    box-shadow: 1px 1px 1px 1px solid rgba(0, 0, 0, 0.5);
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: #FAA31B;
+    box-shadow: 1px 1px 1px 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: #999;
+    box-shadow: 1px 1px 1px 1px solid rgba(0, 0, 0, 0.5);
+
+    border-radius: 10px;
+}
+
 .list-cate::-webkit-scrollbar {
     height: 10px;
     background-color: #FAA31B;

@@ -53,9 +53,11 @@ const OrderTemplate = (props: Props) => {
         if (window.innerWidth <= 1500) {
           header.style.width = "calc(100% - 30%)";
           main.style.width = "calc(100% - 30%)";
+          main.style.marginLeft = "0";
         } else {
           header.style.width = "calc(100% - 20%)";
           main.style.width = "calc(100% - 20%)";
+          main.style.marginLeft = "0";
         }
       };
 
@@ -63,6 +65,8 @@ const OrderTemplate = (props: Props) => {
     } else {
       header.style.width = "100%";
       main.style.width = "100%";
+      main.style.marginLeft = "auto";
+      main.style.marginRight = "auto";
     }
   }, [collapsed]);
 
@@ -173,7 +177,7 @@ const OrderTemplate = (props: Props) => {
         {/* Start Content */}
         <div
           id="main"
-          className="flex my-0 mx-auto place-items-center transition-all duration-200 ease-linear"
+          className="flex my-0 place-items-center transition-all duration-300 ease-linear"
         >
           <Outlet />
         </div>
