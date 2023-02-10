@@ -132,7 +132,7 @@ const ItemModal = (props: Props) => {
   return (
     <Modal
       title={
-        <div className="text-2xl font-semibold text-color-yelow bg-background-blue-dark py-3 px-5 text-[20px]  capitalize">
+        <div className="text-[20px] leading-5 font-semibold text-color-yelow bg-background-blue-dark py-3 px-5 text-[20px]  capitalize">
           {props.item.name}
         </div>
       }
@@ -149,21 +149,22 @@ const ItemModal = (props: Props) => {
         // marginTop: "74px",
         padding: 0,
         borderRadius: "8px",
+        boxShadow: "#333 0 1px 12px 1px",
       }}
       bodyStyle={{
-        height: "70vh",
+        maxHeight: "75vh",
         padding: 0,
       }}
       width={window.innerWidth <= 760 ? "100%" : "48%"}
     >
-      <div className="flex flex-col gap-8 px-5 scrollbar-hide overflow-y-scroll">
+      <div className="flex flex-col px-5 scrollbar-hide overflow-y-scroll">
         <div>
           <div className="">
-            <p className="text-[20px] font-bold my-1">Tùy chọn</p>
+            <p className="text-[16px] font-bold my-1">Tùy chọn</p>
           </div>
           <div className="pl-5 pr-2">
             <div className="flex flex-row items-center">
-              <div className="text-[16px] font-semibold pr-2">Lượng đá</div>
+              <div className="text-[14px] font-semibold pr-2">Lượng đá</div>
               <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
               <Select
@@ -181,7 +182,7 @@ const ItemModal = (props: Props) => {
               />
             </div>
             <div className="flex flex-row items-center">
-              <div className="text-[16px] font-semibold pr-2">Đá chung</div>
+              <div className="text-[14px] font-semibold pr-2">Đá chung</div>
               <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
               <input
@@ -197,7 +198,7 @@ const ItemModal = (props: Props) => {
               />
             </div>
             <div className="flex flex-row items-center">
-              <div className="text-[16px] font-semibold pr-2">Lượng đường</div>
+              <div className="text-[14px] font-semibold pr-2">Lượng đường</div>
               <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
               <Select
@@ -213,7 +214,7 @@ const ItemModal = (props: Props) => {
               />
             </div>
             <div className="flex flex-row items-center">
-              <div className="text-[16px] font-semibold pr-2">Loại ly</div>
+              <div className="text-[14px] font-semibold pr-2">Loại ly</div>
               <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
               <Select
@@ -225,35 +226,36 @@ const ItemModal = (props: Props) => {
                     return { ...prev, cup: value };
                   });
                 }}
+                className="text-[14px]"
                 size={"large"}
               />
             </div>
           </div>
         </div>
 
-        <div>
+        <div className="mt-2">
           <div className="flex flex-row items-center pb-4">
-            <div className="text-[20px] font-bold my-1">Topping</div>
+            <div className="text-[16px] font-bold my-1">Topping</div>
             <div className="grow"></div>
           </div>
-          <div className="grid grid-cols-1 gap-3 h-[30%] divide-y divide-x-0 divide-solid divide-TertiaryLight/10">
+          <div className="grid grid-cols-1 gap-3 max-h-[14vh] overflow-y-auto border border-solid border-[#ccc] py-2 px-[20px] rounded">
             {orderedItem.topping.map((item: any) => {
               return (
                 <div
                   key={item.id}
-                  className="flex flex-row w-full pt-3 items-center px-1"
+                  className="flex flex-row w-full items-center px-1"
                 >
                   <div className="flex flex-col justify-center flex-initial w-1/2">
-                    <div className="text-xl text-OnBackgroundLight mb-4">
+                    <div className="text-[15px] text-OnBackgroundLight mb-1">
                       {item.name}
                     </div>
-                    <div className="text-lg font-semibold text-TertiaryLight">
+                    <div className="text-[15px] leading-4 font-semibold text-color-red">
                       {formatNumberToMoney(item.price)} VNĐ
                     </div>
                   </div>
                   <div className="flex flex-row items-center justify-end flex-initial h-full w-1/2 gap-6">
                     <button
-                      className="text-2xl px-2 py-2 cursor-pointer leading-[0rem] text-center border-TertiaryContainerLight/30 disabled:bg-gray-50/5 disabled:border-gray-50/40 disabled:text-black/20 rounded-md bg-TertiaryContainerLight text-OnTertiaryDark"
+                      className="text-[15px] px-2 py-2 cursor-pointer leading-[0rem] text-center border-TertiaryContainerLight/30 disabled:bg-gray-50/5 disabled:border-gray-50/40 disabled:text-black/20 rounded-md bg-TertiaryContainerLight text-OnTertiaryDark"
                       disabled={item.quantity <= 0}
                       onClick={() => {
                         setOrderedItem((prev: any) => {
@@ -276,11 +278,11 @@ const ItemModal = (props: Props) => {
                     >
                       <MinusOutlined />
                     </button>
-                    <div className="text-xl leading-[0rem] font-semibold w-14 text-center">
+                    <div className="text-[15px] leading-[0rem] font-semibold w-14 text-center">
                       {item.quantity}
                     </div>
                     <button
-                      className="text-2xl px-2 py-2 cursor-pointer leading-[0rem] text-center border-TertiaryContainerLight/30 rounded-md bg-TertiaryContainerLight text-OnTertiaryDark"
+                      className="text-[15px] px-2 py-2 cursor-pointer leading-[0rem] text-center border-TertiaryContainerLight/30 rounded-md bg-TertiaryContainerLight text-OnTertiaryDark"
                       onClick={() => {
                         setOrderedItem((prev: any) => {
                           return {
@@ -308,14 +310,15 @@ const ItemModal = (props: Props) => {
             })}
           </div>
         </div>
+
         <div>
-          <div className="flex flex-row items-center pb-4">
+          <div className="flex flex-row items-center mt-4 pb-4">
             <div className="text-xl font-semibold">Ghi chú</div>
             <div className="grow"></div>
           </div>
           <div>
             <TextArea
-              rows={4}
+              rows={1}
               onChange={(e) => {
                 setNote(e.target.value);
               }}
@@ -323,15 +326,17 @@ const ItemModal = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="h-1/6 flex flex-row justify-end items-center gap-2">
+      <div className="mt-6 px-5 rounded-b-lg overflow-hidden py-3 bg-background-blue-dark flex flex-row justify-end items-center gap-2">
         <div className="grow flex flex-row justify-start gap-2 items-center">
-          <div className="font-semibold text-md">{"Tổng 1 sản phẩm: "}</div>{" "}
-          <div className="text-TertiaryLight text-lg">
+          <div className="font-semibold text-white text-md text-[16px]">
+            {"Tổng 1 sản phẩm: "}
+          </div>{" "}
+          <div className="text-color-yelow font-bold text-[16px]">
             {formatNumberToMoney(orderedItem.single_price ?? 0) + " VNĐ"}
           </div>
         </div>
         <button
-          className="bg-slate-50 text-lg font-semibold border-slate-50/40 rounded-lg text-OnPrimaryContainerLight px-4 py-2"
+          className="bg-transparent hover:bg-background-yelow mr-3 border-2 hover: text-[16px] font-semibold border-yelow min-w-[100px] cursor-pointer transition-all duration-200 ease-linear rounded-lg text-white px-4 py-2"
           onClick={() => {
             props.handleClose();
           }}
@@ -339,7 +344,7 @@ const ItemModal = (props: Props) => {
           Hủy
         </button>
         <button
-          className="bg-PrimaryContainerLight text-lg font-semibold border-PrimaryContainerLight/40 rounded-lg text-OnPrimaryContainerLight px-4 py-2"
+          className="bg-PrimaryContainerLight hover:bg-transparent cursor-pointer border-2 bg-background-yelow border-solid text-white border-yelow text-[16px] font-semibold border-PrimaryContainerLight/40 rounded-lg text-OnPrimaryContainerLight px-4 py-2"
           onClick={() => {
             props.handleClose();
             props.handleConfirm({ ...orderedItem, note: note });

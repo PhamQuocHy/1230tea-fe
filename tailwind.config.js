@@ -197,6 +197,7 @@ module.exports = {
       },
       borderColor: {
         yelow: "#FAA31B",
+        "blue-dark": "#002D45",
       },
     },
   },

@@ -11,3 +11,19 @@
     overflow: hidden;
     margin: 0;
 }
+
+:where(.css-dev-only-do-not-override-ixblex).ant-modal .ant-modal-close {
+    top: 12px;
+}
+
+:where(.css-dev-only-do-not-override-ixblex).ant-select-single.ant-select-lg .ant-select-selector {
+    font-size: 14px;
+}
+
+.divide-TertiaryLight\/10 > :not([hidden]) ~ :not([hidden]) {
+    border-color: none !important;
+}
+
+.divide-solid > :not([hidden]) ~ :not([hidden]) {
+    border-style: none !important;
+}

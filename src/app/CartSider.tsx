@@ -109,20 +109,23 @@ const CartSider = (props: Props) => {
     }
   };
 
+  console.log("props.cart", props.cart);
+
   return (
     <Sider
-      className="bg-white h-full shadow-xl z-20 hidden md:block transition-all duration-200 ease-linear fixed right-0
+      className="bg-white h-full z-20 hidden md:block transition-all duration-200 ease-linear fixed right-0
       top-0 bottom-0"
       collapsible
       collapsed={props.collapsed}
       collapsedWidth={0}
       width={window.innerWidth <= 1500 ? "30%" : "20%"}
       trigger={null}
+      style={{ boxShadow: "#333 -1px 0 12px 4px" }}
     >
-      <div className="flex justify-center items-center text-xl font-semibold py-2 h-[7%]">
+      <div className="flex justify-center  items-center text-xl font-semibold py-2 h-header-height bg-[#284A5D] text-white">
         Giỏ hàng
       </div>
-      <div className="flex flex-col py-2 px-5 gap-4 overflow-y-scroll scrollbar-hide h-[78%] ">
+      <div className="flex flex-col py-2 px-5 gap-4 overflow-y-scroll scrollbar-hide h-[73%] ">
         {props.cart.map((item: any, index: number) => {
           return (
             <div
@@ -130,65 +133,78 @@ const CartSider = (props: Props) => {
               className="shadow-lg rounded-xl border-2 flex flex-col border-TertiaryLight/10 py-4 px-4 cursor-pointer border-solid bg-BackgroundLight"
             >
               <div
-                className="flex flex-col gap-3"
+                className="flex flex-col"
                 onClick={() => {
                   setIsOpen((prev: boolean) => true);
                   setSelectedItem(item);
                 }}
               >
-                <div className="text-lg font-semibold text-OnBackgroundLight/80">
+                <div className="text-[18px] pb-2 leading-6 border-x-0 border-t-0 border-b border-[#ccc] border-solid capitalize font-semibold text-OnBackgroundLight/80">
                   {item.name}
                 </div>
-                <div className="flex flex-col gap-2">
-                  {item.topping.map((topping: any, index: number) => {
-                    if (topping.quantity > 0) {
-                      return (
-                        <div
-                          className="flex flex-row text-md text-OnBackgroundLight/50 font-semibold"
-                          key={topping.id}
-                        >
-                          <div>{topping.name}</div>
-                          <div className="px-2">{" x"}</div>
-                          <div>{topping.quantity}</div>
-                        </div>
-                      );
-                    } else {
-                      return null;
-                    }
-                  })}
+                <div>
+                  <div>
+                    <p className="my-2 text-[16px] font-bold">Topping:</p>
+                  </div>
+                  <div className="flex flex-col my-2 px-3">
+                    {item.topping.map((topping: any, index: number) => {
+                      if (topping.quantity > 0) {
+                        return (
+                          <div
+                            className="flex flex-row text-md text-OnBackgroundLight/50 font-semibold"
+                            key={topping.id}
+                          >
+                            <div className="mr-2">{topping.name}</div>
+                            <div className="flex-1 w-full border-t-0 border-x-0 border-b border-dashed relative top-[-3px] border-[#333]"></div>
+                            <div className="px-2">{" x"}</div>
+                            <div>{topping.quantity}</div>
+                          </div>
+                        );
+                      } else {
+                        return null;
+                      }
+                    })}
+                  </div>
                 </div>
-                <div className="font-semibold text-md text-OnBackgroundLight/80">
-                  {item.includedIce ? "Đá chung" : "Đá riêng"}
+                <div className="my-2">
+                  <div className="">
+                    <p className="mt-0 mb-2 text-[16px] font-bold">Lưu Ý:</p>
+                  </div>
+                  <div className="px-3">
+                    <div className="leading-5 text-md text-[#333]">
+                      {item.includedIce ? "Đá chung" : "Đá riêng"}
+                    </div>
+                    <div className="leading-5 text-md text-[#333]">
+                      {item.cup}
+                    </div>
+                    <div className="leading-5 text-md text-[#333]">
+                      {item.ice}, {item.sugar}{" "}
+                    </div>
+                  </div>
                 </div>
-                <div className="font-semibold text-md text-OnBackgroundLight/80">
-                  {item.cup}
-                </div>
-                <div className="font-semibold text-md text-OnBackgroundLight/80">
-                  {item.ice}, {item.sugar}{" "}
-                </div>
-                <div className="font-medium text-md text-OnBackgroundLight/60">
-                  Ghi chú: {item.note}
-                </div>
-                <div className="font-medium text-md text-OnBackgroundLight/60">
-                  Tổng cộng:{" "}
-                  {formatNumberToMoney(item.quantity * item.single_price) +
-                    " VNĐ"}
+                <div className="border-x-0 pb-4 border-t-0 border-b border-[#ccc] border-solid">
+                  <div className="font-medium  text-md">
+                    <p className="mt-0 mb-2 text-[16px] font-bold">Ghi chú</p>
+                  </div>
+                  <div>
+                    <p className="my-0 px-5">{item.note}</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex xl:flex-row md:flex-col mt-10 z-10">
-                <div className="w-1/2 flex flex-row justify-center items-center">
+              <div className="flex justify-between xl:flex-row md:flex-col my-3 z-10">
+                <div className=" flex flex-row justify-center items-center">
                   <button
                     onClick={() => {
                       dispatch(removeItem(item.cart_id));
                     }}
-                    className="text-lg px-4 py-4 leading-[0rem] text-center bg-ErrorContainerLight text-OnErrorContainerLight rounded-md border-ErrorContainerLight/30"
+                    className="text-[14px] cursor-pointer border-2 border-solid border-yelow transition-all duration-200 ease-linear hover:bg-background-blue-dark px-4 py-4 leading-[0rem] text-center bg-background-yelow text-white rounded-md border-ErrorContainerLight/30"
                   >
                     Xóa
                   </button>
                 </div>
-                <div className="flex flex-row items-center justify-end flex-initial h-full xl:w-1/2 md:w-full gap-6">
+                <div className="flex flex-row items-center justify-end flex-initial h-full xl:w-1/2 md:w-full">
                   <button
-                    className="text-lg px-2 py-2 cursor-pointer leading-[0rem] text-center border-TertiaryContainerLight/30 disabled:bg-gray-50/5 disabled:border-gray-50/40 disabled:text-black/20 rounded-md bg-TertiaryContainerLight text-OnTertiaryDark"
+                    className="text-lg px-2 py-2 cursor-pointer transition-all duration-200 ease-linear hover:bg-background-yelow leading-[0rem] text-center border-blue-dark disabled:bg-gray-50/5 disabled:border-gray-50/40 disabled:text-black/20 rounded-md bg-white text-OnTertiaryDark"
                     disabled={item.quantity <= 0}
                     onClick={() => {
                       dispatch(decreaseQuantity(item.cart_id));
@@ -196,11 +212,11 @@ const CartSider = (props: Props) => {
                   >
                     <MinusOutlined />
                   </button>
-                  <div className="text-lg leading-[0rem] font-semibold w-14 text-center">
+                  <div className="text-lg leading-[0rem] font-semibold w-16 text-center">
                     {item.quantity}
                   </div>
                   <button
-                    className="text-lg px-2 py-2 cursor-pointer leading-[0rem] text-center border-TertiaryContainerLight/30 rounded-md bg-TertiaryContainerLight text-OnTertiaryDark"
+                    className="text-lg px-2 py-2 cursor-pointer transition-all duration-200 ease-linear hover:bg-background-yelow leading-[0rem] text-center border-blue-dark rounded-md bg-white text-OnTertiaryDark"
                     onClick={() => {
                       dispatch(increaseQuantity(item.cart_id));
                     }}
@@ -209,15 +225,22 @@ const CartSider = (props: Props) => {
                   </button>
                 </div>
               </div>
+              <div>
+                <div className="font-medium text-md leading-5 text-OnBackgroundLight/60">
+                  Tổng cộng:{" "}
+                  {formatNumberToMoney(item.quantity * item.single_price) +
+                    " VNĐ"}
+                </div>
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div className="flex flex-col h-[15%] justify-center items-center px-5">
-        <div className="flex flex-row h-1/5 justify-start w-full items-center px-5 gap-2">
-          <div className="text-lg font-semibold">Tổng cộng:</div>{" "}
-          <div className="text-lg font-semibold text-TertiaryLight">
+      <div className="flex flex-col bg-[#284A5D] justify-center items-center px-5 py-4">
+        <div className="flex flex-row mb-4 justify-between w-full items-center gap-2">
+          <div className="text-lg font-semibold text-white">Tổng tiền:</div>{" "}
+          <div className="text-2xl font-semibold text-color-yelow">
             {formatNumberToMoney(
               props.cart.reduce(
                 (acc: number, item: any) =>
@@ -227,13 +250,14 @@ const CartSider = (props: Props) => {
             ) + " VNĐ"}
           </div>
         </div>
-        <div className="flex flex-row h-4/5 justify-center items-center gap-4">
+        <div className="flex flex-row w-full justify-center items-center gap-4">
           <button
             onClick={() => {
               dispatch(resetOrder());
             }}
-            className=" bg-ErrorContainerLight text-OnErrorContainerLight
-            border-ErrorContainerLight/30 text-md font-semibold h-1/2 rounded-lg  px-4 py-2"
+            className=" bg-transparent text-white transition-all duration-200 ease-linear
+            border-yelow border-2 text-md font-semibold rounded-lg w-1/2 px-4 py-3
+            hover:bg-background-yelow cursor-pointer"
           >
             Xoá giỏ hàng
           </button>
@@ -244,7 +268,11 @@ const CartSider = (props: Props) => {
                 : navigate("/login");
             }}
             disabled={props.cart.length === 0}
-            className="bg-PrimaryContainerLight text-md font-semibold h-1/2 disabled:bg-gray-50/5 disabled:border-gray-50/40 disabled:text-black/20 border-PrimaryContainerLight/40 rounded-lg text-OnPrimaryContainerLight px-4 py-2"
+            className="bg-background-yelow transition-all duration-200 ease-linear border-yelow border-2
+             text-white w-1/2 text-md font-semibold disabled:bg-gray-50/5 disabled:border-gray-50/40
+            disabled:text-black/20 border-PrimaryContainerLight/40 rounded-lg  px-4 py-3
+            hover:bg-background-blue-dark cursor-pointer
+            "
           >
             Đặt hàng
           </button>
