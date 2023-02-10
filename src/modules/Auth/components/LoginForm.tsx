@@ -23,6 +23,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleSubmit, loading }) => {
   return (
     <Spin spinning={loading}>
       <Form
+      
+      
         size="large"
         name="login-form"
         initialValues={{ remember: true }}
@@ -31,9 +33,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleSubmit, loading }) => {
         className="flex flex-col px-1 md:px-12"
       >
         <Form.Item
+       
           className=""
           label={
-            <div className="text-OnBackgroundLight text-md">Số điện thoại</div>
+            <div className="text-OnBackgroundLight text-md font-semibold">Số điện thoại</div>
           }
           colon={false}
           required={false}
@@ -52,14 +55,15 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleSubmit, loading }) => {
             },
           ]}
         >
-          <Input prefix={<UserOutlined />} placeholder={"Số điện thoại"} />
+          <Input style={{marginTop: -22,}} prefix={<UserOutlined />} placeholder={"Số điện thoại"} />
         </Form.Item>
 
         <Form.Item
+         style={{marginTop: -50,}}
           className="mt-1"
           name="password"
           required={false}
-          label={<div className="text-OnBackgroundLight text-md">Mật khẩu</div>}
+          label={<div className="text-OnBackgroundLight text-md font-semibold">Mật khẩu</div>}
           rules={[
             {
               required: true,
@@ -72,11 +76,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleSubmit, loading }) => {
             },
           ]}
         >
-          <Input.Password prefix={<LockOutlined />} placeholder={"Mật khẩu"} />
+          <Input.Password style={{marginTop: -22,}} prefix={<LockOutlined />} placeholder={"Mật khẩu"} />
         </Form.Item>
 
         <div className={"flex flex-row justify-end mb-7 mt-1"}>
-          <Link to={"/forgot-password"} className={"mr-2"}>
+          <Link to={"/forgot-password"} className={"mr-2 text-color1230 font-medium"}>
             Quên mật khẩu?
           </Link>
         </div>
@@ -86,7 +90,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleSubmit, loading }) => {
             type="primary"
             size="large"
             htmlType="submit"
-            className="bg-gradient-to-br from-primary60 to-primary20 border-0 border-primary60 text-OnTertiaryLight"
+            className=" bg-color1230 shadow-sm text-OnTertiaryLight"
             block
           >
             Đăng nhập
@@ -96,10 +100,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ handleSubmit, loading }) => {
           <Button
             type="primary"
             onClick={() => navigate("/register")}
-            className="text-PrimaryLight border-PrimaryContainerLight border-2 bg-BackgroundLight"
+            className="text-color1230 border-PrimaryContainerLight bg-BackgroundLight"
             block
           >
-            Đăng kí
+            Đăng ký
           </Button>
         </Form.Item>
       </Form>

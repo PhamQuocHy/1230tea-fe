@@ -78,7 +78,7 @@ const ResetPasswordForm = (props: Props) => {
           type="primary"
           htmlType="submit"
           size="large"
-          className="bg-gradient-to-br from-primary60 to-primary20 border-0 border-primary60 text-OnTertiaryLight mt-5"
+          className="bg-color1230  text-OnTertiaryLight mt-5"
           block
         >
           Xác nhận

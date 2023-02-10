@@ -52,7 +52,7 @@ const Login: React.FC = () => {
           <div className="w-1/3 flex justify-center items-center">
             <img
               alt="Logo công ty"
-              src="../../image/text_logo.png"
+              src="../../image/logo-form.png"
               className="h-full"
             />
           </div>

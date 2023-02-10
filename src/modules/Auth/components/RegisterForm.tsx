@@ -158,7 +158,7 @@ const RegisterForm = (props: Props) => {
         <Button
           type="primary"
           htmlType="submit"
-          className="bg-gradient-to-br from-primary60 to-primary20 border-0 border-primary60 text-OnTertiaryLight "
+          className="bg-color1230 text-OnTertiaryLight "
           block
         >
           Đăng kí

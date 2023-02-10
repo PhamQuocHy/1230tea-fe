@@ -173,6 +173,7 @@ module.exports = {
 
         Libra: "#FCD163",
         Libra2: "#042042",
+        color1230: "#002D45",
 
         // Background
         "background-blue-dark": "#002D45",

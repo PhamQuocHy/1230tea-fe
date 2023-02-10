@@ -64,7 +64,7 @@ const OTPField: FC<Props> = (props: Props) => {
           type="primary"
           size="large"
           htmlType="button"
-          className="bg-gradient-to-br from-primary60 to-primary20 border-0 border-primary60 text-OnTertiaryLight w-4/6"
+          className="bg-color1230  text-OnTertiaryLight w-4/6"
           onClick={() => {
             console.log(otp.join(""));
             props.handleVerifyOtp(otp.join(""));
