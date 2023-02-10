@@ -120,7 +120,7 @@ const CartSider = (props: Props) => {
       collapsedWidth={0}
       width={window.innerWidth <= 1500 ? "30%" : "20%"}
       trigger={null}
-      style={{ boxShadow: "#333 -1px 0 12px 4px" }}
+      style={{ boxShadow: "#333 -1px 0 12px 1px" }}
     >
       <div className="flex justify-center  items-center text-xl font-semibold py-2 h-header-height bg-[#284A5D] text-white">
         Giỏ hàng
@@ -237,7 +237,7 @@ const CartSider = (props: Props) => {
         })}
       </div>
 
-      <div className="flex flex-col bg-[#284A5D] justify-center items-center px-5 py-4">
+      <div className="flex flex-col bg-[#284A5D] justify-center absolute bottom-0 left-0 right-0 items-center px-5 py-4">
         <div className="flex flex-row mb-4 justify-between w-full items-center gap-2">
           <div className="text-lg font-semibold text-white">Tổng tiền:</div>{" "}
           <div className="text-2xl font-semibold text-color-yelow">
