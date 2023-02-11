@@ -49,13 +49,13 @@ const OtpVerify = (props: Props) => {
       <div className={"text-center mb-5"}>
         <img
           alt="Logo công ty"
-          src="../../image/text_logo.png"
+          src="../../image/logo-form.png"
           className="w-1/3 md:w-1/4"
         />
       </div>
 
       <div className={"flex flex-row flex-wrap justify-center mb-7"}>
-        <div className="2xl:text-3xl text-xl text-center font-bold">
+        <div className="1xl:text-3xl text-xl text-center font-bold w-96">
           Vui lòng nhập mã otp đã được gửi vào điện thoại của bạn
         </div>
       </div>

@@ -28,7 +28,7 @@ const RegisterForm = (props: Props) => {
     >
       {" "}
       <div className={"flex flex-row flex-wrap justify-start mb-5"}>
-        <div className="text-2xl text-left font-bold">Thông tin tài khoản</div>
+        <div className="text-xl text-left font-bold">Thông tin tài khoản</div>
       </div>
       <Form.Item
         className=""
@@ -36,6 +36,7 @@ const RegisterForm = (props: Props) => {
           <div className="text-OnBackgroundLight text-md">Số điện thoại</div>
         }
         colon={false}
+        style={{fontWeight: 600}}
         required={false}
         name="phone"
         initialValue={"0389606380"}
@@ -60,6 +61,7 @@ const RegisterForm = (props: Props) => {
       <Form.Item
         className=""
         name="password"
+        style={{marginTop: -15, fontWeight: 600}}
         required={false}
         label={<div className="text-OnBackgroundLight text-md">Mật khẩu</div>}
         rules={[
@@ -78,6 +80,7 @@ const RegisterForm = (props: Props) => {
       </Form.Item>
       <Form.Item
         className=""
+        style={{marginTop: -15, fontWeight: 600}}
         name="confirm-password"
         required={false}
         hasFeedback
@@ -112,10 +115,11 @@ const RegisterForm = (props: Props) => {
         />
       </Form.Item>
       <div className={"flex flex-row flex-wrap justify-start mt-3 mb-5"}>
-        <div className="text-2xl text-left font-bold">Thông tin cá nhân</div>
+        <div className="text-xl text-left font-bold">Thông tin cá nhân</div>
       </div>
       <Form.Item
         name={"name"}
+        style={{marginTop: -15, fontWeight: 600}}
         required={false}
         label={<div className="text-OnBackgroundLight text-md">Họ và tên</div>}
         rules={[
@@ -134,6 +138,7 @@ const RegisterForm = (props: Props) => {
       <Form.Item
         className=""
         name="birthday"
+        style={{marginTop: -15, fontWeight: 600}}
         required={false}
         label={<div className="text-OnBackgroundLight text-md">Sinh nhật</div>}
         rules={[

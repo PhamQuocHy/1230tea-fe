@@ -64,7 +64,7 @@ const ForgotPasswordForm: React.FC<props> = ({ handleForgotPassword }) => {
         <Button
           type="primary"
           htmlType="submit"
-          className=" bg-gradient-to-br from-primary60 to-primary20 border-0 border-primary60 text-OnTertiaryLight"
+          className=" bg-color1230 from-primary60 to-primary20 border-0 border-primary60 text-OnTertiaryLight"
           block
         >
           Tiếp theo
@@ -74,7 +74,7 @@ const ForgotPasswordForm: React.FC<props> = ({ handleForgotPassword }) => {
         <Button
           type="primary"
           onClick={() => navigate("/login")}
-          className="text-PrimaryLight border-PrimaryContainerLight border-2 bg-BackgroundLight"
+          className="text-PrimaryLight border-PrimaryContainerLight bg-BackgroundLight"
           block
         >
           Đăng nhập

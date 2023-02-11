@@ -54,7 +54,7 @@ const RegisterInformation = (props: Props) => {
       <div className={"text-center mb-5"}>
         <img
           alt="Logo công ty"
-          src="../../image/text_logo.png"
+          src="../../image/logo-form.png"
           className="w-1/3 md:w-1/4"
         />
       </div>
