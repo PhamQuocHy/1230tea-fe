@@ -50,11 +50,54 @@ const SiderDemo: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [isHistoryVisible, setIsHistoryVisible] = React.useState(false);
 
-  const [cartCollapsed, setCartCollapsed] = React.useState(false);
+  const [cartCollapsed, setCartCollapsed] = React.useState(true);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   const user = useAppSelector((state) => state.rootReducer.auth.user);
+
+  //
+  // useEffect(() => {
+  //   const header: any = document.querySelector("#header");
+  //   // const main: any = document.querySelector("#main");
+  //   const asideMenuWidth: string = "15%";
+  //   const contentWidth = `calc(100% - ${asideMenuWidth})`;
+  //   header.style.width = contentWidth;
+  // }, []);
+
+  useEffect(() => {
+    const header: any = document.querySelector("#header");
+    const main: any = document.querySelector("#main");
+    const asideMenuWidth: string = "15%";
+    const contentWidth = `calc(100% - ${asideMenuWidth})`;
+    header.style.width = contentWidth;
+    if (cartCollapsed === false) {
+      const headerResize = () => {
+        if (window.innerWidth <= 1500) {
+          header.style.width = `calc(${contentWidth} - 30%)`;
+          // main.style.width = "calc(100% - 30%)";
+          // main.style.marginLeft = "0";
+          console.log("cartCollapsed <= 1500", cartCollapsed);
+        } else {
+          header.style.width = `calc(${contentWidth} - 20%)`;
+          // main.style.width = "calc(100% - 20%)";
+          console.log("cartCollapsed >= 1500", cartCollapsed);
+
+          // main.style.marginLeft = "0";
+        }
+      };
+      headerResize();
+    } else {
+      header.style.width = contentWidth;
+      // main.style.width = "100%";
+      // main.style.marginLeft = "auto";
+      // main.style.marginRight = "auto";
+    }
+    // console.log("cartCollapsed", cartCollapsed);
+  }, [cartCollapsed]);
+  //
+
+  console.log("user", user?.get_customer);
 
   return (
     <div className="flex flex-col h-full">
@@ -71,7 +114,7 @@ const SiderDemo: React.FC = () => {
         </div>
         <Sider
           className={
-            "md:block hidden z-20 shadow-xl shadow-OnBackgroundLight/20 bg-BackgroundLight"
+            "md:block hidden z-20 shadow-xl shadow-OnBackgroundLight/20 bg-BackgroundLight fixed w-[15%] top-0 left-0 max-w-[15%] min-w-[15%] bottom-0"
           }
           onCollapse={(value) => setCollapsed(value)}
           collapsedWidth={0}
@@ -148,16 +191,18 @@ const SiderDemo: React.FC = () => {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout h-full">
+
+        <Layout className="site-layout">
           <div className="hidden sm:block z-20">
             <div
-              className="overflow-hidden text-OnPrimaryLight header-content rounded-b-xl shadow-xl shadow-OnBackgroundLight/20 z-20 grid grid-cols-12 grid-rows-2 auto-rows-auto grid-flow-row-dense h-24"
+              id="header"
+              className="overflow-hidden ml-[15%] transition-all duration-200 ease-linear text-OnPrimaryLight header-content rounded-b-xl shadow-xl shadow-OnBackgroundLight/20 z-20 flex h-header-height"
               style={{
                 background: `linear-gradient(323deg, ${user.get_customer?.zodiac.color_web_first}
                  0%, ${user.get_customer?.zodiac.color_web_second} 99%)`,
               }}
             >
-              <div className="md:col-span-4 md:inline-grid hidden row-span-2 justify-start text-md md:text-2xl font-semibold h-full">
+              {/* <div className="md:col-span-4 md:inline-grid hidden row-span-2 justify-start text-md md:text-2xl font-semibold h-full">
                 Xin chào, {user?.first_name}!
               </div>
               <div className="col-span-2 h-full text-sm md:text-lg">
@@ -168,13 +213,15 @@ const SiderDemo: React.FC = () => {
               </div>
               <div className="col-span-2 h-full text-sm md:text-lg">
                 Điểm tích lũy
-              </div>
-              <div className="row-span-2 col-span-2 h-full">
+              </div> */}
+              {/* <div className="row-span-2 col-span-2 h-full">
                 <button
                   onClick={() => {
                     setCartCollapsed(!cartCollapsed);
                   }}
-                  className=" border-TertiaryContainerLight/50 rounded-md text-md font-semibold px-4 py-2 bg-TertiaryContainerLight text-OnTertiaryDark"
+                  className=" cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer text-OnPrimaryLight
+                  bg-transparent border-2 border-solid border-yelow px-5 py-2 rounded-lg transition-all
+                  duration-200 ease-linear hover:bg-background-yelow"
                 >
                   <ShoppingCartOutlined className="text-OnTertiaryDark pr-2" />{" "}
                   Giỏ hàng
@@ -188,8 +235,35 @@ const SiderDemo: React.FC = () => {
                     </div>
                   )}
                 </button>
+              </div> */}
+              <div className="row-span-2 col-span-2 h-full">
+                <div
+                  className="cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer text-OnPrimaryLight
+                   bg-transparent border-2 border-solid border-yelow px-5 py-2 rounded-lg transition-all
+                   duration-200 ease-linear hover:bg-background-yelow"
+                  onClick={() => {
+                    setCartCollapsed(!cartCollapsed);
+                  }}
+                >
+                  <ShoppingCartOutlined className="text-OnPrimaryLight pr-1 text-lg relative top-[3px]" />{" "}
+                  <div className="inline text-md mr-1">
+                    Giỏ hàng
+                    <span className="line-cart border border-solid border-yelow ml-2 mr-1.5 relative top-px"></span>
+                    {/* {cart.length > 0 && ( */}
+                    {cart.length}
+                  </div>
+                  {/* {cart.length > 0 && (
+                        <div
+                          className={
+                            "inline rounded-full p-1 h-1 w-2 mx-1 text-md text-OnPrimaryLight"
+                          }
+                        >
+                          {cart.length}
+                        </div>
+                      )} */}
+                </div>
               </div>
-              <div className="col-span-2 h-full text-xl font-bold items-start">
+              {/* <div className="col-span-2 h-full text-xl font-bold items-start">
                 {user.get_customer?.zodiac.name}
               </div>
               <div className="col-span-2 h-full text-xl font-bold items-start">
@@ -197,7 +271,7 @@ const SiderDemo: React.FC = () => {
               </div>
               <div className="col-span-2 h-full text-xl font-bold items-start">
                 {user?.get_customer?.point}
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -223,6 +297,7 @@ const SiderDemo: React.FC = () => {
             </Content>
           </div>
         </Layout>
+
         <CartSider collapsed={cartCollapsed} cart={cart} />
         <Menu
           theme="light"

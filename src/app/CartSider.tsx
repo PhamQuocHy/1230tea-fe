@@ -109,8 +109,6 @@ const CartSider = (props: Props) => {
     }
   };
 
-  console.log("props.cart", props.cart);
-
   return (
     <Sider
       className="bg-white h-full z-20 hidden md:block transition-all duration-200 ease-linear fixed right-0
@@ -120,7 +118,7 @@ const CartSider = (props: Props) => {
       collapsedWidth={0}
       width={window.innerWidth <= 1500 ? "30%" : "20%"}
       trigger={null}
-      style={{ boxShadow: "#333 -1px 0 12px 1px" }}
+      style={{ boxShadow: "#333 -1px 0 12px 1px", overflow: "hidden" }}
     >
       <div className="flex justify-center  items-center text-xl font-semibold py-2 h-header-height bg-[#284A5D] text-white">
         Giỏ hàng
@@ -182,14 +180,16 @@ const CartSider = (props: Props) => {
                     </div>
                   </div>
                 </div>
-                <div className="border-x-0 pb-4 border-t-0 border-b border-[#ccc] border-solid">
-                  <div className="font-medium  text-md">
-                    <p className="mt-0 mb-2 text-[16px] font-bold">Ghi chú</p>
+                {item?.note !== "" && (
+                  <div className="border-x-0 pb-4 border-t-0 border-b border-[#ccc] border-solid">
+                    <div className="font-medium  text-md">
+                      <p className="mt-0 mb-2 text-[16px] font-bold">Ghi chú</p>
+                    </div>
+                    <div>
+                      <p className="my-0 px-5">{item.note}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="my-0 px-5">{item.note}</p>
-                  </div>
-                </div>
+                )}
               </div>
               <div className="flex justify-between xl:flex-row md:flex-col my-3 z-10">
                 <div className=" flex flex-row justify-center items-center">
