@@ -50,7 +50,7 @@ const OTPField: FC<Props> = (props: Props) => {
                     e.nativeEvent.stopImmediatePropagation();
                   }
                 }}
-                className="lg:w-12 lg:h-12 w-9 h-9 border-2 rounded bg-transparent outline-none text-center font-semibold text-xl spin-button-none border-gray-400 focus:border-PrimaryContainerLight focus:text-gray-700 text-gray-400 transition"
+                className="lg:w-12 lg:h-12 w-9 h-9 border-2 rounded bg-white outline-none text-center font-semibold text-xl spin-button-none border-white focus:text-color1230 focus:text-color1230 text-color1230 transition"
               />
               {index === otp.length - 1 ? null : (
                 <span className="w-2 py-0.5 bg-gray-400" />
@@ -64,7 +64,7 @@ const OTPField: FC<Props> = (props: Props) => {
           type="primary"
           size="large"
           htmlType="button"
-          className="bg-color1230  text-OnTertiaryLight w-4/6"
+          className="bg-color1230  text-OnTertiaryLight w-96"
           onClick={() => {
             console.log(otp.join(""));
             props.handleVerifyOtp(otp.join(""));
