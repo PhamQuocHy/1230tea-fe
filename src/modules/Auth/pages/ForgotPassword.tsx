@@ -36,18 +36,18 @@ const ForgotPassword: React.FC = () => {
   return (
     <Card
       style={{ borderRadius: 15 }}
-      className="w-10/12 md:w-1/2 xl:w-2/5 2xl:w-4/12 inset-0 self-center mt-24 md:mt-40 object-center"
+      className="w-10/12 md:w-1/2 xl:w-2/5 2xl:w-4/12 inset-0 self-center mt-24 md:mt-40 object-center Fg-pass"
     >
       <div className={"text-center mb-5"}>
         <img
           alt="Logo công ty"
-          src="../../image/text_logo.png"
+          src="../../image/logo-form.png"
           className="w-1/3 md:w-1/4"
         />
       </div>
 
       <div className={"flex flex-row flex-wrap justify-center mb-7"}>
-        <div className="2xl:text-3xl text-xl text-center font-bold">
+        <div className="1xl:text-3xl text-xl text-center font-bold w-96">
           Vui lòng nhập số điện thoại của bạn để xác lập lại mật khẩu
         </div>
       </div>
