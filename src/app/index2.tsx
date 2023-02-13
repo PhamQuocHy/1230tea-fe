@@ -67,28 +67,28 @@ const SiderDemo: React.FC = () => {
 
   useEffect(() => {
     const header: any = document.querySelector("#header");
-    const main: any = document.querySelector("#main");
+    const main: any = document.querySelector("#mainContent");
     const asideMenuWidth: string = "15%";
     const contentWidth = `calc(100% - ${asideMenuWidth})`;
     header.style.width = contentWidth;
+    main.style.width = contentWidth;
     if (cartCollapsed === false) {
       const headerResize = () => {
         if (window.innerWidth <= 1500) {
           header.style.width = `calc(${contentWidth} - 30%)`;
+          main.style.width = `calc(${contentWidth} - 30%)`;
           // main.style.width = "calc(100% - 30%)";
           // main.style.marginLeft = "0";
-          console.log("cartCollapsed <= 1500", cartCollapsed);
         } else {
           header.style.width = `calc(${contentWidth} - 20%)`;
-          // main.style.width = "calc(100% - 20%)";
-          console.log("cartCollapsed >= 1500", cartCollapsed);
-
+          main.style.width = `calc(${contentWidth} - 20%)`;
           // main.style.marginLeft = "0";
         }
       };
       headerResize();
     } else {
       header.style.width = contentWidth;
+      main.style.marginLeft = asideMenuWidth;
       // main.style.width = "100%";
       // main.style.marginLeft = "auto";
       // main.style.marginRight = "auto";
@@ -97,7 +97,42 @@ const SiderDemo: React.FC = () => {
   }, [cartCollapsed]);
   //
 
-  console.log("user", user?.get_customer);
+  const mouseHoverEfect = (e: any) => {
+    e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_first} `;
+    e.target.style.color = user.get_customer?.zodiac.color_web_second;
+
+    const textContent = e.target.querySelector(".js-text-content");
+    if (textContent) {
+      textContent.style.color = user.get_customer?.zodiac.color_web_second;
+    }
+    console.log(e.target.style.backgroundColor);
+
+    // // e.target.style.border = `2px solid ${user.get_customer?.zodiac.color_web_second}`;
+    // const line = e.target.querySelector(".line-cart");
+    // if (line) {
+    //   line.style.border = `1px solid ${user.get_customer?.zodiac.color_web_second}`;
+    // }
+  };
+
+  const mouseOutEfect = (e: any, tsp: boolean) => {
+    if (tsp == false) {
+      e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_second} `;
+    } else {
+      e.target.style.backgroundColor = "transparent";
+    }
+    e.target.style.color = user.get_customer?.zodiac.color_web_first;
+    const textContent = e.target.querySelector(".js-text-content");
+    if (textContent) {
+      textContent.style.color = user.get_customer?.zodiac.color_web_first;
+    }
+    console.log("Ra");
+
+    // // e.target.style.border = `2px solid ${user.get_customer?.zodiac.color_web_first} `;
+    // const line = e.target.querySelector(".line-cart");
+    // if (line) {
+    //   line.style.border = `1px solid ${user.get_customer?.zodiac.color_web_first}`;
+    // }
+  };
 
   return (
     <div className="flex flex-col h-full">
@@ -114,16 +149,18 @@ const SiderDemo: React.FC = () => {
         </div>
         <Sider
           className={
-            "md:block hidden z-20 shadow-xl shadow-OnBackgroundLight/20 bg-BackgroundLight fixed w-[15%] top-0 left-0 max-w-[15%] min-w-[15%] bottom-0"
+            "md:block hidden z-20 shadow-xl shadow-OnBackgroundLight/20 fixed w-[15%] top-0 left-0 max-w-[15%] min-w-[15%] bottom-0"
           }
           onCollapse={(value) => setCollapsed(value)}
           collapsedWidth={0}
         >
           <Menu
-            theme="light"
             className=""
             defaultSelectedKeys={["1"]}
             mode="inline"
+            style={{
+              backgroundColor: user.get_customer?.zodiac.color_web_first,
+            }}
           >
             <div className="col-span-2 text-center my-4 row-span-2 h-full">
               <img
@@ -196,13 +233,14 @@ const SiderDemo: React.FC = () => {
           <div className="hidden sm:block z-20">
             <div
               id="header"
-              className="overflow-hidden ml-[15%] transition-all duration-200 ease-linear text-OnPrimaryLight header-content rounded-b-xl shadow-xl shadow-OnBackgroundLight/20 z-20 flex h-header-height"
+              className="overflow-hidden ml-[15%] transition-all fixed top-0 duration-200 ease-linear text-OnPrimaryLight header-content rounded-b-xl shadow-xl shadow-OnBackgroundLight/20 z-20 flex h-header-height"
               style={{
                 background: `linear-gradient(323deg, ${user.get_customer?.zodiac.color_web_first}
                  0%, ${user.get_customer?.zodiac.color_web_second} 99%)`,
               }}
             >
-              {/* <div className="md:col-span-4 md:inline-grid hidden row-span-2 justify-start text-md md:text-2xl font-semibold h-full">
+              <div className="w-width-layout">
+                {/* <div className="md:col-span-4 md:inline-grid hidden row-span-2 justify-start text-md md:text-2xl font-semibold h-full">
                 Xin chào, {user?.first_name}!
               </div>
               <div className="col-span-2 h-full text-sm md:text-lg">
@@ -214,7 +252,7 @@ const SiderDemo: React.FC = () => {
               <div className="col-span-2 h-full text-sm md:text-lg">
                 Điểm tích lũy
               </div> */}
-              {/* <div className="row-span-2 col-span-2 h-full">
+                {/* <div className="row-span-2 col-span-2 h-full">
                 <button
                   onClick={() => {
                     setCartCollapsed(!cartCollapsed);
@@ -236,23 +274,55 @@ const SiderDemo: React.FC = () => {
                   )}
                 </button>
               </div> */}
-              <div className="row-span-2 col-span-2 h-full">
-                <div
-                  className="cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer text-OnPrimaryLight
-                   bg-transparent border-2 border-solid border-yelow px-5 py-2 rounded-lg transition-all
-                   duration-200 ease-linear hover:bg-background-yelow"
-                  onClick={() => {
-                    setCartCollapsed(!cartCollapsed);
-                  }}
-                >
-                  <ShoppingCartOutlined className="text-OnPrimaryLight pr-1 text-lg relative top-[3px]" />{" "}
-                  <div className="inline text-md mr-1">
-                    Giỏ hàng
-                    <span className="line-cart border border-solid border-yelow ml-2 mr-1.5 relative top-px"></span>
-                    {/* {cart.length > 0 && ( */}
-                    {cart.length}
+                <div className="h-full">
+                  <div
+                    style={{
+                      backgroundColor: `${user.get_customer?.zodiac.color_web_second}`,
+                      border: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
+                      color: `${user.get_customer?.zodiac.color_web_first}`,
+                    }}
+                    onMouseEnter={(e) => mouseHoverEfect(e)}
+                    onMouseLeave={(e) => mouseOutEfect(e, false)}
+                    className={`
+                    cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer
+                   px-5 py-2 rounded-lg transition-all
+                   duration-200 ease-linear 
+                    `}
+                  >
+                    <div
+                      style={{ color: "unset" }}
+                      className="js-text-content inline text-md mr-1 bg-transparent border-none"
+                    >
+                      Điểm tích lũy
+                      <span
+                        style={{
+                          border: `1px solid ${user.get_customer?.zodiac.color_web_first}`,
+                        }}
+                        className="line-cart ml-2 mr-1.5 relative top-px"
+                      ></span>
+                      150
+                    </div>
                   </div>
-                  {/* {cart.length > 0 && (
+                </div>
+                <div className="h-full">
+                  <div
+                    className="cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer text-OnPrimaryLight
+                   bg-transparent border-2 border-solid border-yelow px-5 py-2 rounded-lg transition-all
+                   duration-200 ease-linear"
+                    onClick={() => {
+                      setCartCollapsed(!cartCollapsed);
+                    }}
+                    onMouseEnter={(e) => mouseHoverEfect(e)}
+                    onMouseLeave={(e) => mouseOutEfect(e, true)}
+                  >
+                    <ShoppingCartOutlined className="text-OnPrimaryLight pr-1 text-lg relative top-[3px]" />{" "}
+                    <div className="inline text-md mr-1">
+                      Giỏ hàng
+                      <span className="line-cart border border-solid border-yelow ml-2 mr-1.5 relative top-px"></span>
+                      {/* {cart.length > 0 && ( */}
+                      {cart.length}
+                    </div>
+                    {/* {cart.length > 0 && (
                         <div
                           className={
                             "inline rounded-full p-1 h-1 w-2 mx-1 text-md text-OnPrimaryLight"
@@ -261,9 +331,9 @@ const SiderDemo: React.FC = () => {
                           {cart.length}
                         </div>
                       )} */}
+                  </div>
                 </div>
-              </div>
-              {/* <div className="col-span-2 h-full text-xl font-bold items-start">
+                {/* <div className="col-span-2 h-full text-xl font-bold items-start">
                 {user.get_customer?.zodiac.name}
               </div>
               <div className="col-span-2 h-full text-xl font-bold items-start">
@@ -272,6 +342,7 @@ const SiderDemo: React.FC = () => {
               <div className="col-span-2 h-full text-xl font-bold items-start">
                 {user?.get_customer?.point}
               </div> */}
+              </div>
             </div>
           </div>
 
@@ -282,13 +353,16 @@ const SiderDemo: React.FC = () => {
               style={{ width: "20%", margin: 10, float: "right" }}
             />
           </Header> */}
-          <div className="overflow-y-scroll h-full scrollbar-hide">
+          <div
+            id="mainContent"
+            className="transition-all duration-200 ease-linear"
+          >
             <Content style={{ margin: "0 16px" }} className="h-full">
               <Breadcrumb style={{ margin: "10px 0" }}>
                 <Breadcrumb.Item></Breadcrumb.Item>
                 <Breadcrumb.Item></Breadcrumb.Item>
               </Breadcrumb>
-              <div className="h-full grid place-items-center pt-3">
+              <div className="grid place-items-center pt-3">
                 <Outlet />
               </div>
               <Footer style={{ textAlign: "center" }}>
