@@ -366,7 +366,7 @@ const SiderDemo: React.FC = () => {
                 <Outlet />
               </div>
               <Footer style={{ textAlign: "center" }}>
-                Copyright &#169; 2022 - Bản quyền thuộc về AlphaGroup
+                Copyright &#169; 2023 - Bản quyền thuộc về 1230Tea 
               </Footer>
             </Content>
           </div>

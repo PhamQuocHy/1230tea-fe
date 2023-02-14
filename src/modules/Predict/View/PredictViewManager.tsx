@@ -27,6 +27,7 @@ import "./style.scss";
 import "./index.js";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import { url } from "inspector";
 
 const PredictHistoryViewManager: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -112,15 +113,37 @@ const PredictHistoryViewManager: React.FC = () => {
       <div
         className="rounded-xl sm:p-8 p-2 h-full"
         style={{
-          background: `linear-gradient(323deg,  ${user.get_customer?.zodiac.color_web_first}
-      0%, ${user.get_customer?.zodiac.color_web_second} 99%)`,
+      //     background: `linear-gradient(323deg,  ${user.get_customer?.zodiac.color_web_first}
+      // 0%, ${user.get_customer?.zodiac.color_web_second} 99%)`,
+      // background: `${user.get_customer?.zodiac.color_web_first}`,
+          backgroundImage: `url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80")`,
+          backgroundSize: 'cover',
+          position: 'relative',
+          overflow: 'hidden',
+          backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="text-TertiaryContainerLight text-3xl font-poppins py-5 font-bold text-center uppercase ">
+        <div
+        style={{
+          position: 'absolute',
+          background: `${user.get_customer?.zodiac.color_web_first}`,
+          opacity: 0.85,
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+
+        }}></div>
+       <div
+       style={{
+        position: 'relative',
+        zIndex: 5,
+       }}>
+        <div className="text-Libra text-3xl font-poppins py-5 font-bold text-center uppercase ">
           Dự báo theo ngày
         </div>
 
-        <div className="grid sm:grid-cols-11 grid-cols-3 place-items-center h-16 mb-5 border-4">
+        <div className="justify-center flex items-center h-16 mb-5 border-4">
           <div className="lg:col-span-4 hidden sm:block"></div>
           {day.map((item) => (
             <button
@@ -128,13 +151,13 @@ const PredictHistoryViewManager: React.FC = () => {
                 setSelectedDay(item);
               }}
               key={item.id}
-              className="bg-transparent border-none lg:col-span-1 md:col-span-3 col-span-1"
+              className="bg-transparent border-none lg:col-span-1 md:col-span-3 col-span-1 w-auto mx-3"
             >
               <div
                 className={
                   item.id == selectedDay.id
-                    ? "bg-TertiaryContainerLight border-2  border-TertiaryContainerLight border-solid px-6 py-3 sm:text-md text-sm shadow-lg shadow-OnBackgroundLight/30 rounded-xl text-OnTertiaryContainerLight font-bold "
-                    : "border-2 border-TertiaryContainerLight border-solid rounded-xl px-6 py-3 sm:text-md text-sm text-OnPrimaryLight font-semibold"
+                    ? "border-active" 
+                    : "border1"
                 }
               >
                 {item.name}
@@ -145,7 +168,8 @@ const PredictHistoryViewManager: React.FC = () => {
 
         <div className="sm:hidden justify-center flex flex-row">
           <img
-            src={`../../../image/zodiac/${expectedData?.zodiac_id}.png`}
+            src={`../../../../public/image/zodiac/12.png`}
+           
             className="w-2/3 invert "
           />
         </div>
@@ -158,14 +182,16 @@ const PredictHistoryViewManager: React.FC = () => {
             <Rate
               disabled
               value={expectedData?.love}
-              className="sm:text-3xl text-lg mt-3"
+              className="sm:text-3xl text-lg mt-3 stroke-Libra stroke-[40] "
             />
           </div>
 
-          <div className="sm:block hidden row-span-2 text-center w-2/3">
+          <div className="sm:block hidden row-span-2 text-center w-full justify-center">
             <img
-              src={`../../../image/zodiac/${expectedData?.zodiac_id}.png`}
-              className="w-full invert"
+              src={`../../../image/zodiac/3.png`}
+              className=" " //invert
+              style={{marginTop: 10, paddingBottom: 10, width: 450, height: 320, marginLeft: -27 }}
+
             />
           </div>
           <div className="second sm:text-2xl text-md font-semibold text-OnPrimaryLight">
@@ -175,7 +201,7 @@ const PredictHistoryViewManager: React.FC = () => {
             <Rate
               disabled
               value={expectedData?.job}
-              className="sm:text-3xl text-lg mt-3"
+              className="sm:text-3xl text-lg mt-3 stroke-Libra stroke-[40] "
             />
           </div>
 
@@ -186,7 +212,7 @@ const PredictHistoryViewManager: React.FC = () => {
             <Rate
               disabled
               value={expectedData?.health}
-              className="sm:text-3xl text-lg mt-3"
+              className="sm:text-3xl text-lg mt-3 stroke-Libra stroke-[40] "
             />
           </div>
           <div className="fourth sm:text-2xl text-md font-semibold text-OnPrimaryLight">
@@ -196,7 +222,7 @@ const PredictHistoryViewManager: React.FC = () => {
             <Rate
               disabled
               value={expectedData?.money}
-              className="sm:text-3xl text-lg mt-3"
+              className="sm:text-3xl text-lg mt-3 stroke-Libra stroke-[40] "
             />
           </div>
         </div>
@@ -261,6 +287,7 @@ const PredictHistoryViewManager: React.FC = () => {
             </div>
           </div>
         </div>
+        </div> 
       </div>
     </Spin>
   );
