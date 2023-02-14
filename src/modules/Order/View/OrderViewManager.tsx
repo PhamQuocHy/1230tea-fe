@@ -30,6 +30,8 @@ const OrderViewManager = (props: Props) => {
     (state: RootState) => state.rootReducer.auth.token
   );
 
+  const user = useAppSelector((state) => state.rootReducer.auth.user);
+
   useEffect(() => {
     (async () => {
       const dispatchResponse = await dispatch(
@@ -67,8 +69,60 @@ const OrderViewManager = (props: Props) => {
     await dispatch(addToCart(data));
   };
 
+  const mouseHoverEfect = (e: any, tsp: boolean) => {
+    const textContent = e.target.querySelectorAll(".js-text-content");
+    if (tsp === false) {
+      e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_first} `;
+      e.target.style.color = user.get_customer?.zodiac.color_web_second;
+      if (textContent) {
+        for (let i = 0; i < textContent.length; i++) {
+          textContent[i].style.color =
+            user.get_customer?.zodiac.color_web_second;
+        }
+      }
+    } else {
+      e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_second} `;
+      e.target.style.color = user.get_customer?.zodiac.color_web_first;
+      if (textContent) {
+        for (let i = 0; i < textContent.length; i++) {
+          textContent[i].style.color =
+            user.get_customer?.zodiac.color_web_first;
+        }
+      }
+    }
+  };
+
+  const mouseOutEfect = (e: any, tsp: boolean) => {
+    const textContent = e.target.querySelectorAll(".js-text-content");
+    if (tsp == false) {
+      e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_second} `;
+      e.target.style.color = user.get_customer?.zodiac.color_web_first;
+      if (textContent) {
+        for (let i = 0; i < textContent.length; i++) {
+          textContent[i].style.color =
+            user.get_customer?.zodiac.color_web_first;
+        }
+      }
+    } else {
+      e.target.style.backgroundColor = "transparent";
+      e.target.style.color = user.get_customer?.zodiac.color_web_second;
+      if (textContent) {
+        for (let i = 0; i < textContent.length; i++) {
+          textContent[i].style.color =
+            user.get_customer?.zodiac.color_web_second;
+          textContent[i].style.backgroundColor = "transparent";
+        }
+      }
+    }
+    // e.target.style.border = `2px solid ${user.get_customer?.zodiac.color_web_first} `;
+    const line = e.target.querySelector(".line-cart");
+    if (line) {
+      line.style.border = `1px solid ${user.get_customer?.zodiac.color_web_first}`;
+    }
+  };
+
   return (
-    <div className="bg-BackgroundLight w-full flex flex-col  overflow-hidden">
+    <div className="bg-BackgroundLight w-full flex flex-col max-w-full overflow-hidden">
       {/* Best Seller */}
       <div className="py-2 ">
         <BestSeller />
@@ -77,9 +131,18 @@ const OrderViewManager = (props: Props) => {
 
       {/* List Product */}
       <div className="w-full py-8 content-bg">
-        <div className="overLay__content bg-[#022132] opacity-60 left-0 right-0 top-0 bottom-0 absolute"></div>
+        <div
+          style={
+            !user.get_customer?.zodiac.color_web_first
+              ? { backgroundColor: "#022132" }
+              : {
+                  backgroundColor: `${user.get_customer?.zodiac.color_web_first}`,
+                }
+          }
+          className="overLay__content opacity-60 left-0 right-0 top-0 bottom-0 absolute"
+        ></div>
 
-        <div className="w-width-layout relative z-[5] my-0 mx-auto">
+        <div className="w-width-layout max-w-full relative z-[5] my-0 mx-auto">
           {/*  */}
           {/* <div className="h-[10%] hidden px-5 justify-center">
             <div className="flex flex-row flex-nowrap items-center gap-5 w-full h-full 2xl:w-3/4 scrollbar-hide overflow-x-auto">
@@ -114,9 +177,16 @@ const OrderViewManager = (props: Props) => {
 
           {/* Title */}
           <div>
-            <div className=" w-width-layout mx-auto my-0 pb-3">
+            <div className=" w-width-layout max-w-full mx-auto my-0 pb-3">
               <div className="text-center">
-                <h1 className="font-bold text-[30px] my-2 text-color-yelow uppercase">
+                <h1
+                  style={
+                    !user.get_customer?.zodiac.color_web_second
+                      ? { color: "#FAA31B" }
+                      : { color: user.get_customer?.zodiac.color_web_second }
+                  }
+                  className="font-bold text-[30px] my-2 uppercase"
+                >
                   Thực đơn đồ uống
                 </h1>
               </div>
@@ -134,7 +204,7 @@ const OrderViewManager = (props: Props) => {
           {/* End title */}
 
           {/* Tabs */}
-          <div className="flex items-center justify-between py-3 list-cate max-w-width-layout">
+          <div className="flex items-center justify-between py-3 list-cate max-w-full w-width-layout">
             <div className="px-4">
               <button
                 onClick={() => setSelectedCategory(-1)}
@@ -152,26 +222,47 @@ const OrderViewManager = (props: Props) => {
             </div>
             {product.map((item: any, index: number) => (
               <div className="px-4" key={index}>
-                <button
-                  onClick={() => setSelectedCategory(index)}
-                  className={`${
-                    selectedCategory === index
-                      ? "bg-background-yelow hover:bg-transparent border-yelow"
-                      : "bg-transparent hover:bg-background-yelow border-yelow"
-                  } " uppercase rounded-md cursor-pointer  transition-all 
+                {user.get_customer?.zodiac.color_web_second ? (
+                  <button
+                    onClick={() => setSelectedCategory(index)}
+                    style={
+                      selectedCategory === index
+                        ? { color: "#FAA31B" }
+                        : { color: user.get_customer?.zodiac.color_web_second }
+                    }
+                    className={`${
+                      selectedCategory === index
+                        ? "bg-background-yelow hover:bg-transparent border-yelow"
+                        : "bg-transparent hover:bg-background-yelow border-yelow"
+                    } " uppercase rounded-md cursor-pointer  transition-all 
                    duration-200 ease-linear text-white font-bold min-w-[150px] 
                    text-[18px] py-2 px-5 border-2 border-solid "
                    `}
-                >
-                  {item.name}
-                </button>
+                  >
+                    {item.name}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setSelectedCategory(index)}
+                    className={`${
+                      selectedCategory === index
+                        ? "bg-background-yelow hover:bg-transparent border-yelow"
+                        : "bg-transparent hover:bg-background-yelow border-yelow"
+                    } " uppercase rounded-md cursor-pointer  transition-all 
+                     duration-200 ease-linear text-white font-bold min-w-[150px] 
+                     text-[18px] py-2 px-5 border-2 border-solid "
+                     `}
+                  >
+                    {item.name}
+                  </button>
+                )}
               </div>
             ))}
           </div>
           {/* End Tabs */}
 
           {/* Content */}
-          <div className="flex-initial  h-[85%] xl:h-[90%] py-5 gap-7 grid xl:grid-cols-4 md:grid-cols-3">
+          <div className="flex-initial px-4 h-[85%] xl:h-[90%] py-5 gap-7 grid xl:grid-cols-4 md:grid-cols-3">
             {selectedCategory === -1
               ? allProduct.map((item: any, index: number) => {
                   return (

@@ -192,6 +192,9 @@ module.exports = {
       height: {
         "header-height": "74px",
       },
+      margin: {
+        "header-height": "74px",
+      },
       lineHeight: {
         "header-lineHeight": "74px",
       },

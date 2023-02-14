@@ -51,6 +51,7 @@ const SiderDemo: React.FC = () => {
   const [isHistoryVisible, setIsHistoryVisible] = React.useState(false);
 
   const [cartCollapsed, setCartCollapsed] = React.useState(true);
+  const [info, setInfo] = React.useState({});
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -77,55 +78,64 @@ const SiderDemo: React.FC = () => {
         if (window.innerWidth <= 1500) {
           header.style.width = `calc(${contentWidth} - 30%)`;
           main.style.width = `calc(${contentWidth} - 30%)`;
-          // main.style.width = "calc(100% - 30%)";
-          // main.style.marginLeft = "0";
         } else {
           header.style.width = `calc(${contentWidth} - 20%)`;
           main.style.width = `calc(${contentWidth} - 20%)`;
-          // main.style.marginLeft = "0";
         }
       };
       headerResize();
     } else {
       header.style.width = contentWidth;
       main.style.marginLeft = asideMenuWidth;
-      // main.style.width = "100%";
-      // main.style.marginLeft = "auto";
-      // main.style.marginRight = "auto";
     }
-    // console.log("cartCollapsed", cartCollapsed);
   }, [cartCollapsed]);
   //
 
-  const mouseHoverEfect = (e: any) => {
-    e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_first} `;
-    e.target.style.color = user.get_customer?.zodiac.color_web_second;
-
-    const textContent = e.target.querySelector(".js-text-content");
-    if (textContent) {
-      textContent.style.color = user.get_customer?.zodiac.color_web_second;
+  const mouseHoverEfect = (e: any, tsp: boolean) => {
+    const textContent = e.target.querySelectorAll(".js-text-content");
+    if (tsp === false) {
+      e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_first} `;
+      e.target.style.color = user.get_customer?.zodiac.color_web_second;
+      if (textContent) {
+        for (let i = 0; i < textContent.length; i++) {
+          textContent[i].style.color =
+            user.get_customer?.zodiac.color_web_second;
+        }
+      }
+    } else {
+      e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_second} `;
+      e.target.style.color = user.get_customer?.zodiac.color_web_first;
+      if (textContent) {
+        for (let i = 0; i < textContent.length; i++) {
+          textContent[i].style.color =
+            user.get_customer?.zodiac.color_web_first;
+        }
+      }
     }
-    console.log(e.target.style.backgroundColor);
-
-    // // e.target.style.border = `2px solid ${user.get_customer?.zodiac.color_web_second}`;
-    // const line = e.target.querySelector(".line-cart");
-    // if (line) {
-    //   line.style.border = `1px solid ${user.get_customer?.zodiac.color_web_second}`;
-    // }
   };
 
   const mouseOutEfect = (e: any, tsp: boolean) => {
+    const textContent = e.target.querySelectorAll(".js-text-content");
     if (tsp == false) {
       e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_second} `;
+      e.target.style.color = user.get_customer?.zodiac.color_web_first;
+      if (textContent) {
+        for (let i = 0; i < textContent.length; i++) {
+          textContent[i].style.color =
+            user.get_customer?.zodiac.color_web_first;
+        }
+      }
     } else {
       e.target.style.backgroundColor = "transparent";
+      e.target.style.color = user.get_customer?.zodiac.color_web_second;
+      if (textContent) {
+        for (let i = 0; i < textContent.length; i++) {
+          textContent[i].style.color =
+            user.get_customer?.zodiac.color_web_second;
+          textContent[i].style.backgroundColor = "transparent";
+        }
+      }
     }
-    e.target.style.color = user.get_customer?.zodiac.color_web_first;
-    const textContent = e.target.querySelector(".js-text-content");
-    if (textContent) {
-      textContent.style.color = user.get_customer?.zodiac.color_web_first;
-    }
-    console.log("Ra");
 
     // // e.target.style.border = `2px solid ${user.get_customer?.zodiac.color_web_first} `;
     // const line = e.target.querySelector(".line-cart");
@@ -233,13 +243,16 @@ const SiderDemo: React.FC = () => {
           <div className="hidden sm:block z-20">
             <div
               id="header"
-              className="overflow-hidden ml-[15%] transition-all fixed top-0 duration-200 ease-linear text-OnPrimaryLight header-content rounded-b-xl shadow-xl shadow-OnBackgroundLight/20 z-20 flex h-header-height"
+              className="overflow-hidden ml-[15%] transition-all fixed top-0 duration-200 ease-linear text-OnPrimaryLight header-content shadow-xl shadow-OnBackgroundLight/20 z-20 flex h-header-height"
+              // style={{
+              //   background: `linear-gradient(323deg, ${user.get_customer?.zodiac.color_web_first}
+              //    0%, ${user.get_customer?.zodiac.color_web_second} 99%)`,
+              // }}
               style={{
-                background: `linear-gradient(323deg, ${user.get_customer?.zodiac.color_web_first}
-                 0%, ${user.get_customer?.zodiac.color_web_second} 99%)`,
+                background: `${user.get_customer?.zodiac.color_web_first}`,
               }}
             >
-              <div className="w-width-layout">
+              <div className="w-width-layout flex items-center justify-end">
                 {/* <div className="md:col-span-4 md:inline-grid hidden row-span-2 justify-start text-md md:text-2xl font-semibold h-full">
                 Xin chào, {user?.first_name}!
               </div>
@@ -274,14 +287,14 @@ const SiderDemo: React.FC = () => {
                   )}
                 </button>
               </div> */}
-                <div className="h-full">
+                <div className="h-full px-4">
                   <div
                     style={{
                       backgroundColor: `${user.get_customer?.zodiac.color_web_second}`,
                       border: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
                       color: `${user.get_customer?.zodiac.color_web_first}`,
                     }}
-                    onMouseEnter={(e) => mouseHoverEfect(e)}
+                    onMouseEnter={(e) => mouseHoverEfect(e, false)}
                     onMouseLeave={(e) => mouseOutEfect(e, false)}
                     className={`
                     cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer
@@ -304,21 +317,25 @@ const SiderDemo: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <div className="h-full">
+                <div className="h-full px-4">
                   <div
-                    className="cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer text-OnPrimaryLight
-                   bg-transparent border-2 border-solid border-yelow px-5 py-2 rounded-lg transition-all
+                    style={{
+                      backgroundColor: "transparent",
+                      color: `${user.get_customer?.zodiac.color_web_second}`,
+                      border: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
+                    }}
+                    className="cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer px-5 py-2 rounded-lg transition-all
                    duration-200 ease-linear"
                     onClick={() => {
                       setCartCollapsed(!cartCollapsed);
                     }}
-                    onMouseEnter={(e) => mouseHoverEfect(e)}
-                    onMouseLeave={(e) => mouseOutEfect(e, true)}
+                    // onMouseEnter={(e) => mouseHoverEfect(e, true)}
+                    // onMouseLeave={(e) => mouseOutEfect(e, true)}
                   >
-                    <ShoppingCartOutlined className="text-OnPrimaryLight pr-1 text-lg relative top-[3px]" />{" "}
-                    <div className="inline text-md mr-1">
+                    <ShoppingCartOutlined className="js-text-content pr-1 text-lg relative top-[3px]" />{" "}
+                    <div className="js-text-content inline text-md mr-1">
                       Giỏ hàng
-                      <span className="line-cart border border-solid border-yelow ml-2 mr-1.5 relative top-px"></span>
+                      <span className="js-text-content line-cart border border-solid border-yelow ml-2 mr-1.5 relative top-px"></span>
                       {/* {cart.length > 0 && ( */}
                       {cart.length}
                     </div>
@@ -355,13 +372,13 @@ const SiderDemo: React.FC = () => {
           </Header> */}
           <div
             id="mainContent"
-            className="transition-all duration-200 ease-linear"
+            className="transition-all mt-header-height duration-200 ease-linear"
           >
             <Content style={{ margin: "0 16px" }} className="h-full">
-              <Breadcrumb style={{ margin: "10px 0" }}>
+              {/* <Breadcrumb style={{ margin: "10px 0" }}>
                 <Breadcrumb.Item></Breadcrumb.Item>
                 <Breadcrumb.Item></Breadcrumb.Item>
-              </Breadcrumb>
+              </Breadcrumb> */}
               <div className="grid place-items-center pt-3">
                 <Outlet />
               </div>
