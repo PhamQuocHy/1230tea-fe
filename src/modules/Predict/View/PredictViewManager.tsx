@@ -192,7 +192,7 @@ const PredictHistoryViewManager: React.FC = () => {
 
             <div className="sm:block hidden row-span-2 text-center w-full justify-center">
               <img
-                src={`../../../image/zodiac/3.png`}
+                src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
                 className=" " //invert
                 style={{
                   marginTop: 10,

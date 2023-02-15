@@ -50,7 +50,7 @@ const NumerologyViewManager: React.FC = () => {
           zIndex: 5,
             }}
           alt="hero"
-          src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
+          src="https://nhansohocvn.com/images/moon-inverse1.webp"
         />
       </div>
 
