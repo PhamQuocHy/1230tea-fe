@@ -1,25 +1,38 @@
-import React, { useState, useEffect } from "react";
 import {
-  MonitorOutlined,
-  LogoutOutlined,
-  MehOutlined,
   HistoryOutlined,
   HomeOutlined,
+  LogoutOutlined,
+  MehOutlined,
+  MonitorOutlined,
+  ShoppingCartOutlined,
   StarOutlined,
   UserOutlined,
-  ShoppingCartOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Breadcrumb, Layout, Menu, theme, Input, Typography } from "antd";
-import { Outlet, Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { Input, Layout, Menu, theme, Typography } from "antd";
+import React, { useEffect, useState } from "react";
+import { Link, Outlet, NavLink } from "react-router-dom";
 import { reset } from "../modules/Auth/LoginState";
-import "./style.scss";
-import { getListPredict } from "../modules/Predict/PredictApi";
-import CartSider from "./CartSider";
+import HistoryView from "../modules/history/View/HistoryView";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { RootState } from "../redux/store";
 import CartModal from "./CartModal";
-import HistoryView from "../modules/history/View/HistoryView";
+import CartSider from "./CartSider";
+import "./style.scss";
+
+import {
+  AiFillInstagram,
+  AiOutlineNumber,
+  AiOutlineHistory,
+  AiOutlineLogin,
+} from "react-icons/ai";
+import { FaFacebookF, FaTiktok } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
+import { SiHomeassistantcommunitystore } from "react-icons/si";
+import { GiCompass } from "react-icons/gi";
+import { BsStars } from "react-icons/bs";
+import { BiUserPin } from "react-icons/bi";
+import { ImHistory } from "react-icons/im";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { Text } = Typography;
@@ -47,6 +60,7 @@ const SiderDemo: React.FC = () => {
 
   const { Search } = Input;
 
+  const [elementActive, setElementActive] = useState("");
   const [collapsed, setCollapsed] = useState(false);
   const [isHistoryVisible, setIsHistoryVisible] = React.useState(false);
 
@@ -116,6 +130,7 @@ const SiderDemo: React.FC = () => {
 
   const mouseOutEfect = (e: any, tsp: boolean) => {
     const textContent = e.target.querySelectorAll(".js-text-content");
+
     if (tsp == false) {
       e.target.style.backgroundColor = `${user.get_customer?.zodiac.color_web_second} `;
       e.target.style.color = user.get_customer?.zodiac.color_web_first;
@@ -144,6 +159,32 @@ const SiderDemo: React.FC = () => {
     // }
   };
 
+  const handleActiveMenu = (e: any) => {
+    setElementActive(e.domEvent.target);
+  };
+
+  useEffect(() => {
+    activeNavBar();
+  }, [elementActive]);
+
+  const activeNavBar = () => {
+    const listMenuItem = document.querySelectorAll(".menu-item__lg");
+
+    for (let y = 0; y < listMenuItem.length; y++) {
+      if (listMenuItem[y].querySelector(".active") != null) {
+        const menuItem = listMenuItem[y] as HTMLElement;
+        menuItem.style.backgroundColor =
+          user.get_customer?.zodiac.color_web_second;
+        menuItem.style.color = user.get_customer?.zodiac.color_web_first;
+        console.log("Active", menuItem);
+      } else {
+        const menuItem = listMenuItem[y] as HTMLElement;
+        menuItem.style.backgroundColor = "transparent";
+        menuItem.style.color = "#fff";
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col h-full">
       <Layout className="h-5/6" hasSider={true}>
@@ -152,7 +193,7 @@ const SiderDemo: React.FC = () => {
             onClick={() => {
               setCollapsed((prev) => !prev);
             }}
-            className=" leading-[0] bg-PrimaryContainerLight rounded-xl px-3 pt-2 pb-1 border-none shadow-xl text-center"
+            className="leading-[0] bg-PrimaryContainerLight rounded-xl px-3 pt-2 pb-1 border-none shadow-xl text-center"
           >
             <ShoppingCartOutlined className="text-OnPrimaryContainerLight text-4xl" />
           </button>
@@ -163,14 +204,18 @@ const SiderDemo: React.FC = () => {
           }
           onCollapse={(value) => setCollapsed(value)}
           collapsedWidth={0}
+          style={{
+            backgroundColor: user.get_customer?.zodiac.color_web_first,
+          }}
         >
           <Menu
-            className=""
-            defaultSelectedKeys={["1"]}
-            mode="inline"
+            className="text-base"
             style={{
               backgroundColor: user.get_customer?.zodiac.color_web_first,
+              color: "#fff",
             }}
+            defaultSelectedKeys={["1"]}
+            mode="inline"
           >
             <div className="col-span-2 text-center my-4 row-span-2 h-full">
               <img
@@ -179,62 +224,116 @@ const SiderDemo: React.FC = () => {
                 alt=""
               />
             </div>
-            <Menu.Item key="1">
+            <Menu.Item
+              className={
+                "rounded-none menu-item__lg my-2 mx-0 w-full h-[50px] leading-[50px] font-medium"
+              }
+              onClick={(e) => handleActiveMenu(e)}
+              key="1"
+            >
               {" "}
-              <Link to="">
-                <MonitorOutlined /> Trang chủ
-              </Link>
+              <NavLink to="">
+                <SiHomeassistantcommunitystore className="relative top-[2px] mr-1" />{" "}
+                Trang chủ
+              </NavLink>
             </Menu.Item>
-            <Menu.Item key="7">
+            <Menu.Item
+              className={
+                "menu-item__lg rounded-none my-2 mx-0 w-full h-[50px] leading-[50px] font-medium"
+              }
+              onClick={(e) => handleActiveMenu(e)}
+              key="7"
+            >
               {" "}
-              <Link to="predict">
-                <MonitorOutlined /> Dự đoán
-              </Link>
+              <NavLink to="predict">
+                <GiCompass className="relative top-[2px] mr-1" /> Dự đoán
+              </NavLink>
             </Menu.Item>
-            <Menu.Item key="2">
+            <Menu.Item
+              className={
+                "menu-item__lg rounded-none my-2 mx-0 w-full h-[50px] leading-[50px] font-medium"
+              }
+              onClick={(e) => handleActiveMenu(e)}
+              key="2"
+            >
               {" "}
-              <Link to="zodiac">
-                <MonitorOutlined /> Cung {user.get_customer?.zodiac.name}
-              </Link>
+              <NavLink to="zodiac">
+                <BsStars className="relative top-[2px] mr-1" /> Cung{" "}
+                {user.get_customer?.zodiac.name}
+              </NavLink>
             </Menu.Item>
-            <Menu.Item key="3">
+            <Menu.Item
+              className={
+                "menu-item__lg rounded-none my-2 mx-0 w-full h-[50px] leading-[50px] font-medium"
+              }
+              onClick={(e) => handleActiveMenu(e)}
+              key="3"
+            >
               {" "}
-              <Link to="numerology">
-                <MonitorOutlined /> Số chủ đạo {user.get_customer?.numberology}
-              </Link>
+              <NavLink to="numerology">
+                <AiOutlineNumber className="relative top-[2px] mr-1" /> Số chủ
+                đạo {user.get_customer?.numberology}
+              </NavLink>
             </Menu.Item>
-            <Menu.Item key="4">
-              <Link to="/customer-info">
-                <MehOutlined /> Thông tin khách hàng
-              </Link>
+            <Menu.Item
+              className={
+                "menu-item__lg rounded-none my-2 mx-0 w-full h-[50px] leading-[50px] font-medium"
+              }
+              onClick={(e) => handleActiveMenu(e)}
+              key="4"
+            >
+              <NavLink to="/customer-info">
+                <BiUserPin className="relative top-[2px] mr-1" /> Thông tin
+                khách hàng
+              </NavLink>
             </Menu.Item>
-            <Menu.Item key="8">
+            <Menu.Item
+              className={
+                "menu-item__lg rounded-none my-2 mx-0 w-full h-[50px] leading-[50px] font-medium"
+              }
+              onClick={(e) => handleActiveMenu(e)}
+              key="8"
+            >
               <a
                 onClick={() => {
                   setIsHistoryVisible(true);
                 }}
                 className="text-sm border-none bg-transparent"
               >
-                <HistoryOutlined /> Lịch sử
+                <ImHistory className="relative top-[2px] mr-1" /> Lịch sử
               </a>
             </Menu.Item>
-            <Menu.Item key="5">
+            <Menu.Item
+              className={
+                "menu-item__lg rounded-none my-2 mx-0 w-full h-[50px] leading-[50px] font-medium"
+              }
+              onClick={(e) => handleActiveMenu(e)}
+              key="5"
+            >
               {" "}
-              <Link to="/bill-history">
+              <NavLink to="/bill-history">
                 {" "}
-                <HistoryOutlined /> Lịch sử thanh toán{" "}
-              </Link>
+                <AiOutlineHistory className="relative top-[2px] mr-1" /> Lịch sử
+                thanh toán{" "}
+              </NavLink>
             </Menu.Item>
-            <Menu.Item key="6">
+            <Menu.Item
+              className={
+                "menu-item__lg rounded-none my-2 mx-0 w-full h-[50px] leading-[50px] font-medium"
+              }
+              onClick={(e) => handleActiveMenu(e)}
+              key="6"
+            >
               {" "}
-              <Link
-                to="/"
+              <div
+                // to="/"
                 onClick={async () => {
                   await dispatch(reset());
                 }}
               >
-                <LogoutOutlined /> Đăng xuất
-              </Link>
+                <AiOutlineLogin className="relative top-[2px] mr-1 font-medium" />{" "}
+                Đăng xuất
+              </div>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -374,16 +473,63 @@ const SiderDemo: React.FC = () => {
             id="mainContent"
             className="transition-all mt-header-height duration-200 ease-linear"
           >
-            <Content style={{ margin: "0 16px" }} className="h-full">
+            <Content className="h-full">
               {/* <Breadcrumb style={{ margin: "10px 0" }}>
                 <Breadcrumb.Item></Breadcrumb.Item>
                 <Breadcrumb.Item></Breadcrumb.Item>
               </Breadcrumb> */}
-              <div className="grid place-items-center pt-3">
+              <div
+                style={{ minHeight: "100vh" }}
+                className="grid place-items-center pt-3"
+              >
                 <Outlet />
               </div>
-              <Footer style={{ textAlign: "center" }}>
-                Copyright &#169; 2022 - Bản quyền thuộc về AlphaGroup
+              <Footer
+                style={{
+                  textAlign: "center",
+                  backgroundColor: user.get_customer?.zodiac.color_web_first,
+                }}
+                // className="bg-background-blue-dark"
+              >
+                <div className="pb-2 border-x-0 border-t-0 border-b border-solid border-[#fff]">
+                  <div className="flex items-center justify-center">
+                    <div>
+                      <a href="" className="block px-2">
+                        <FaFacebookF
+                          size={"24px"}
+                          className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a href="" className="block px-2">
+                        <FaTiktok
+                          size={"24px"}
+                          className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a href="" className="block px-2">
+                        <AiFillInstagram
+                          size={"24px"}
+                          className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a href="" className="block px-2">
+                        <IoLogoYoutube
+                          size={"24px"}
+                          className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div className="pt-2 text-[#fff]">
+                  &#169; 2023 <strong>1230 Tea</strong>. All rights reserved
+                </div>
               </Footer>
             </Content>
           </div>

@@ -31,6 +31,8 @@ export const userLogin = createAsyncThunk(
         thunkyApi.dispatch(saveToken(reps.data.data.access_token));
         thunkyApi.dispatch(saveUser(reps.data.data.user));
         NoticationView(true, "Thông báo", reps.data.message);
+        console.log("Show PopUp");
+
         return true;
       } else {
         NoticationView(false, "Thông báo", reps.data.message);

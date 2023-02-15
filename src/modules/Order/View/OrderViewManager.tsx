@@ -139,7 +139,7 @@ const OrderViewManager = (props: Props) => {
                   backgroundColor: `${user.get_customer?.zodiac.color_web_first}`,
                 }
           }
-          className="overLay__content opacity-60 left-0 right-0 top-0 bottom-0 absolute"
+          className="overLay__content opacity-80 left-0 right-0 top-0 bottom-0 absolute"
         ></div>
 
         <div className="w-width-layout max-w-full relative z-[5] my-0 mx-auto">
@@ -204,40 +204,69 @@ const OrderViewManager = (props: Props) => {
           {/* End title */}
 
           {/* Tabs */}
-          <div className="flex items-center justify-between py-3 list-cate max-w-full w-width-layout">
-            <div className="px-4">
-              <button
-                onClick={() => setSelectedCategory(-1)}
-                className={`${
-                  selectedCategory === -1
-                    ? "bg-background-yelow hover:bg-transparent border-yelow"
-                    : "bg-transparent hover:bg-background-yelow border-yelow"
-                } " uppercase rounded-md cursor-pointer  transition-all 
-                   duration-200 ease-linear text-white font-bold min-w-[150px] 
-                   text-[18px] py-2 px-5 border-2 border-solid "
-                   `}
-              >
-                Tất cả
-              </button>
+          <div className="flex items-center flex-wrap justify-between py-3 list-cate max-w-full w-width-layout">
+            <div className="px-4 py-3 min-w-[20%]">
+              {user.get_customer?.zodiac.color_web_second ? (
+                <button
+                  onClick={() => setSelectedCategory(-1)}
+                  style={
+                    selectedCategory === -1
+                      ? {
+                          backgroundColor:
+                            user.get_customer?.zodiac.color_web_second,
+                          border: `2px solid ${user.get_customer?.zodiac.color_web_first}`,
+                          color: `${user.get_customer?.zodiac.color_web_first}`,
+                        }
+                      : {
+                          backgroundColor: "transparent",
+                          border: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
+                          color: `${user.get_customer?.zodiac.color_web_second}`,
+                        }
+                  }
+                  className={
+                    " uppercase rounded-md cursor-pointer hover:opacity-75 transition-all w-full duration-100 ease-linear font-bold  text-[18px] py-2 px-5 "
+                  }
+                >
+                  Tất cả
+                </button>
+              ) : (
+                <button
+                  onClick={() => setSelectedCategory(-1)}
+                  className={`${
+                    selectedCategory === -1
+                      ? "bg-background-yelow hover:bg-transparent border-yelow"
+                      : "bg-transparent hover:bg-background-yelow border-yelow"
+                  } " uppercase rounded-md cursor-pointer  transition-all 
+                     duration-200 ease-linear text-white font-bold 
+                     text-[18px] w-full py-2 px-5 border-2 border-solid "
+                     `}
+                >
+                  Tất cả
+                </button>
+              )}
             </div>
             {product.map((item: any, index: number) => (
-              <div className="px-4" key={index}>
+              <div className="px-4 min-w-[20%]" key={index}>
                 {user.get_customer?.zodiac.color_web_second ? (
                   <button
                     onClick={() => setSelectedCategory(index)}
                     style={
                       selectedCategory === index
-                        ? { color: "#FAA31B" }
-                        : { color: user.get_customer?.zodiac.color_web_second }
+                        ? {
+                            backgroundColor:
+                              user.get_customer?.zodiac.color_web_second,
+                            border: `2px solid ${user.get_customer?.zodiac.color_web_first}`,
+                            color: `${user.get_customer?.zodiac.color_web_first}`,
+                          }
+                        : {
+                            backgroundColor: "transparent",
+                            border: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
+                            color: `${user.get_customer?.zodiac.color_web_second}`,
+                          }
                     }
-                    className={`${
-                      selectedCategory === index
-                        ? "bg-background-yelow hover:bg-transparent border-yelow"
-                        : "bg-transparent hover:bg-background-yelow border-yelow"
-                    } " uppercase rounded-md cursor-pointer  transition-all 
-                   duration-200 ease-linear text-white font-bold min-w-[150px] 
-                   text-[18px] py-2 px-5 border-2 border-solid "
-                   `}
+                    className={
+                      " uppercase rounded-md cursor-pointer hover:opacity-75 transition-all w-full duration-100 ease-linear font-bold  text-[18px] py-2 px-5 "
+                    }
                   >
                     {item.name}
                   </button>
@@ -249,8 +278,8 @@ const OrderViewManager = (props: Props) => {
                         ? "bg-background-yelow hover:bg-transparent border-yelow"
                         : "bg-transparent hover:bg-background-yelow border-yelow"
                     } " uppercase rounded-md cursor-pointer  transition-all 
-                     duration-200 ease-linear text-white font-bold min-w-[150px] 
-                     text-[18px] py-2 px-5 border-2 border-solid "
+                     duration-200 ease-linear text-white font-bold 
+                     text-[18px] w-full py-2 px-5 border-2 border-solid "
                      `}
                   >
                     {item.name}
@@ -296,18 +325,40 @@ const OrderViewManager = (props: Props) => {
                           {formatNumberToMoney(item.price)} VNĐ
                         </div>
                         <div className="pt-3 pb-2">
-                          <button
-                            onClick={() => {
-                              setSelectedProduct((prev: any) => item);
-                              setIsOpen((prev: boolean) => true);
-                              setSelectedProductKey(
-                                (prev: any) => item.id + "_" + Math.random()
-                              );
-                            }}
-                            className="font-semibold hover:bg-[#FAA31B] hover:border-[#FAA31B] transition-all duration-200 ease-linear border-2 border-solid border-[#002D45] py-2 cursor-pointer text-[16px] rounded-md px-7 bg-background-blue-dark text-white"
-                          >
-                            Thêm món
-                          </button>
+                          {user.get_customer?.zodiac.color_web_second ? (
+                            <button
+                              onClick={() => {
+                                setSelectedProduct((prev: any) => item);
+                                setIsOpen((prev: boolean) => true);
+                                setSelectedProductKey(
+                                  (prev: any) => item.id + "_" + Math.random()
+                                );
+                              }}
+                              style={{
+                                backgroundColor:
+                                  user.get_customer?.zodiac.color_web_first,
+                                color:
+                                  user.get_customer?.zodiac.color_web_second,
+                                border: `2px solid ${user.get_customer?.zodiac.color_web_first}`,
+                              }}
+                              className="font-semibold hover:opacity-75 transition-all duration-200 ease-linear  py-2 cursor-pointer text-[16px] rounded-md px-7"
+                            >
+                              Thêm món
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => {
+                                setSelectedProduct((prev: any) => item);
+                                setIsOpen((prev: boolean) => true);
+                                setSelectedProductKey(
+                                  (prev: any) => item.id + "_" + Math.random()
+                                );
+                              }}
+                              className="font-semibold hover:bg-[#FAA31B] hover:border-[#FAA31B] transition-all duration-200 ease-linear border-2 border-solid border-[#002D45] py-2 cursor-pointer text-[16px] rounded-md px-7 bg-background-blue-dark text-white"
+                            >
+                              Thêm món
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>
