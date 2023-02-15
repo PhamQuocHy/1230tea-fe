@@ -33,11 +33,10 @@ const ZodiacViewManager: React.FC = () => {
   useEffect(() => {
     loadData();
   }, []);
-  
 
   return (
     <div
-      className="container relative mx-auto items-center rounded-2xl"
+      className="container relative mx-auto items-center "
       style={{
         background: `linear-gradient(323deg,  ${listPredict.data?.zodiac.color_web_first}
         0%, ${listPredict.data?.zodiac.color_web_second} 99%)`,
@@ -51,7 +50,7 @@ const ZodiacViewManager: React.FC = () => {
         />
       </div>
       <div
-        className="z-10 w-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center  shadow-2xl rounded-2xl p-10
+        className="z-10 w-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center  shadow-2xl  p-10
       bg-white bg-opacity-10
       "
       >

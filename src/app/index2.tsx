@@ -479,7 +479,7 @@ const SiderDemo: React.FC = () => {
                 <Breadcrumb.Item></Breadcrumb.Item>
               </Breadcrumb> */}
               <div
-                style={{ minHeight: "100vh" }}
+                style={{ minHeight: "90vh" }}
                 className="grid place-items-center"
               >
                 <Outlet />
