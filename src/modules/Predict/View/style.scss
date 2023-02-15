@@ -128,13 +128,15 @@ p {
 .bg-before-white {
   position: relative;
   width: 30%;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .bg-before-white::before {
   content: "";
   display: block;
   background-color: #fff;
-  opacity: 15%;
+  opacity: 10%;
   position: absolute;
   top: 0;
   left: 0;

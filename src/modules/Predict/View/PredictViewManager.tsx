@@ -262,13 +262,9 @@ const PredictHistoryViewManager: React.FC = () => {
               {listPredict.data?.zodiac.name}
             </h1>
           </Text> */}
-            <div className="grid grid-cols-6 auto-rows-max gap-2 justify-items-center">
+            <div className=" grid grid-cols-6 auto-rows-max gap-2 justify-items-center">
               <div
-                className="rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid  bg-opacity-10 text-white shadow-gray-400"
-                style={{
-                  background: `${user.get_customer?.zodiac.color_web_first}`,
-                  opacity: 0.85,
-                }}
+                className=" bg-before-white rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid  bg-opacity-10 text-white shadow-gray-400"
               >
                 <div
                   className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
@@ -283,11 +279,8 @@ const PredictHistoryViewManager: React.FC = () => {
                 </p>
               </div>
               <div
-                className="rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid bg-opacity-10 text-white"
-                style={{
-                  background: `${user.get_customer?.zodiac.color_web_first}`,
-                  opacity: 0.85,
-                }}
+                className=" bg-before-white rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid bg-opacity-10 text-white"
+               
               >
                 <div
                   className="px-5 py-3  self-center text-[18px] uppercase font-bold"
@@ -302,11 +295,7 @@ const PredictHistoryViewManager: React.FC = () => {
                 </p>
               </div>
               <div
-                className="rounded-2xl md:col-span-2 col-span-6 border-slate-400 h-full w-full grid  bg-opacity-10 text-white"
-                style={{
-                  background: `${user.get_customer?.zodiac.color_web_first}`,
-                  opacity: 0.85,
-                }}
+                className=" bg-before-white rounded-2xl md:col-span-2 col-span-6 border-slate-400 h-full w-full grid  bg-opacity-10 text-white"
               >
                 <div
                   className="px-5 py-3 self-center text-[18px] uppercase font-bold"
@@ -321,11 +310,7 @@ const PredictHistoryViewManager: React.FC = () => {
                 </p>
               </div>
               <div
-                className="rounded-2xl col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white"
-                style={{
-                  background: `${user.get_customer?.zodiac.color_web_first}`,
-                  opacity: 0.85,
-                }}
+                className=" bg-before-white rounded-2xl col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white"
               >
                 <div
                   className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
@@ -340,11 +325,8 @@ const PredictHistoryViewManager: React.FC = () => {
                 </p>
               </div>
               <div
-                className="rounded-2xl col-span-6  h-full w-full grid border-slate-400  bg-opacity-10 text-white "
-                style={{
-                  background: `${user.get_customer?.zodiac.color_web_first}`,
-                  opacity: 0.85,
-                }}
+                className="bg-before-white rounded-2xl col-span-6  h-full w-full grid border-slate-400  bg-opacity-10 text-white "
+               
               >
                 <div
                   className="px-5 py-3 self-center text-[18px] uppercase font-bold"
