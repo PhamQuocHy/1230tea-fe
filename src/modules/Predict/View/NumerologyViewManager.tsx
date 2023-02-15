@@ -50,7 +50,7 @@ const NumerologyViewManager: React.FC = () => {
           zIndex: 5,
             }}
           alt="hero"
-          src="https://nhansohocvn.com/images/moon-inverse1.webp"
+          src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
         />
       </div>
 
@@ -102,9 +102,8 @@ const NumerologyViewManager: React.FC = () => {
         text-7xl text-center ">{listPredict.data?.numberology}</p>
         </Text>
 
-        <div className="rounded-2xl col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left"
-             style={{background: `${user.get_customer?.zodiac.color_web_first}`,
-             opacity: 0.85}}>
+        <div className="bg-before-white rounded-2xl col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left"
+          >
             
             <div className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
               style={{color: `${user.get_customer?.zodiac.color_web_second}`,
@@ -113,9 +112,8 @@ const NumerologyViewManager: React.FC = () => {
                </p>
         </div>
         {/* ===================== */}
-        <div className="rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left"
-             style={{background: `${user.get_customer?.zodiac.color_web_first}`,
-             opacity: 0.85}}>
+        <div className="bg-before-white rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left"
+             >
         <div className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
               style={{color: `${user.get_customer?.zodiac.color_web_second}`,
             }}>Nổi bật</div>
@@ -125,9 +123,8 @@ const NumerologyViewManager: React.FC = () => {
         </p>
         </div>
           {/* ===================== */}
-        <div className="rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left"
-         style={{background: `${user.get_customer?.zodiac.color_web_first}`,
-        opacity: 0.85}}>
+        <div className="bg-before-white rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left"
+         >
           <div className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
               style={{color: `${user.get_customer?.zodiac.color_web_second}`,
             }}>Cần thay đổi- cố gắng</div>
@@ -136,9 +133,8 @@ const NumerologyViewManager: React.FC = () => {
         </p>
         </div>
         {/* ===================== */}
-        <div className="rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left"
-         style={{background: `${user.get_customer?.zodiac.color_web_first}`,
-        opacity: 0.85}}>
+        <div className="bg-before-white rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left"
+        >
           <div className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
               style={{color: `${user.get_customer?.zodiac.color_web_second}`,
             }}>Hướng phát triển</div>
