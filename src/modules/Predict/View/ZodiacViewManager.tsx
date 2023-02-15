@@ -13,6 +13,7 @@ const ZodiacViewManager: React.FC = () => {
   //useAppSelect
   const user = useAppSelector((state) => state.rootReducer.auth.user);
   const listPredict = useAppSelector((state) => state.predict.listPredict);
+  console.log("user", user);
 
   //state view
 
@@ -25,6 +26,7 @@ const ZodiacViewManager: React.FC = () => {
         phone: user?.phone || "0389606380",
       };
       const resultPredict: any = await dispatch(getListPredict(paramsGet));
+      console.log("resultPredict", resultPredict);
     } catch (e: any) {
       console.log(e);
     }

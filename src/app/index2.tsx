@@ -176,7 +176,6 @@ const SiderDemo: React.FC = () => {
         menuItem.style.backgroundColor =
           user.get_customer?.zodiac.color_web_second;
         menuItem.style.color = user.get_customer?.zodiac.color_web_first;
-        console.log("Active", menuItem);
       } else {
         const menuItem = listMenuItem[y] as HTMLElement;
         menuItem.style.backgroundColor = "transparent";
@@ -434,7 +433,12 @@ const SiderDemo: React.FC = () => {
                     <ShoppingCartOutlined className="js-text-content pr-1 text-lg relative top-[3px]" />{" "}
                     <div className="js-text-content inline text-md mr-1">
                       Giỏ hàng
-                      <span className="js-text-content line-cart border border-solid border-yelow ml-2 mr-1.5 relative top-px"></span>
+                      <span
+                        style={{
+                          border: `1px solid ${user.get_customer?.zodiac.color_web_second}`,
+                        }}
+                        className="js-text-content line-cart ml-2 mr-1.5 relative top-px"
+                      ></span>
                       {/* {cart.length > 0 && ( */}
                       {cart.length}
                     </div>
