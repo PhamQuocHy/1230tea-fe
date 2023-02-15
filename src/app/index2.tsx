@@ -484,10 +484,6 @@ const SiderDemo: React.FC = () => {
               >
                 <Outlet />
               </div>
-<<<<<<< HEAD
-              <Footer style={{ textAlign: "center" }}>
-                Copyright &#169; 2023 - Bản quyền thuộc về 1230Tea 
-=======
               <Footer
                 style={{
                   textAlign: "center",
@@ -534,7 +530,6 @@ const SiderDemo: React.FC = () => {
                 <div className="pt-2 text-[#fff]">
                   &#169; 2023 <strong>1230 Tea</strong>. All rights reserved
                 </div>
->>>>>>> 7b81826f8455b842e6ae8c71b56abb78dd0d1fa8
               </Footer>
             </Content>
           </div>
