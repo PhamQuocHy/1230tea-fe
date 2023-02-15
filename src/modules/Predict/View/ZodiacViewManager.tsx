@@ -74,9 +74,9 @@ const ZodiacViewManager: React.FC = () => {
         </div>
         {/* Content */}
         <div>
-          <div className="pt-6 flex items-center justify-between">
+          <div className="pt-4 flex justify-between">
             {/*  */}
-            <div className="bg-before-white py-2 px-6 rounded-xl overflow-hidden">
+            <div className="bg-before-white flex-1 py-2 px-6 rounded-xl overflow-hidden">
               <p className="leading-relaxed text-white">
                 Màu sắc: {listPredict.data?.zodiac.favColorName}
               </p>
@@ -89,7 +89,7 @@ const ZodiacViewManager: React.FC = () => {
             </div>
 
             {/*  */}
-            <div className="bg-before-white py-2 px-6 rounded-xl overflow-hidden">
+            <div className="bg-before-white flex-1 py-2 px-6 rounded-xl overflow-hidden">
               <p className=" leading-relaxed text-white">
                 Màu may mắn: {listPredict.data?.zodiac.color_lucky}
               </p>
@@ -102,7 +102,7 @@ const ZodiacViewManager: React.FC = () => {
             </div>
 
             {/*  */}
-            <div className="bg-before-white py-2 px-6 rounded-xl overflow-hidden">
+            <div className="bg-before-white flex-1 py-2 px-6 rounded-xl overflow-hidden">
               <div>
                 <p className=" leading-relaxed text-white">
                   Hợp mệnh nam: {listPredict.data?.zodiac.suitableMale}
@@ -115,10 +115,12 @@ const ZodiacViewManager: React.FC = () => {
           </div>
 
           {/*  */}
-          <div>
-            <p className="mb-8 leading-relaxed text-white">
-              Tổng quan: {listPredict.data?.zodiac.general_features}
-            </p>
+          <div className="pt-6">
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white">
+                Tổng quan: {listPredict.data?.zodiac.general_features}
+              </p>
+            </div>
           </div>
 
           <p className="mb-8 leading-relaxed text-white">
