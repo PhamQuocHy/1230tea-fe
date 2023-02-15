@@ -65,6 +65,7 @@ const PredictHistoryViewManager: React.FC = () => {
   const [selectedDay, setSelectedDay] = useState<any>(day[1]);
   //data table
   const [expectedData, setExpectedData] = useState<any>({});
+  
 
   //Open Modal
   const [openModal, setOpenModal] = useState(false);
@@ -106,8 +107,10 @@ const PredictHistoryViewManager: React.FC = () => {
 
   useEffect(() => {
     console.log(expectedData);
+    
   }, [expectedData]);
-
+  
+  
   return (
     <Spin spinning={loading}>
       <div
@@ -139,7 +142,8 @@ const PredictHistoryViewManager: React.FC = () => {
         position: 'relative',
         zIndex: 5,
        }}>
-        <div className="text-Libra text-3xl font-poppins py-5 font-bold text-center uppercase ">
+        <div className=" text-3xl font-poppins py-5 font-bold text-center uppercase "
+        style={{color: `${user.get_customer?.zodiac.color_web_second}` }}>
           Dự báo theo ngày
         </div>
 
@@ -156,7 +160,7 @@ const PredictHistoryViewManager: React.FC = () => {
               <div
                 className={
                   item.id == selectedDay.id
-                    ? "border-active" 
+                    ? "border-active " 
                     : "border1"
                 }
               >
@@ -182,7 +186,8 @@ const PredictHistoryViewManager: React.FC = () => {
             <Rate
               disabled
               value={expectedData?.love}
-              className="sm:text-3xl text-lg mt-3 stroke-Libra stroke-[40] "
+              className="sm:text-3xl text-lg mt-3  stroke-[40] "
+              style={{stroke:  `${user.get_customer?.zodiac.color_web_second}` }}
             />
           </div>
 
@@ -201,7 +206,8 @@ const PredictHistoryViewManager: React.FC = () => {
             <Rate
               disabled
               value={expectedData?.job}
-              className="sm:text-3xl text-lg mt-3 stroke-Libra stroke-[40] "
+              className="sm:text-3xl text-lg mt-3  stroke-[40] "
+              style={{stroke:  `${user.get_customer?.zodiac.color_web_second}` }}
             />
           </div>
 
@@ -212,7 +218,8 @@ const PredictHistoryViewManager: React.FC = () => {
             <Rate
               disabled
               value={expectedData?.health}
-              className="sm:text-3xl text-lg mt-3 stroke-Libra stroke-[40] "
+              className="sm:text-3xl text-lg mt-3  stroke-[40] "
+              style={{stroke:  `${user.get_customer?.zodiac.color_web_second}` }}
             />
           </div>
           <div className="fourth sm:text-2xl text-md font-semibold text-OnPrimaryLight">
@@ -222,7 +229,8 @@ const PredictHistoryViewManager: React.FC = () => {
             <Rate
               disabled
               value={expectedData?.money}
-              className="sm:text-3xl text-lg mt-3 stroke-Libra stroke-[40] "
+              className="sm:text-3xl text-lg mt-3 stroke-[40] "
+              style={{stroke:  `${user.get_customer?.zodiac.color_web_second}` }}
             />
           </div>
         </div>
@@ -245,42 +253,60 @@ const PredictHistoryViewManager: React.FC = () => {
             </h1>
           </Text> */}
           <div className="grid grid-cols-6 auto-rows-max gap-2 justify-items-center">
-            <div className="rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid  bg-opacity-10 text-white shadow-white-100"
+            <div className="rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid  bg-opacity-10 text-white shadow-gray-400"
             style={{background: `${user.get_customer?.zodiac.color_web_first}`,
             opacity: 0.85}}>
-              <div className="px-5 self-center text-lg text-TertiaryContainerLight font-bold">
+              <div className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+               style={{color: `${user.get_customer?.zodiac.color_web_second}`,
+              }}>
                 Màu may mắn
               </div>
               <p className="justify-self-center self-start text-center">
                 {expectedData?.color_lucky}
               </p>
             </div>
-            <div className="rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid bg-Libra2/20 bg-opacity-10 text-white">
-              <div className="px-5 self-center text-lg text-TertiaryContainerLight font-bold">
+            <div className="rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid bg-opacity-10 text-white"
+             style={{background: `${user.get_customer?.zodiac.color_web_first}`,
+             opacity: 0.85}}>
+              <div className="px-5 py-3  self-center text-[18px] uppercase font-bold"
+              style={{color: `${user.get_customer?.zodiac.color_web_second}`,
+            }}>
                 Số may mắn
               </div>
               <p className="justify-self-center self-start text-center">
                 {expectedData?.number_lucky}
               </p>
             </div>
-            <div className="rounded-2xl md:col-span-2 col-span-6 border-slate-400 h-full w-full grid bg-Libra2/20 bg-opacity-10 text-white">
-              <div className="px-5 self-center text-lg text-TertiaryContainerLight font-bold">
+            <div className="rounded-2xl md:col-span-2 col-span-6 border-slate-400 h-full w-full grid  bg-opacity-10 text-white"
+             style={{background: `${user.get_customer?.zodiac.color_web_first}`,
+             opacity: 0.85}}>
+              <div className="px-5 py-3 self-center text-[18px] uppercase font-bold"
+              style={{color: `${user.get_customer?.zodiac.color_web_second}`,
+            }}>
                 Cung hoàng đạo may mắn
               </div>
               <p className="justify-self-center self-start text-center">
                 {expectedData?.zodiac_lucky}
               </p>
             </div>
-            <div className="rounded-2xl col-span-6 h-full w-full grid border-slate-400 bg-Libra2/20 bg-opacity-10 text-white">
-              <div className="px-5 self-center text-lg text-TertiaryContainerLight font-bold">
+            <div className="rounded-2xl col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white"
+             style={{background: `${user.get_customer?.zodiac.color_web_first}`,
+             opacity: 0.85}}>
+              <div className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+              style={{color: `${user.get_customer?.zodiac.color_web_second}`,
+            }}>
                 Dự báo trong ngày
               </div>
               <p className="justify-self-center self-start text-justify px-7">
                 {expectedData?.expected}
               </p>
             </div>
-            <div className="rounded-2xl col-span-6  h-full w-full grid border-slate-400 bg-Libra2/20 bg-opacity-10 text-white">
-              <div className="px-5 self-center text-lg text-TertiaryContainerLight font-bold">
+            <div className="rounded-2xl col-span-6  h-full w-full grid border-slate-400  bg-opacity-10 text-white "
+             style={{background: `${user.get_customer?.zodiac.color_web_first}`,
+             opacity: 0.85}}>
+              <div className="px-5 py-3 self-center text-[18px] uppercase font-bold"
+              style={{color: `${user.get_customer?.zodiac.color_web_second}`,
+            }}>
                 Lời khuyên hôm nay
               </div>
               <p className="justify-self-center self-start text-justify px-7">
