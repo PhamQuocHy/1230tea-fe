@@ -6,6 +6,19 @@
     color: #2e2f30;
     font-size: 18px;
 }
+.border1{
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+.border-active{
+  color: white;
+  border-bottom: 3px solid #ffc72b;
+  padding-bottom: 10px;
+  font-size: 25px;
+  font-weight: 700;
+}
 // //menu.item class active
 // .ant-menu-item-selected {
 //     background:  linear-gradient(323deg, rgba(13,30,46,1) 0%, rgba(46,177,222,1) 99%);
