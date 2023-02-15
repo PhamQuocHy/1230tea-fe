@@ -133,10 +133,10 @@ border-radius: 50%;
   font-weight: normal !important;
 }
 
-.shake-vertical {
-	-webkit-animation: shake-vertical 10s cubic-bezier(0.455, 0.030, 0.515, 0.955) 2s infinite both;
-	        animation: shake-vertical 10s cubic-bezier(0.455, 0.030, 0.515, 0.955) 2s infinite both;
-}
+// .shake-vertical {
+// 	-webkit-animation: shake-vertical 10s cubic-bezier(0.455, 0.030, 0.515, 0.955) 2s infinite both;
+// 	        animation: shake-vertical 10s cubic-bezier(0.455, 0.030, 0.515, 0.955) 2s infinite both;
+// }
  @-webkit-keyframes shake-vertical {
   0%,
   100% {

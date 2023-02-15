@@ -28,6 +28,7 @@ import "./index.js";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { url } from "inspector";
+import { text } from "stream/consumers";
 
 const PredictHistoryViewManager: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -158,11 +159,15 @@ const PredictHistoryViewManager: React.FC = () => {
               className="bg-transparent border-none lg:col-span-1 md:col-span-3 col-span-1 w-auto mx-3"
             >
               <div
-                className={
-                  item.id == selectedDay.id
-                    ? "border-active " 
-                    : "border1"
-                }
+              style={
+                item.id == selectedDay.id
+                  ? {
+                      paddingBottom: "8px",
+                      borderBottom: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
+                    }
+                  : { border: "none", paddingBottom: "8px" }
+              }
+                className= "text-white font-bold text-[22px] uppercase"
               >
                 {item.name}
               </div>
@@ -172,7 +177,7 @@ const PredictHistoryViewManager: React.FC = () => {
 
         <div className="sm:hidden justify-center flex flex-row">
           <img
-            src={`../../../../public/image/zodiac/12.png`}
+            src={`../../../../public/image/zodiac/${listPredict.data?.zodiac_id}.png`}
            
             className="w-2/3 invert "
           />
@@ -193,7 +198,7 @@ const PredictHistoryViewManager: React.FC = () => {
 
           <div className="sm:block hidden row-span-2 text-center w-full justify-center">
             <img
-              src={`../../../image/zodiac/3.png`}
+              src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
               className=" " //invert
               style={{marginTop: 10, paddingBottom: 10, width: 450, height: 320, marginLeft: -27 }}
 
