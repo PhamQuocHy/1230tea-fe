@@ -233,7 +233,7 @@ const PredictHistoryViewManager: React.FC = () => {
         >
           Ngày sinh: {listPredict.data?.birthday}
         </div> */}
-        <div className="w-full h-full bg-no-repeat bg-cover">
+        <div className="w-full h-full bg-no-repeat bg-cover pt-3">
           {/* <Text
             style={{
               color: "#fff",
@@ -245,7 +245,9 @@ const PredictHistoryViewManager: React.FC = () => {
             </h1>
           </Text> */}
           <div className="grid grid-cols-6 auto-rows-max gap-2 justify-items-center">
-            <div className="rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid bg-Libra2/20 bg-opacity-10 text-white">
+            <div className="rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid  bg-opacity-10 text-white shadow-white-100"
+            style={{background: `${user.get_customer?.zodiac.color_web_first}`,
+            opacity: 0.85}}>
               <div className="px-5 self-center text-lg text-TertiaryContainerLight font-bold">
                 Màu may mắn
               </div>
