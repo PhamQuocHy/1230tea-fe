@@ -128,6 +128,9 @@ const ItemModal = (props: Props) => {
       note: "",
     };
   });
+  useEffect(() => {
+    console.log("orderedItem.includedIce", orderedItem.includedIce);
+  }, [orderedItem.includedIce]);
 
   return (
     <Modal
@@ -164,24 +167,6 @@ const ItemModal = (props: Props) => {
           </div>
           <div className="pl-5 pr-2">
             <div className="flex flex-row items-center">
-              <div className="text-[14px] font-semibold pr-2">Lượng đá</div>
-              <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
-
-              <Select
-                className=""
-                options={iceOptions}
-                bordered={false}
-                defaultValue={orderedItem.ice}
-                value={orderedItem.ice}
-                onChange={(value) => {
-                  setOrderedItem((prev: any) => {
-                    return { ...prev, ice: value };
-                  });
-                }}
-                size={"large"}
-              />
-            </div>
-            <div className="flex flex-row items-center">
               <div className="text-[14px] font-semibold pr-2">Đá chung</div>
               <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
 
@@ -197,6 +182,27 @@ const ItemModal = (props: Props) => {
                 }}
               />
             </div>
+
+            <div className="flex flex-row items-center">
+              <div className="text-[14px] font-semibold pr-2">Lượng đá</div>
+              <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
+
+              <Select
+                className=""
+                options={iceOptions}
+                disabled={!orderedItem.includedIce}
+                bordered={false}
+                defaultValue={orderedItem.ice}
+                value={orderedItem.ice}
+                onChange={(value) => {
+                  setOrderedItem((prev: any) => {
+                    return { ...prev, ice: value };
+                  });
+                }}
+                size={"large"}
+              />
+            </div>
+
             <div className="flex flex-row items-center">
               <div className="text-[14px] font-semibold pr-2">Lượng đường</div>
               <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>
@@ -213,6 +219,7 @@ const ItemModal = (props: Props) => {
                 size={"large"}
               />
             </div>
+
             <div className="flex flex-row items-center">
               <div className="text-[14px] font-semibold pr-2">Loại ly</div>
               <div className="grow border-b border-t-0 border-l-0 border-r-0 relative top-1 border-dashed border-background-blue-dark"></div>

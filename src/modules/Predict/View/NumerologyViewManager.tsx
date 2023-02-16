@@ -41,15 +41,15 @@ const NumerologyViewManager: React.FC = () => {
         backgroundColor: listPredict.data?.zodiac.color_web_first,
       }}
     >
-      <div className="w-full h-full absolute grid place-items-center auto-cols-fr auto-rows-fr">
+      <div className="w-full h-full absolute grid place-items-center overflow-hidden auto-cols-fr auto-rows-fr">
         <img
-          className="w-full blur-[0px] opacity-[20%]"
+          className="w-full blur-[0px] opacity-[20%] animate-spinn"
           style={{
             position: "relative",
             zIndex: 5,
           }}
           alt="hero"
-          src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
+          src={`../../../image/bg-zodiac.png`}
         />
       </div>
 

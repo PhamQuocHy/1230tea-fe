@@ -172,11 +172,14 @@ const CartSider = (props: Props) => {
                     <div className="leading-5 text-md text-[#333]">
                       {item.includedIce ? "Đá chung" : "Đá riêng"}
                     </div>
-                    <div className="leading-5 text-md text-[#333]">
+                    <div className="leading-5 text-md text-[#333] capitalize">
                       {item.cup}
                     </div>
                     <div className="leading-5 text-md text-[#333]">
-                      {item.ice}, {item.sugar}{" "}
+                      {item.includedIce && (
+                        <span className="pr-1">{item.ice && item.ice} </span>
+                      )}
+                      <span>{item.sugar && item.sugar} </span>
                     </div>
                   </div>
                 </div>
