@@ -170,7 +170,7 @@ const PredictHistoryViewManager: React.FC = () => {
 
           <div className="sm:hidden justify-center flex flex-row">
             <img
-              src={`../../../../public/image/zodiac/12.png`}
+              src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
               className="w-2/3 invert "
             />
           </div>
@@ -244,24 +244,9 @@ const PredictHistoryViewManager: React.FC = () => {
               />
             </div>
           </div>
-          {/* <div
-          className="text-white text-xl font-poppins font-semibold text-center pt-5 uppercase
-                color: #fcba03
-                "
-        >
-          Ngày sinh: {listPredict.data?.birthday}
-        </div> */}
+          
           <div className="w-full h-full bg-no-repeat bg-cover pt-3">
-            {/* <Text
-            style={{
-              color: "#fff",
-              textShadow: "0px 0px 10px #fcba03",
-            }}
-          >
-            <h1 className="text-Libra text-3xl font-poppins font-bold text-center uppercase ">
-              {listPredict.data?.zodiac.name}
-            </h1>
-          </Text> */}
+           
             <div className=" grid grid-cols-6 auto-rows-max gap-2 justify-items-center">
               <div
                 className=" bg-before-white rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid  bg-opacity-10 text-white shadow-gray-400"
@@ -278,6 +263,7 @@ const PredictHistoryViewManager: React.FC = () => {
                   {expectedData?.color_lucky}
                 </p>
               </div>
+              {/*  */}
               <div
                 className=" bg-before-white rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid bg-opacity-10 text-white"
                
@@ -294,6 +280,7 @@ const PredictHistoryViewManager: React.FC = () => {
                   {expectedData?.number_lucky}
                 </p>
               </div>
+              {/*  */}
               <div
                 className=" bg-before-white rounded-2xl md:col-span-2 col-span-6 border-slate-400 h-full w-full grid  bg-opacity-10 text-white"
               >
@@ -309,6 +296,7 @@ const PredictHistoryViewManager: React.FC = () => {
                   {expectedData?.zodiac_lucky}
                 </p>
               </div>
+              {/*  */}
               <div
                 className=" bg-before-white rounded-2xl col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white"
               >
