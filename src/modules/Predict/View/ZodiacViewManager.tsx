@@ -115,33 +115,114 @@ const ZodiacViewManager: React.FC = () => {
           </div>
 
           {/*  */}
-          <div className="pt-6">
+          <div className="">
             <div className="bg-before-white w-full">
-              <p className="mb-8 leading-relaxed text-white">
-                Tổng quan: {listPredict.data?.zodiac.general_features}
+              <p className="leading-relaxed text-white whitespace-pre-wrap text-justify">
+              <div
+                className=" self-center text-[18px] uppercase  font-bold"
+                style={{
+                  color: `${user.get_customer?.zodiac.color_web_second}`,
+                }}
+              >
+                Tổng quan
+              </div>
+                {listPredict.data?.zodiac.general_features}
               </p>
             </div>
           </div>
 
-          <p className="mb-8 leading-relaxed text-white">
-            Điểm mạnh: {listPredict.data?.zodiac.strengths_in_character}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Điểm yếu: {listPredict.data?.zodiac.weakness_in_character}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Cá tính nam : {listPredict.data?.zodiac.personalityMale}, Cá tính nữ
-            : {listPredict.data?.zodiac.personalityFemale}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Công việc : {listPredict.data?.zodiac.career}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Sức khỏe : {listPredict.data?.zodiac.health}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Sự đồng cảm : {listPredict.data?.zodiac.affection}
-          </p>
+          <div className="flex justify-between">
+            <div className="bg-before-white w-[50%]">
+              <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
+                <div
+                className="  self-center text-[18px] uppercase  font-bold"
+                style={{
+                  color: `${user.get_customer?.zodiac.color_web_second}`,
+                }}
+              >
+                Điểm mạnh
+              </div>
+                {listPredict.data?.zodiac.strengths_in_character}
+              </p>
+            </div>
+            <div className="bg-before-white w-[50%]">
+              <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
+              <div
+                className="  self-center text-[18px] uppercase  font-bold"
+                style={{
+                  color: `${user.get_customer?.zodiac.color_web_second}`,
+                }}
+              >
+               Điểm yếu
+              </div>
+                {listPredict.data?.zodiac.weakness_in_character}
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap leading-6 text-justify">
+              <div
+                className="  self-center text-[18px] uppercase  font-bold"
+                style={{
+                  color: `${user.get_customer?.zodiac.color_web_second}`,
+                }}
+              >
+               Cá tính
+              </div>
+                Cá tính nam : {listPredict.data?.zodiac.personalityMale} <br />
+                Cá tính nữ : {listPredict.data?.zodiac.personalityFemale}
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
+              <div
+                className="  self-center text-[18px] uppercase  font-bold"
+                style={{
+                  color: `${user.get_customer?.zodiac.color_web_second}`,
+                }}
+              >
+                Công việc
+              </div>
+                {listPredict.data?.zodiac.career}
+              </p>
+            </div>
+          </div>
+          <div>
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
+              <div
+                className="  self-center text-[18px] uppercase  font-bold"
+                style={{
+                  color: `${user.get_customer?.zodiac.color_web_second}`,
+                }}
+              >
+               Sức khỏe
+              </div>
+                {listPredict.data?.zodiac.health}
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
+              <div
+                className="  self-center text-[18px] uppercase  font-bold"
+                style={{
+                  color: `${user.get_customer?.zodiac.color_web_second}`,
+                }}
+              >
+               Sự đồng cảm
+              </div>
+                 {listPredict.data?.zodiac.affection}
+              </p>
+            </div>
+          </div>
         </div>
         {/*  */}
       </div>

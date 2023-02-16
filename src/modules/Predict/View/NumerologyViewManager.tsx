@@ -36,35 +36,34 @@ const NumerologyViewManager: React.FC = () => {
 
   return (
     <div
-      className="container relative mx-auto flex md:flex-row flex-col items-center"
+      className="container relative mx-auto flex md:flex-row flex-col items-center "
       style={{
-        background: `linear-gradient(323deg,  ${listPredict.data?.zodiac.color_web_first}
-        0%, ${listPredict.data?.zodiac.color_web_second} 99%)`,
+        backgroundColor: listPredict.data?.zodiac.color_web_first,
       }}
     >
+      <div className="w-full h-full absolute grid place-items-center auto-cols-fr auto-rows-fr">
+        <img
+          className="w-full blur-[0px] opacity-[20%] animate-spin"
+          style={{
+            position: "relative",
+            zIndex: 5,
+          }}
+          alt="hero"
+          src={`../../../image/tsh.png`}
+        />
+      </div>
+
       <div
-        className="lg:flex-grow z-10 w-full h-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-center items-center text-center shadow-2xl  p-10
-      bg-white bg-opacity-10"
-        style={{
-          // backgroundImage: `url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80")`,
-          backgroundSize: "cover",
-          position: "relative",
-          overflow: "hidden",
-          backgroundRepeat: "no-repeat",
-        }}
+        className="lg:flex-grow z-10 w-full h-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-center items-center text-center shadow-2xl p-10 bg-opacity-10"
+        // style={{
+        //   backgroundImage: `url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80")`,
+        //   backgroundSize: "cover",
+        //   position: "relative",
+        //   overflow: "hidden",
+        //   backgroundRepeat: "no-repeat",
+        // }}
       >
-        <div className="w-full h-full absolute grid place-items-center auto-cols-fr auto-rows-fr">
-          <img
-            className="w-full blur-[0px] opacity-[20%]"
-            style={{
-              position: "absolute",
-              zIndex: 5,
-            }}
-            alt="hero"
-            src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
-          />
-        </div>
-        <div
+        {/* <div
           style={{
             position: "absolute",
             background: `${user.get_customer?.zodiac.color_web_first}`,
@@ -74,14 +73,9 @@ const NumerologyViewManager: React.FC = () => {
             right: 0,
             bottom: 0,
           }}
-        ></div>
-        <div
-          style={{
-            position: "relative",
-            zIndex: 5,
-          }}
-        >
-          <Text
+        ></div> */}
+        <div>
+          {/* <Text
             style={{
               color: "#fff",
               // textShadow: "0px 0px 10px #fcba03",
@@ -103,28 +97,46 @@ const NumerologyViewManager: React.FC = () => {
             >
               {listPredict.data?.numberology}
             </p>
-          </Text>
+          </Text> */}
+
+          <div
+            style={{
+              color: "#fff",
+              textShadow: `0px 0px 10px ${user.get_customer?.zodiac.color_web_second}`,
+            }}
+            className="w-full flex items-center justify-center flex-col"
+          >
+            <h1
+              style={{ color: user.get_customer?.zodiac.color_web_second }}
+              className="title-font sm:text-4xl text-3xl mb-4 font-bold uppercase"
+            >
+              Số chủ đạo
+            </h1>
+            <p className="text-5xl my-2 capitalize font-bold">
+              {listPredict.data?.numberology}
+            </p>
+          </div>
 
           <div>
-            <div className="bg-before-white rounded-2xl col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left">
+            <div className="bg-before-white rounded-2xl col-span-6 h-full w-full text-white text-left">
               <div
-                className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+                className="py-3  self-center text-[18px] uppercase  font-bold"
                 style={{
                   color: `${user.get_customer?.zodiac.color_web_second}`,
                 }}
               >
                 Tổng quan
               </div>
-              <p className="mb-8 ml-6 whitespace-pre-wrap leading-relaxed text-white">
+              <p className="whitespace-pre-wrap text-[16px] my-2 leading-relaxed text-white">
                 {listPredict.data?.twelve_numerology.summary}
               </p>
             </div>
           </div>
           {/* ===================== */}
           <div>
-            <div className="bg-before-white rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left">
+            <div className="bg-before-white rounded-2xl h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left">
               <div
-                className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+                className="py-3  self-center text-[18px] uppercase  font-bold"
                 style={{
                   color: `${user.get_customer?.zodiac.color_web_second}`,
                 }}
@@ -132,39 +144,39 @@ const NumerologyViewManager: React.FC = () => {
                 Nổi bật
               </div>
 
-              <p className="mb-8 ml-6 whitespace-pre-wrap text-justify w-[1115px] leading-relaxed text-white">
+              <p className=" whitespace-pre-wrap text-[16px] my-2 text-justify w-[1115px] leading-relaxed text-white">
                 {listPredict.data?.twelve_numerology.salient_features}
               </p>
             </div>
           </div>
           {/* ===================== */}
           <div>
-            <div className="bg-before-white rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left">
+            <div className="bg-before-white rounded-2xl h-full w-full grid  text-white text-left">
               <div
-                className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+                className="py-3  self-center text-[18px] uppercase  font-bold"
                 style={{
                   color: `${user.get_customer?.zodiac.color_web_second}`,
                 }}
               >
-                Cần thay đổi- cố gắng
+                Cần thay đổi - cố gắng
               </div>
-              <p className="mb-8 ml-6 whitespace-pre-wrap text-justify w-[1115px] leading-relaxed text-white">
+              <p className="whitespace-pre-wrap text-[16px] my-2 text-justify w-[1115px] leading-relaxed text-white">
                 {listPredict.data?.twelve_numerology.need_to_change}
               </p>
             </div>
           </div>
           {/* ===================== */}
           <div>
-            <div className="bg-before-white rounded-2xl mt-5 col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left">
+            <div className="bg-before-white rounded-2xl h-full w-full grid  text-white text-left">
               <div
-                className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+                className="py-3  self-center text-[18px] uppercase  font-bold"
                 style={{
                   color: `${user.get_customer?.zodiac.color_web_second}`,
                 }}
               >
                 Hướng phát triển
               </div>
-              <p className="mb-8 leading-relaxed text-white text-left ml-6 text-justify pr-[28px] whitespace-pre-wrap ">
+              <p className="leading-relaxed text-white text-left ml-6 text-justify pr-[28px] whitespace-pre-wrap text-[16px] my-2 ">
                 {listPredict.data?.twelve_numerology.development}
               </p>
             </div>

@@ -411,7 +411,7 @@ const SiderDemo: React.FC = () => {
                         }}
                         className="line-cart ml-2 mr-1.5 relative top-px"
                       ></span>
-                      150
+                      {user.get_customer?.point}
                     </div>
                   </div>
                 </div>
