@@ -111,19 +111,19 @@ const PredictHistoryViewManager: React.FC = () => {
   return (
     <Spin spinning={loading}>
       <div
-        className="rounded-xl sm:p-8 p-2 h-full"
+        className=" sm:p-8 p-2 h-full"
         style={{
           //     background: `linear-gradient(323deg,  ${user.get_customer?.zodiac.color_web_first}
           // 0%, ${user.get_customer?.zodiac.color_web_second} 99%)`,
-          // background: `${user.get_customer?.zodiac.color_web_first}`,
-          backgroundImage: `url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80")`,
-          backgroundSize: "cover",
-          position: "relative",
-          overflow: "hidden",
-          backgroundRepeat: "no-repeat",
+          background: `${user.get_customer?.zodiac.color_web_first}`,
+          // backgroundImage: `url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80")`,
+          // backgroundSize: "cover",
+          // position: "relative",
+          // overflow: "hidden",
+          // backgroundRepeat: "no-repeat",
         }}
       >
-        <div
+        {/* <div
           style={{
             position: "absolute",
             background: `${user.get_customer?.zodiac.color_web_first}`,
@@ -133,12 +133,12 @@ const PredictHistoryViewManager: React.FC = () => {
             right: 0,
             bottom: 0,
           }}
-        ></div>
+        ></div> */}
         <div
-          style={{
-            position: "relative",
-            zIndex: 5,
-          }}
+        // style={{
+        //   position: "relative",
+        //   zIndex: 5,
+        // }}
         >
           <div
             className=" text-3xl font-poppins py-5 font-bold text-center uppercase "
@@ -262,83 +262,83 @@ const PredictHistoryViewManager: React.FC = () => {
               {listPredict.data?.zodiac.name}
             </h1>
           </Text> */}
-            <div className=" grid grid-cols-6 auto-rows-max gap-2 justify-items-center">
-              <div
-                className=" bg-before-white rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid  bg-opacity-10 text-white shadow-gray-400"
-              >
-                <div
-                  className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
-                  style={{
-                    color: `${user.get_customer?.zodiac.color_web_second}`,
-                  }}
-                >
-                  Màu may mắn
+            <div className="auto-rows-max gap-2 justify-items-center">
+              <div className="flex justify-between">
+                <div className=" bg-before-white rounded-2xl w-[50%] text-white">
+                  <div
+                    className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+                    style={{
+                      color: `${user.get_customer?.zodiac.color_web_second}`,
+                    }}
+                  >
+                    Màu may mắn
+                  </div>
+                  <p className="justify-self-center self-start text-center">
+                    {expectedData?.color_lucky}
+                  </p>
                 </div>
-                <p className="justify-self-center self-start text-center">
-                  {expectedData?.color_lucky}
-                </p>
+
+                <div className="bg-before-white rounded-2xl w-[50%] text-white">
+                  <div
+                    className="px-5 py-3  self-center text-[18px] uppercase font-bold"
+                    style={{
+                      color: `${user.get_customer?.zodiac.color_web_second}`,
+                    }}
+                  >
+                    Số may mắn
+                  </div>
+                  <p className="justify-self-center self-start text-center">
+                    {expectedData?.number_lucky}
+                  </p>
+                </div>
               </div>
-              <div
-                className=" bg-before-white rounded-2xl md:col-span-2 col-span-3 border-slate-400 h-full w-full grid bg-opacity-10 text-white"
-               
-              >
-                <div
-                  className="px-5 py-3  self-center text-[18px] uppercase font-bold"
-                  style={{
-                    color: `${user.get_customer?.zodiac.color_web_second}`,
-                  }}
-                >
-                  Số may mắn
+
+              <div>
+                <div className=" bg-before-white rounded-2xl w-full text-white">
+                  <div
+                    className="px-5 py-3 self-center text-[18px] uppercase font-bold"
+                    style={{
+                      color: `${user.get_customer?.zodiac.color_web_second}`,
+                    }}
+                  >
+                    Cung hoàng đạo may mắn
+                  </div>
+                  <p className="justify-self-center self-start text-center">
+                    {expectedData?.zodiac_lucky}
+                  </p>
                 </div>
-                <p className="justify-self-center self-start text-center">
-                  {expectedData?.number_lucky}
-                </p>
               </div>
-              <div
-                className=" bg-before-white rounded-2xl md:col-span-2 col-span-6 border-slate-400 h-full w-full grid  bg-opacity-10 text-white"
-              >
-                <div
-                  className="px-5 py-3 self-center text-[18px] uppercase font-bold"
-                  style={{
-                    color: `${user.get_customer?.zodiac.color_web_second}`,
-                  }}
-                >
-                  Cung hoàng đạo may mắn
+
+              <div>
+                <div className=" bg-before-white rounded-2xl  w-full text-white">
+                  <div
+                    className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+                    style={{
+                      color: `${user.get_customer?.zodiac.color_web_second}`,
+                    }}
+                  >
+                    Dự báo trong ngày
+                  </div>
+                  <p className="justify-self-center self-start text-justify px-7">
+                    {expectedData?.expected}
+                  </p>
                 </div>
-                <p className="justify-self-center self-start text-center">
-                  {expectedData?.zodiac_lucky}
-                </p>
               </div>
-              <div
-                className=" bg-before-white rounded-2xl col-span-6 h-full w-full grid border-slate-400  bg-opacity-10 text-white"
-              >
-                <div
-                  className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
-                  style={{
-                    color: `${user.get_customer?.zodiac.color_web_second}`,
-                  }}
-                >
-                  Dự báo trong ngày
+
+              <div>
+                <div className="bg-before-white rounded-2xl w-full  text-white ">
+                  <div
+                    className="px-5 py-3 self-center text-[18px] uppercase font-bold"
+                    style={{
+                      color: `${user.get_customer?.zodiac.color_web_second}`,
+                    }}
+                  >
+                    Lời khuyên hôm nay
+                  </div>
+                  <p className="justify-self-center self-start text-justify px-7">
+                    {expectedData?.advice}
+                  </p>
                 </div>
-                <p className="justify-self-center self-start text-justify px-7">
-                  {expectedData?.expected}
-                </p>
-              </div>
-              <div
-                className="bg-before-white rounded-2xl col-span-6  h-full w-full grid border-slate-400  bg-opacity-10 text-white "
-               
-              >
-                <div
-                  className="px-5 py-3 self-center text-[18px] uppercase font-bold"
-                  style={{
-                    color: `${user.get_customer?.zodiac.color_web_second}`,
-                  }}
-                >
-                  Lời khuyên hôm nay
-                </div>
-                <p className="justify-self-center self-start text-justify px-7">
-                  {expectedData?.advice}
-                </p>
               </div>
             </div>
           </div>

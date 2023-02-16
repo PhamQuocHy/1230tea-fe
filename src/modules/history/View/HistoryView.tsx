@@ -9,6 +9,8 @@ type Props = {
 };
 
 const HistoryView = (props: Props) => {
+  const user = useAppSelector((state) => state.rootReducer.auth.user);
+
   const history = useAppSelector(
     (state: RootState) => state.rootReducer.history.historyList
   );
@@ -20,7 +22,13 @@ const HistoryView = (props: Props) => {
   return (
     <Modal
       title={
-        <div className="text-2xl font-semibold text-OnBackgroundLight/70 mb-10">
+        <div
+          style={{
+            backgroundColor: user?.get_customer?.zodiac?.color_web_first,
+            color: user?.get_customer?.zodiac?.color_web_second,
+          }}
+          className="text-2xl font-semibold py-2 px-3"
+        >
           Lịch sử đặt hàng
         </div>
       }
@@ -43,7 +51,7 @@ const HistoryView = (props: Props) => {
         ) : (
           <Collapse
             accordion={true}
-            className={"overflow-y-scroll scrollbar-hide flex flex-col"}
+            className={"overflow-y-scroll scrollbar-hide flex flex-col p-5"}
           >
             {history.map((item: any, index: number) => (
               <Collapse.Panel header={`Đơn hàng ${index + 1}`} key={index}>

@@ -115,33 +115,58 @@ const ZodiacViewManager: React.FC = () => {
           </div>
 
           {/*  */}
-          <div className="pt-6">
+          <div className="">
             <div className="bg-before-white w-full">
-              <p className="mb-8 leading-relaxed text-white">
+              <p className="leading-relaxed text-white">
                 Tổng quan: {listPredict.data?.zodiac.general_features}
               </p>
             </div>
           </div>
 
-          <p className="mb-8 leading-relaxed text-white">
-            Điểm mạnh: {listPredict.data?.zodiac.strengths_in_character}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Điểm yếu: {listPredict.data?.zodiac.weakness_in_character}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Cá tính nam : {listPredict.data?.zodiac.personalityMale}, Cá tính nữ
-            : {listPredict.data?.zodiac.personalityFemale}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Công việc : {listPredict.data?.zodiac.career}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Sức khỏe : {listPredict.data?.zodiac.health}
-          </p>
-          <p className="mb-8 leading-relaxed text-white">
-            Sự đồng cảm : {listPredict.data?.zodiac.affection}
-          </p>
+          <div className="flex justify-between">
+            <div className="bg-before-white w-[50%]">
+              <p className="mb-8 leading-relaxed text-white">
+                Điểm mạnh: {listPredict.data?.zodiac.strengths_in_character}
+              </p>
+            </div>
+            <div className="bg-before-white w-[50%]">
+              <p className="mb-8 leading-relaxed text-white">
+                Điểm yếu: {listPredict.data?.zodiac.weakness_in_character}
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white">
+                Cá tính nam : {listPredict.data?.zodiac.personalityMale}, Cá
+                tính nữ : {listPredict.data?.zodiac.personalityFemale}
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white">
+                Công việc : {listPredict.data?.zodiac.career}
+              </p>
+            </div>
+          </div>
+          <div>
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white">
+                Sức khỏe : {listPredict.data?.zodiac.health}
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div className="bg-before-white w-full">
+              <p className="mb-8 leading-relaxed text-white">
+                Sự đồng cảm : {listPredict.data?.zodiac.affection}
+              </p>
+            </div>
+          </div>
         </div>
         {/*  */}
       </div>
