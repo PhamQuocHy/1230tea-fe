@@ -27,7 +27,7 @@ const HistoryView = (props: Props) => {
             backgroundColor: user?.get_customer?.zodiac?.color_web_first,
             color: user?.get_customer?.zodiac?.color_web_second,
           }}
-          className="text-2xl font-semibold py-2 px-3"
+          className="text-xl font-semibold py-2 px-4 uppercase"
         >
           Lịch sử đặt hàng
         </div>
@@ -54,7 +54,11 @@ const HistoryView = (props: Props) => {
             className={"overflow-y-scroll scrollbar-hide flex flex-col p-5"}
           >
             {history.map((item: any, index: number) => (
-              <Collapse.Panel header={`Đơn hàng ${index + 1}`} key={index}>
+              <Collapse.Panel
+                header={`Đơn hàng ${index + 1}`}
+                key={index}
+                className="border border-solid border-[#ccc] rounded-lg"
+              >
                 <div className="">
                   <div className="text-lg font-bold mb-2">
                     Thông tin cá nhân

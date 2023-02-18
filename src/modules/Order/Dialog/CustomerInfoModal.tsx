@@ -21,7 +21,13 @@ const CustomerInfoModal = (props: Props) => {
   return (
     <Modal
       title={
-        <div className="text-2xl font-semibold text-OnBackgroundLight/70">
+        <div
+          style={{
+            backgroundColor: user?.get_customer?.zodiac?.color_web_first,
+            color: user?.get_customer?.zodiac?.color_web_second,
+          }}
+          className="text-xl py-2 px-4 font-semibold uppercase"
+        >
           {"Thông tin giao hàng"}
         </div>
       }
@@ -51,7 +57,7 @@ const CustomerInfoModal = (props: Props) => {
         }}
         onFinish={props.handleSubmit}
         layout={"vertical"}
-        className="flex flex-col px-0 md:px-12 mt-5"
+        className="flex flex-col px-0 md:px-12 pt-5 h-[80vh]"
       >
         <Form.Item
           className=""
