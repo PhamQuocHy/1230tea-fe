@@ -141,8 +141,9 @@ const PredictHistoryViewManager: React.FC = () => {
         // }}
         >
           <div
-            className=" text-3xl font-poppins py-5 font-bold text-center uppercase "
-            style={{ color: `${user.get_customer?.zodiac.color_web_second}` }}
+            className=" text-4xl font-poppins py-5 font-bold text-center uppercase  "
+            style={{ color: `${user.get_customer?.zodiac.color_web_second}`,
+            textShadow: `0px 0px 10px ${user.get_customer?.zodiac.color_web_second}`, }}
           >
             Dự báo theo ngày
           </div>
@@ -158,9 +159,15 @@ const PredictHistoryViewManager: React.FC = () => {
                 className="bg-transparent border-none lg:col-span-1 md:col-span-3 col-span-1 w-auto mx-3"
               >
                 <div
-                  className={
-                    item.id == selectedDay.id ? "border-active " : "border1"
-                  }
+                style={
+                  item.id == selectedDay.id
+                    ? {
+                        paddingBottom: "8px",
+                        borderBottom: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
+                      }
+                    : { border: "none", paddingBottom: "8px" }
+                }
+                  className="text-white text-[21px] font-bold uppercase"
                 >
                   {item.name}
                 </div>
@@ -170,7 +177,7 @@ const PredictHistoryViewManager: React.FC = () => {
 
           <div className="sm:hidden justify-center flex flex-row">
             <img
-              src={`../../../../public/image/zodiac/12.png`}
+              src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
               className="w-2/3 invert "
             />
           </div>
@@ -181,18 +188,19 @@ const PredictHistoryViewManager: React.FC = () => {
                 {""} Tình cảm {""}
               </div>
               <Rate
-                disabled
+                // disabled
                 value={expectedData?.love}
                 className="sm:text-3xl text-lg mt-3  stroke-[40] "
                 style={{
                   stroke: `${user.get_customer?.zodiac.color_web_second}`,
+                  color: `${user.get_customer?.zodiac.color_web_second}`,
                 }}
               />
             </div>
 
             <div className="sm:block hidden row-span-2 text-center w-full justify-center">
               <img
-                src={`../../../image/zodiac/3.png`}
+                src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
                 className=" " //invert
                 style={{
                   marginTop: 10,
@@ -244,13 +252,7 @@ const PredictHistoryViewManager: React.FC = () => {
               />
             </div>
           </div>
-          {/* <div
-          className="text-white text-xl font-poppins font-semibold text-center pt-5 uppercase
-                color: #fcba03
-                "
-        >
-          Ngày sinh: {listPredict.data?.birthday}
-        </div> */}
+          
           <div className="w-full h-full bg-no-repeat bg-cover pt-3">
             {/* <Text
             style={{

@@ -85,7 +85,7 @@ const CustomerHistoryViewManager: React.FC = () => {
               style={{ borderLeft: "3px solid #fff" }}
               className=" text-OnPrimaryLight flex-[9] py-3 px-8"
             >
-              <div>
+              <div className="uppercase">
                 <h2 className="mx-0 mt-0 mb-3 capitalize font-bold">
                   {listPredict.data?.name}
                 </h2>
@@ -94,15 +94,15 @@ const CustomerHistoryViewManager: React.FC = () => {
                 <div className="font-semibold inline mr-2">Ngày sinh:</div>{" "}
                 {listPredict.data?.birthday}
               </div>
-              <div className="text-left text-base">
+              <div className="text-left text-base pt-2">
                 <div className="font-semibold inline mr-2">Số điện thoại:</div>{" "}
                 {listPredict.data?.phone}
               </div>
-              <div className="text-left text-base">
+              <div className="text-left text-base pt-2">
                 <div className="font-semibold inline mr-2">Cung hoàng đạo:</div>{" "}
                 {listPredict.data?.zodiac?.name}
               </div>
-              <div className="text-left text-base">
+              <div className="text-left text-base pt-2">
                 <div className="font-semibold inline mr-2">Điểm tích lũy:</div>{" "}
                 {listPredict.data?.point}
               </div>
