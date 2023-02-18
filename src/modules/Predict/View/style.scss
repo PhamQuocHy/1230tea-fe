@@ -160,7 +160,7 @@ p {
   }
 }
 .animate-spinn {
-  animation: spin 16s linear infinite;
+  animation: spin 20s linear infinite;
 }
 
 @keyframes spin {
@@ -170,4 +170,18 @@ p {
   to {
     transform: rotate(360deg);
   }
+}
+
+// 
+:where(.css-dev-only-do-not-override-ixblex).ant-form-item .ant-form-item-label > label {
+  color: #fff;
+  font-size: 16px;
+}
+
+:where(.css-dev-only-do-not-override-ixblex).ant-descriptions .ant-descriptions-view {
+  border-radius: inherit;
+}
+
+.border-bls + .border-bls {
+  border-top: 1px solid #ccc;
 }

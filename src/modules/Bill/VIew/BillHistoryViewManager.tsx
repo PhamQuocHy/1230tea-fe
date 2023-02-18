@@ -24,6 +24,7 @@ const BillHistoryViewManager: React.FC = () => {
   const listBill = useAppSelector((state) => state.bill.listBill);
 
   const user = useAppSelector((state) => state.login.user);
+  const infoUser = useAppSelector((state) => state.rootReducer.auth.user);
 
   //state view
   const [pagination, setPagination] = useState({
@@ -229,13 +230,30 @@ const BillHistoryViewManager: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div
+        style={{
+          backgroundColor: infoUser?.get_customer?.zodiac.color_web_first,
+        }}
+        className="flex flex-col w-full h-full"
+      >
         <Space direction="vertical" style={{ width: "100%", flex: 1 }}>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-            <p style={{ fontSize: "20px", fontWeight: "bold" }}>
-              {" "}
-              Lịch sử đơn hàng{" "}
-            </p>
+            <div
+              style={{
+                color: "#fff",
+                textShadow: `0px 0px 10px ${infoUser.get_customer?.zodiac.color_web_second}`,
+              }}
+              className="w-full flex items-center justify-center flex-col"
+            >
+              <h1
+                style={{
+                  color: infoUser.get_customer?.zodiac.color_web_second,
+                }}
+                className="title-font sm:text-4xl text-3xl mb-4 font-bold uppercase"
+              >
+                Lịch sử đặt hàng
+              </h1>
+            </div>
 
             <AdvancedSearchForm
               searchItems={columnSearch}
@@ -370,6 +388,12 @@ const BillHistoryViewManager: React.FC = () => {
                       type="primary"
                       onClick={() => detailBill(record)}
                       shape="round"
+                      style={{
+                        backgroundColor:
+                          infoUser.get_customer?.zodiac.color_web_second,
+                        color: infoUser.get_customer?.zodiac.color_web_first,
+                      }}
+                      className="hover:opacity-80"
                     >
                       <EyeOutlined />
                     </Button>

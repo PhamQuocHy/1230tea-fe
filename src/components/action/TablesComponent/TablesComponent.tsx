@@ -35,13 +35,16 @@ const TablesComponent: React.FC<TabblessProps> = ({
   const columns = keyColumn;
 
   return (
-    <>
+    <div className="pt-[15px]">
       {checkedAdd && (
-        <Row gutter={[8, 8]} style={{ marginTop: 10, marginBottom: 10 }}>
-          <Col span={4}>
+        <Row
+          gutter={[8, 8]}
+          style={{ backgroundColor: "#999", marginTop: 10, marginBottom: 10 }}
+        >
+          <Col span={4} style={{ backgroundColor: "#999" }}>
             <Button
               type="primary"
-              style={{ borderRadius: "5px" }}
+              style={{ borderRadius: "5px", backgroundColor: "#999" }}
               onClick={() => chooseData({}, "add")}
             >
               <span> {btn} </span>
@@ -56,6 +59,7 @@ const TablesComponent: React.FC<TabblessProps> = ({
         loading={loading}
         columns={columns}
         onChange={onChangePage}
+        style={{ borderRadius: "5px", backgroundColor: "#f5f5f5" }}
         pagination={{
           total: panigation.total,
           pageSize: panigation.pageSize,
@@ -63,7 +67,7 @@ const TablesComponent: React.FC<TabblessProps> = ({
         }}
         rowKey={() => uuid4()}
       />
-    </>
+    </div>
   );
 };
 export default TablesComponent;

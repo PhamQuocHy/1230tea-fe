@@ -57,7 +57,7 @@ const CustomerInfoModal = (props: Props) => {
         }}
         onFinish={props.handleSubmit}
         layout={"vertical"}
-        className="flex flex-col px-0 md:px-12 pt-5 h-[80vh]"
+        className="flex flex-col px-0 md:px-12 py-5 h-[80vh] overflow-y-auto"
       >
         <Form.Item
           className=""
@@ -164,7 +164,11 @@ const CustomerInfoModal = (props: Props) => {
         <div className="flex flex-row w-full justify-center mt-10">
           <button
             type="submit"
-            className="bg-PrimaryContainerLight w-2/3 text-lg font-semibold border-PrimaryContainerLight/40 rounded-lg text-OnPrimaryContainerLight px-4 py-2 "
+            style={{
+              backgroundColor: user?.get_customer?.zodiac?.color_web_first,
+              color: user?.get_customer?.zodiac?.color_web_second,
+            }}
+            className="w-2/3 text-lg font-semibold cursor-pointer hover:opacity-80 border-none rounded-lg px-4 py-2 "
           >
             Đặt hàng
           </button>

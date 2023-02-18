@@ -34,6 +34,11 @@ import { BsStars } from "react-icons/bs";
 import { BiUserPin } from "react-icons/bi";
 import { ImHistory } from "react-icons/im";
 
+//
+// import { NoticationView } from "../../utils/NotificationView";
+import PoupWellcome from "../utils/PoupWellcome";
+//
+
 const { Header, Content, Footer, Sider } = Layout;
 const { Text } = Typography;
 type MenuItem = Required<MenuProps>["items"][number];
@@ -61,6 +66,7 @@ const SiderDemo: React.FC = () => {
   const { Search } = Input;
 
   const [elementActive, setElementActive] = useState("");
+  const [wellcome, setWellcome] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
   const [isHistoryVisible, setIsHistoryVisible] = React.useState(false);
 
@@ -159,6 +165,11 @@ const SiderDemo: React.FC = () => {
     // }
   };
 
+  const setShowPopUp = () => {
+    setWellcome(!wellcome);
+    console.log(wellcome);
+  };
+
   const handleActiveMenu = (e: any) => {
     setElementActive(e.domEvent.target);
   };
@@ -197,6 +208,10 @@ const SiderDemo: React.FC = () => {
             <ShoppingCartOutlined className="text-OnPrimaryContainerLight text-4xl" />
           </button>
         </div>
+
+        {/*  */}
+        {<PoupWellcome user={user} handle={setShowPopUp} status={wellcome} />}
+        {/*  */}
         <Sider
           className={
             "md:block hidden z-20 shadow-xl shadow-OnBackgroundLight/20 fixed w-[15%] top-0 left-0 max-w-[15%] min-w-[15%] bottom-0"

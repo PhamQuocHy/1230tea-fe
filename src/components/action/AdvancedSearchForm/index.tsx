@@ -9,6 +9,10 @@ import {
   Divider,
   FloatButton,
 } from "antd";
+
+import { HiOutlineTrash } from "react-icons/hi";
+import { BsSearch } from "react-icons/bs";
+
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 import NumberFormat from "react-number-format";
@@ -16,6 +20,7 @@ import { formatNumberToMoney } from "../../../utils/numbers";
 import { removeVietnameseTones } from "../../../utils/string";
 import "./style.scss";
 import { SearchOutlined, ClearOutlined } from "@ant-design/icons";
+import { useAppSelector } from "../../../redux/hook";
 interface AdvancedSearchFormProps {
   searchItems: any;
   onSearch: (value: any) => void;
@@ -49,6 +54,8 @@ const AdvancedSearchForm: React.FC<AdvancedSearchFormProps> = ({
       }
     }
   }, [districsState, warpState]);
+
+  const infoUser = useAppSelector((state) => state.rootReducer.auth.user);
 
   const getFields = () => {
     let xhtml = null;
@@ -192,7 +199,12 @@ const AdvancedSearchForm: React.FC<AdvancedSearchFormProps> = ({
   };
 
   return (
-    <div style={{ marginTop: 15 }}>
+    <div
+      style={{
+        margin: "15px 0",
+        borderBottom: `1px solid ${infoUser?.get_customer?.zodiac.color_web_second}`,
+      }}
+    >
       <Form
         layout="vertical"
         form={form}
@@ -202,20 +214,36 @@ const AdvancedSearchForm: React.FC<AdvancedSearchFormProps> = ({
       >
         <Row gutter={24}>{getFields()}</Row>
         <Row>
-          <Col span={24} style={{ textAlign: "right" }}>
+          <Col span={24} style={{ textAlign: "left" }}>
             <Button
-              shape="round"
-              style={{ margin: "0 8px" }}
+              // shape="round"
+              style={{
+                marginRight: "8px",
+                color: infoUser?.get_customer?.zodiac.color_web_first,
+                backgroundColor:
+                  infoUser?.get_customer?.zodiac.color_web_second,
+                border: `2px solid ${infoUser?.get_customer?.zodiac.color_web_second}`,
+              }}
+              className="font-medium hover:opacity-80"
               onClick={() => {
                 form.resetFields();
                 // setEmpty();
               }}
             >
-              <ClearOutlined />
-              Làm rỗng
+              <HiOutlineTrash className="text-[16px] relative top-[3px] mr-1" />
+              Làm mới
             </Button>
-            <Button type="primary" htmlType="submit" shape="round">
-              <SearchOutlined />
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{
+                color: infoUser?.get_customer?.zodiac.color_web_second,
+                border: `2px solid ${infoUser?.get_customer?.zodiac.color_web_second}`,
+              }}
+              className="bg-transparent font-medium hover:opacity-80"
+              // shape="round"
+            >
+              <BsSearch className="text-[16px] relative top-[3px] mr-1" />
               Tìm kiếm
             </Button>
           </Col>

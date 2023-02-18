@@ -15,9 +15,9 @@ const HistoryView = (props: Props) => {
     (state: RootState) => state.rootReducer.history.historyList
   );
 
-  useEffect(() => {
-    console.log(history);
-  }, [history]);
+  // useEffect(() => {
+  //   console.log(history);
+  // }, [history]);
 
   return (
     <Modal
@@ -27,7 +27,7 @@ const HistoryView = (props: Props) => {
             backgroundColor: user?.get_customer?.zodiac?.color_web_first,
             color: user?.get_customer?.zodiac?.color_web_second,
           }}
-          className="text-xl font-semibold py-2 px-4 uppercase"
+          className="text-xl font-semibold py-2 px-4 uppercase h-full"
         >
           Lịch sử đặt hàng
         </div>
