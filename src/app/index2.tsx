@@ -206,7 +206,7 @@ const SiderDemo: React.FC = () => {
         <NavLink
           to={"/predict"}
           onClick={(e) => handleActiveMenuMB(e)}
-          className="flex items-center"
+          className="flex items-center js-menu-mb-zodiac"
         >
           <span className="relative top-[2px] mr-[6px]">
             <GiCompass />
@@ -218,7 +218,7 @@ const SiderDemo: React.FC = () => {
         <NavLink
           to={"zodiac"}
           onClick={(e) => handleActiveMenuMB(e)}
-          className="flex items-center"
+          className="flex items-center js-menu-mb-zodiac"
         >
           <span className="relative top-[2px] mr-[6px]">
             <FaGalacticRepublic />
@@ -230,7 +230,7 @@ const SiderDemo: React.FC = () => {
         <NavLink
           to={"/numerology"}
           onClick={(e) => handleActiveMenuMB(e)}
-          className="flex items-center"
+          className="flex items-center js-menu-mb-zodiac"
         >
           <span className="relative top-[2px] mr-[6px]">
             <AiOutlineNumber />
@@ -274,12 +274,12 @@ const SiderDemo: React.FC = () => {
 
   const activeMenuMB = () => {
     const homeMbMenu = document.querySelector(".js-menu-mb-home");
+    const zodiacMbMenu = document.querySelector(".js-menu-mb-zodiac");
     const menuItemMB = homeMbMenu as HTMLElement;
     if (menuItemMB.classList.contains("active")) {
       menuItemMB.style.color = user.get_customer?.zodiac.color_web_second;
-      } else {
-        menuItemMB.style.color = "#fff";
-      }
+    } else {
+      menuItemMB.style.color = "#fff";
     }
   };
 
