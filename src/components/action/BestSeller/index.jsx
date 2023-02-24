@@ -16,6 +16,25 @@ const Banner = () => {
     speed: 400,
     autoplaySpeed: 2000,
     cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          infinite: true,
+        },
+      },
+    ],
   };
 
   const user = useAppSelector((state) => state.rootReducer.auth.user);
@@ -82,9 +101,9 @@ const Banner = () => {
             </h1>
           </div>
           <div className="text-center flex items-center justify-center">
-            <span className="w-[200px] border border-solid border-[#666]"></span>
+            <span className="lg:w-[200px] w-[30%] border border-solid border-[#666]"></span>
             <GiJusticeStar color="#666" className="mx-[6px]" size={"1.2rem"} />
-            <span className="w-[200px] border border-solid border-[#666]"></span>
+            <span className="lg:w-[200px] w-[30%] border border-solid border-[#666]"></span>
           </div>
         </div>
       </div>

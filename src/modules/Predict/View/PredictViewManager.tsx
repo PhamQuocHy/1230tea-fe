@@ -135,20 +135,23 @@ const PredictHistoryViewManager: React.FC = () => {
           }}
         ></div> */}
         <div
-        // style={{
-        //   position: "relative",
-        //   zIndex: 5,
-        // }}
+          // style={{
+          //   position: "relative",
+          //   zIndex: 5,
+          // }}
+          className="h-full"
         >
           <div
-            className=" text-4xl font-poppins py-5 font-bold text-center uppercase  "
-            style={{ color: `${user.get_customer?.zodiac.color_web_second}`,
-            textShadow: `0px 0px 10px ${user.get_customer?.zodiac.color_web_second}`, }}
+            className=" lg:text-4xl text-xl font-poppins py-5 font-bold text-center uppercase h-full"
+            style={{
+              color: `${user.get_customer?.zodiac.color_web_second}`,
+              textShadow: `0px 0px 10px ${user.get_customer?.zodiac.color_web_second}`,
+            }}
           >
             Dự báo theo ngày
           </div>
 
-          <div className="justify-center flex items-center h-16 mb-5 border-4">
+          <div className="justify-center flex items-center h-16 lg:mb-5 border-4">
             <div className="lg:col-span-4 hidden sm:block"></div>
             {day.map((item) => (
               <button
@@ -159,15 +162,15 @@ const PredictHistoryViewManager: React.FC = () => {
                 className="bg-transparent border-none lg:col-span-1 md:col-span-3 col-span-1 w-auto mx-3"
               >
                 <div
-                style={
-                  item.id == selectedDay.id
-                    ? {
-                        paddingBottom: "8px",
-                        borderBottom: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
-                      }
-                    : { border: "none", paddingBottom: "8px" }
-                }
-                  className="text-white text-[21px] font-bold uppercase"
+                  style={
+                    item.id == selectedDay.id
+                      ? {
+                          paddingBottom: "8px",
+                          borderBottom: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
+                        }
+                      : { border: "none", paddingBottom: "8px" }
+                  }
+                  className="text-white lg:text-[21px] text-sm font-bold uppercase"
                 >
                   {item.name}
                 </div>
@@ -178,7 +181,7 @@ const PredictHistoryViewManager: React.FC = () => {
           <div className="sm:hidden justify-center flex flex-row">
             <img
               src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
-              className="w-2/3 invert "
+              className="w-2/3"
             />
           </div>
 
@@ -252,7 +255,7 @@ const PredictHistoryViewManager: React.FC = () => {
               />
             </div>
           </div>
-          
+
           <div className="w-full h-full bg-no-repeat bg-cover pt-3">
             {/* <Text
             style={{

@@ -24,7 +24,6 @@ const ZodiacViewManager: React.FC = () => {
         phone: user?.phone || "0389606380",
       };
       const resultPredict: any = await dispatch(getListPredict(paramsGet));
-      console.log("resultPredict", resultPredict);
     } catch (e: any) {
       console.log(e);
     }
@@ -50,7 +49,7 @@ const ZodiacViewManager: React.FC = () => {
         />
       </div>
       <div
-        className="z-10 w-full lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center  shadow-2xl  p-10 bg-opacity-10
+        className="z-10 w-width-layout max-w-full my-0 mx-auto flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center  shadow-2xl p-4 bg-opacity-10
       "
       >
         {" "}
@@ -118,14 +117,14 @@ const ZodiacViewManager: React.FC = () => {
           <div className="">
             <div className="bg-before-white w-full">
               <p className="leading-relaxed text-white whitespace-pre-wrap text-justify">
-              <div
-                className=" self-center text-[18px] uppercase  font-bold"
-                style={{
-                  color: `${user.get_customer?.zodiac.color_web_second}`,
-                }}
-              >
-                Tổng quan
-              </div>
+                <div
+                  className=" self-center text-[18px] uppercase  font-bold"
+                  style={{
+                    color: `${user.get_customer?.zodiac.color_web_second}`,
+                  }}
+                >
+                  Tổng quan
+                </div>
                 {listPredict.data?.zodiac.general_features}
               </p>
             </div>
@@ -135,26 +134,26 @@ const ZodiacViewManager: React.FC = () => {
             <div className="bg-before-white w-[50%]">
               <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
                 <div
-                className="  self-center text-[18px] uppercase  font-bold"
-                style={{
-                  color: `${user.get_customer?.zodiac.color_web_second}`,
-                }}
-              >
-                Điểm mạnh
-              </div>
+                  className="  self-center text-[18px] uppercase  font-bold"
+                  style={{
+                    color: `${user.get_customer?.zodiac.color_web_second}`,
+                  }}
+                >
+                  Điểm mạnh
+                </div>
                 {listPredict.data?.zodiac.strengths_in_character}
               </p>
             </div>
             <div className="bg-before-white w-[50%]">
               <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
-              <div
-                className="  self-center text-[18px] uppercase  font-bold"
-                style={{
-                  color: `${user.get_customer?.zodiac.color_web_second}`,
-                }}
-              >
-               Điểm yếu
-              </div>
+                <div
+                  className="  self-center text-[18px] uppercase  font-bold"
+                  style={{
+                    color: `${user.get_customer?.zodiac.color_web_second}`,
+                  }}
+                >
+                  Điểm yếu
+                </div>
                 {listPredict.data?.zodiac.weakness_in_character}
               </p>
             </div>
@@ -163,14 +162,14 @@ const ZodiacViewManager: React.FC = () => {
           <div>
             <div className="bg-before-white w-full">
               <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap leading-6 text-justify">
-              <div
-                className="  self-center text-[18px] uppercase  font-bold"
-                style={{
-                  color: `${user.get_customer?.zodiac.color_web_second}`,
-                }}
-              >
-               Cá tính
-              </div>
+                <div
+                  className="  self-center text-[18px] uppercase  font-bold"
+                  style={{
+                    color: `${user.get_customer?.zodiac.color_web_second}`,
+                  }}
+                >
+                  Cá tính
+                </div>
                 Cá tính nam : {listPredict.data?.zodiac.personalityMale} <br />
                 Cá tính nữ : {listPredict.data?.zodiac.personalityFemale}
               </p>
@@ -180,14 +179,14 @@ const ZodiacViewManager: React.FC = () => {
           <div>
             <div className="bg-before-white w-full">
               <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
-              <div
-                className="  self-center text-[18px] uppercase  font-bold"
-                style={{
-                  color: `${user.get_customer?.zodiac.color_web_second}`,
-                }}
-              >
-                Công việc
-              </div>
+                <div
+                  className="  self-center text-[18px] uppercase  font-bold"
+                  style={{
+                    color: `${user.get_customer?.zodiac.color_web_second}`,
+                  }}
+                >
+                  Công việc
+                </div>
                 {listPredict.data?.zodiac.career}
               </p>
             </div>
@@ -195,14 +194,14 @@ const ZodiacViewManager: React.FC = () => {
           <div>
             <div className="bg-before-white w-full">
               <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
-              <div
-                className="  self-center text-[18px] uppercase  font-bold"
-                style={{
-                  color: `${user.get_customer?.zodiac.color_web_second}`,
-                }}
-              >
-               Sức khỏe
-              </div>
+                <div
+                  className="  self-center text-[18px] uppercase  font-bold"
+                  style={{
+                    color: `${user.get_customer?.zodiac.color_web_second}`,
+                  }}
+                >
+                  Sức khỏe
+                </div>
                 {listPredict.data?.zodiac.health}
               </p>
             </div>
@@ -211,15 +210,15 @@ const ZodiacViewManager: React.FC = () => {
           <div>
             <div className="bg-before-white w-full">
               <p className="mb-8 leading-relaxed text-white whitespace-pre-wrap text-justify">
-              <div
-                className="  self-center text-[18px] uppercase  font-bold"
-                style={{
-                  color: `${user.get_customer?.zodiac.color_web_second}`,
-                }}
-              >
-               Sự đồng cảm
-              </div>
-                 {listPredict.data?.zodiac.affection}
+                <div
+                  className="  self-center text-[18px] uppercase  font-bold"
+                  style={{
+                    color: `${user.get_customer?.zodiac.color_web_second}`,
+                  }}
+                >
+                  Sự đồng cảm
+                </div>
+                {listPredict.data?.zodiac.affection}
               </p>
             </div>
           </div>

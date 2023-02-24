@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form, Input, Modal } from "antd";
+import { Button, DatePicker, Form, Input, Modal, Select } from "antd";
 import { UserOutlined, LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import React from "react";
 import locale from "antd/es/date-picker/locale/vi_VN";
@@ -38,9 +38,6 @@ const CustomerInfoModal = (props: Props) => {
       }}
       onOk={() => {
         props.handleClose();
-      }}
-      style={{
-        top: 50,
       }}
       width={window.innerWidth <= 760 ? "100%" : "38%"}
     >
@@ -105,6 +102,7 @@ const CustomerInfoModal = (props: Props) => {
         >
           <Input placeholder="Họ và tên" />
         </Form.Item>
+
         <Form.Item
           className=""
           name="birthday"
@@ -135,6 +133,146 @@ const CustomerInfoModal = (props: Props) => {
           name={"address"}
           required={false}
           label={<div className="text-OnBackgroundLight text-md">Địa chỉ</div>}
+          rules={[
+            {
+              required: true,
+              message: (
+                <div className="text-ErrorLight text-md">
+                  Vui lòng nhập địa chỉ
+                </div>
+              ),
+            },
+          ]}
+        >
+          <Input placeholder="Địa chỉ" />
+        </Form.Item>
+
+        <Form.Item
+          name={"name"}
+          style={{ marginTop: -15, fontWeight: 600 }}
+          required={false}
+          label={
+            <div className="text-OnBackgroundLight text-md">Họ và tên</div>
+          }
+          rules={[
+            {
+              required: true,
+              message: (
+                <div className="text-ErrorLight text-md">
+                  Vui lòng nhập họ và tên
+                </div>
+              ),
+            },
+          ]}
+        >
+          <Input placeholder="Họ và tên" />
+        </Form.Item>
+        <Form.Item
+          className=""
+          name="birthday"
+          style={{ marginTop: -15, fontWeight: 600 }}
+          required={false}
+          label={
+            <div className="text-OnBackgroundLight text-md">Sinh nhật</div>
+          }
+          rules={[
+            {
+              required: true,
+              message: (
+                <div className="text-ErrorLight text-md">
+                  Vui lòng nhập sinh nhật
+                </div>
+              ),
+            },
+          ]}
+        >
+          <DatePicker
+            className="w-full"
+            locale={locale}
+            format="DD/MM/YYYY"
+            placeholder={"Sinh nhật"}
+          />
+        </Form.Item>
+        <Form.Item
+          name={"city"}
+          style={{ marginTop: -15, fontWeight: 600 }}
+          required={false}
+          label={
+            <div className="text-OnBackgroundLight text-md">
+              Tỉnh / Thành phố
+            </div>
+          }
+          rules={[
+            {
+              required: true,
+              message: (
+                <div className="text-ErrorLight text-md">
+                  Vui lòng chọn tỉnh thành phố
+                </div>
+              ),
+            },
+          ]}
+        >
+          <Select placeholder="--Chọn tỉnh thành phố--">
+            <Select.Option value="2">Chọn tỉnh thành phố</Select.Option>
+            <Select.Option value="1">Chọn tỉnh thành phố</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item
+          name={"district"}
+          style={{ marginTop: -15, fontWeight: 600 }}
+          required={false}
+          label={
+            <div className="text-OnBackgroundLight text-md">Quận / Huyện</div>
+          }
+          rules={[
+            {
+              required: true,
+              message: (
+                <div className="text-ErrorLight text-md">
+                  Vui lòng chọn quận huyện
+                </div>
+              ),
+            },
+          ]}
+        >
+          <Select placeholder="--Chọn quận huyện--">
+            <Select.Option value="2">Chọn tỉnh thành phố</Select.Option>
+            <Select.Option value="1">Chọn tỉnh thành phố</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item
+          name={"district"}
+          style={{ marginTop: -15, fontWeight: 600 }}
+          required={false}
+          label={
+            <div className="text-OnBackgroundLight text-md">
+              Phường, Xã / Thị trấn
+            </div>
+          }
+          rules={[
+            {
+              required: true,
+              message: (
+                <div className="text-ErrorLight text-md">
+                  Vui lòng chọn phường xã, thị trấn
+                </div>
+              ),
+            },
+          ]}
+        >
+          <Select placeholder="--Chọn phường xã thị trấn--">
+            <Select.Option value="2">Chọn tỉnh thành phố</Select.Option>
+            <Select.Option value="1">Chọn tỉnh thành phố</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item
+          name={"address"}
+          style={{ marginTop: -15, fontWeight: 600 }}
+          required={false}
+          label={
+            <div className="text-OnBackgroundLight text-md">Địa chỉ cụ thể</div>
+          }
           rules={[
             {
               required: true,

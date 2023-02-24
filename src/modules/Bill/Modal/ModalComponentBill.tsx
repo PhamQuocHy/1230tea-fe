@@ -32,7 +32,6 @@ const ModalComponentBill: React.FC<ModalComponentProps> = ({
   action,
 }) => {
   const infoUser = useAppSelector((state) => state.rootReducer.auth.user);
-  console.log("data: ", data);
 
   return (
     <>

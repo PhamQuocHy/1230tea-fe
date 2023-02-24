@@ -2,6 +2,7 @@ import { Collapse, Modal } from "antd";
 import React, { useEffect } from "react";
 import { useAppSelector } from "../../../redux/hook";
 import { RootState } from "../../../redux/store";
+import "./styles.scss";
 
 type Props = {
   isOpen: boolean;
@@ -40,9 +41,11 @@ const HistoryView = (props: Props) => {
       onOk={() => {
         props.handleClose();
       }}
-      style={{
-        top: 50,
-      }}
+      style={
+        {
+          // top: 50,
+        }
+      }
       width={window.innerWidth <= 760 ? "100%" : "38%"}
     >
       <div>
@@ -57,55 +60,59 @@ const HistoryView = (props: Props) => {
               <Collapse.Panel
                 header={`Đơn hàng ${index + 1}`}
                 key={index}
-                className="border border-solid border-[#ccc] rounded-lg"
+                className="border border-solid border-[#ccc] rounded-lg space_bl2"
               >
-                <div className="">
-                  <div className="text-lg font-bold mb-2">
-                    Thông tin cá nhân
-                  </div>
-                  <div className="grid lg:grid-cols-2 grid-cols-1 gap-2 grid-rows-2">
-                    <div className="flex flex-row gap-2">
-                      <div className="font-semibold">{"Họ và tên: "}</div>
-                      {item.customer.name}
-                    </div>
-                    <div className="flex flex-row gap-2">
-                      <div className="font-semibold">{"SĐT: "}</div>
-                      {item.customer.phone}
-                    </div>
-                    <div className="flex flex-row gap-2">
-                      <div className="font-semibold">{"Sinh nhật: "}</div>
-                      {item.customer.birthday}
-                    </div>
-                    <div className="flex flex-row gap-2">
-                      <div className="font-semibold">{"Địa chỉ: "}</div>
-                      {item.customer.address}
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-3">
-                  <div className="text-lg font-bold">Thông tin đơn hàng</div>
-                  ============
+                <div className="max-h-[30vh] overflow-auto">
                   <div className="">
-                    {item.products.map((product: any, productIndex: number) => (
-                      <div>
-                        <div className="font-semibold">{`${product.name} x ${product.quantity}`}</div>
-                        <div className="font-semibold">{`Topping:`}</div>
-                        <div className="px-5">
-                          {product.topping.map(
-                            (topping: any, toppingIndex: number) => (
-                              <div>
-                                <div>{`${topping.name} x ${topping.quantity}`}</div>
-                              </div>
-                            )
-                          )}
-                        </div>
-                        <div>{`Ghi chú: ${product.note}`}</div>
-                        ============
+                    <div className="text-lg font-bold mb-2">
+                      Thông tin cá nhân
+                    </div>
+                    <div className="grid lg:grid-cols-2 grid-cols-1 gap-2 grid-rows-2">
+                      <div className="flex flex-row gap-2">
+                        <div className="font-semibold">{"Họ và tên: "}</div>
+                        {item.customer.name}
                       </div>
-                    ))}
-                    <div>{`Ghi chú: ${
-                      item.note ? item.note : "Không có"
-                    }`}</div>
+                      <div className="flex flex-row gap-2">
+                        <div className="font-semibold">{"SĐT: "}</div>
+                        {item.customer.phone}
+                      </div>
+                      <div className="flex flex-row gap-2">
+                        <div className="font-semibold">{"Sinh nhật: "}</div>
+                        {item.customer.birthday}
+                      </div>
+                      <div className="flex flex-row gap-2">
+                        <div className="font-semibold">{"Địa chỉ: "}</div>
+                        {item.customer.address}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-3">
+                    <div className="text-lg font-bold">Thông tin đơn hàng</div>
+                    ============
+                    <div className="">
+                      {item.products.map(
+                        (product: any, productIndex: number) => (
+                          <div>
+                            <div className="font-semibold">{`${product.name} x ${product.quantity}`}</div>
+                            <div className="font-semibold">{`Topping:`}</div>
+                            <div className="px-5">
+                              {product.topping.map(
+                                (topping: any, toppingIndex: number) => (
+                                  <div>
+                                    <div>{`${topping.name} x ${topping.quantity}`}</div>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                            <div>{`Ghi chú: ${product.note}`}</div>
+                            ============
+                          </div>
+                        )
+                      )}
+                      <div>{`Ghi chú: ${
+                        item.note ? item.note : "Không có"
+                      }`}</div>
+                    </div>
                   </div>
                 </div>
               </Collapse.Panel>

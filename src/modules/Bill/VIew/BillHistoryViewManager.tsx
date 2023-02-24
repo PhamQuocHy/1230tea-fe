@@ -237,7 +237,7 @@ const BillHistoryViewManager: React.FC = () => {
         className="flex flex-col w-full h-full"
       >
         <Space direction="vertical" style={{ width: "100%", flex: 1 }}>
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+          <div className="w-width-layout max-w-full mx-auto my-0 px-4 sm:px-6 py-8">
             <div
               style={{
                 color: "#fff",

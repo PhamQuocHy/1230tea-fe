@@ -28,6 +28,7 @@ type Props = {
 };
 
 const CartSider = (props: Props) => {
+  const user = useAppSelector((state) => state.rootReducer.auth.user);
   const dispatch = useAppDispatch();
   const token = useAppSelector(
     (state: RootState) => state.rootReducer.auth.token
@@ -109,6 +110,8 @@ const CartSider = (props: Props) => {
     }
   };
 
+  // console.log("user", user?.get_customer.zodiac.color_web_first);
+
   return (
     <Sider
       className="bg-white h-full z-20 hidden md:block transition-all duration-200 ease-linear fixed right-0
@@ -120,7 +123,14 @@ const CartSider = (props: Props) => {
       trigger={null}
       style={{ boxShadow: "#333 -1px 0 12px 1px", overflow: "hidden" }}
     >
-      <div className="flex justify-center  items-center text-xl font-semibold py-2 h-header-height bg-[#284A5D] text-white">
+      <div
+        style={
+          !user?.get_customer?.zodiac
+            ? { backgroundColor: "#284A5D" }
+            : { backgroundColor: user?.get_customer.zodiac.color_web_first }
+        }
+        className="flex justify-center  items-center text-xl font-semibold py-2 h-header-height text-white"
+      >
         Giỏ hàng
       </div>
       <div className="flex flex-col py-2 px-5 gap-4 overflow-y-scroll scrollbar-hide h-[73%] ">
@@ -200,15 +210,41 @@ const CartSider = (props: Props) => {
                     onClick={() => {
                       dispatch(removeItem(item.cart_id));
                     }}
-                    className="text-[14px] cursor-pointer border-2 border-solid border-yelow transition-all duration-200 ease-linear hover:bg-background-blue-dark px-4 py-4 leading-[0rem] text-center bg-background-yelow text-white rounded-md border-ErrorContainerLight/30"
+                    style={
+                      !user?.get_customer?.zodiac
+                        ? {
+                            backgroundColor: "#FAA31B",
+                            color: "#FFFF",
+                            border: `1px solid #FAA31B`,
+                          }
+                        : {
+                            backgroundColor:
+                              user?.get_customer.zodiac.color_web_second,
+                            color: user?.get_customer.zodiac.color_web_first,
+                            border: `1px solid ${user?.get_customer.zodiac.color_web_second}`,
+                          }
+                    }
+                    className="text-[14px] cursor-pointer border-2 border-solid transition-all duration-200 ease-linear hover:opacity-80
+                    px-4 py-4 leading-[0rem] text-center rounded-md"
                   >
                     Xóa
                   </button>
                 </div>
                 <div className="flex flex-row items-center justify-end flex-initial h-full xl:w-1/2 md:w-full">
                   <button
-                    className="text-lg px-2 py-2 cursor-pointer transition-all duration-200 ease-linear hover:bg-background-yelow leading-[0rem] text-center border-blue-dark disabled:bg-gray-50/5 disabled:border-gray-50/40 disabled:text-black/20 rounded-md bg-white text-OnTertiaryDark"
-                    disabled={item.quantity <= 0}
+                    style={
+                      !user?.get_customer?.zodiac
+                        ? {
+                            border: `2px solid #002D45`,
+                          }
+                        : {
+                            border: `2px solid ${user?.get_customer.zodiac.color_web_first}`,
+                          }
+                    }
+                    className="text-lg px-2 py-2 cursor-pointer transition-all duration-200 ease-linear leading-[0rem]
+                     text-center border-blue-dark disabled:bg-gray-50/5 disabled:border-gray-50/40
+                    disabled:text-black/20 rounded-md bg-white text-OnTertiaryDark"
+                    disabled={item.quantity <= 1}
                     onClick={() => {
                       dispatch(decreaseQuantity(item.cart_id));
                     }}
@@ -219,7 +255,8 @@ const CartSider = (props: Props) => {
                     {item.quantity}
                   </div>
                   <button
-                    className="text-lg px-2 py-2 cursor-pointer transition-all duration-200 ease-linear hover:bg-background-yelow leading-[0rem] text-center border-blue-dark rounded-md bg-white text-OnTertiaryDark"
+                    className="text-lg px-2 py-2 cursor-pointer transition-all duration-200 ease-linear leading-[0rem] 
+                    text-center border-blue-dark rounded-md bg-white text-OnTertiaryDark"
                     onClick={() => {
                       dispatch(increaseQuantity(item.cart_id));
                     }}
@@ -240,10 +277,24 @@ const CartSider = (props: Props) => {
         })}
       </div>
 
-      <div className="flex flex-col bg-[#284A5D] justify-center absolute bottom-0 left-0 right-0 items-center px-5 py-4">
+      <div
+        style={
+          !user?.get_customer?.zodiac
+            ? { backgroundColor: "#284A5D" }
+            : { backgroundColor: user?.get_customer.zodiac.color_web_first }
+        }
+        className="flex flex-col justify-center absolute bottom-0 left-0 right-0 items-center px-5 py-4"
+      >
         <div className="flex flex-row mb-4 justify-between w-full items-center gap-2">
           <div className="text-lg font-semibold text-white">Tổng tiền:</div>{" "}
-          <div className="text-2xl font-semibold text-color-yelow">
+          <div
+            style={
+              !user?.get_customer?.zodiac
+                ? { color: "#FAA31B" }
+                : { color: user?.get_customer.zodiac.color_web_second }
+            }
+            className="text-2xl font-semibold"
+          >
             {formatNumberToMoney(
               props.cart.reduce(
                 (acc: number, item: any) =>
@@ -258,9 +309,16 @@ const CartSider = (props: Props) => {
             onClick={() => {
               dispatch(resetOrder());
             }}
+            style={
+              !user?.get_customer?.zodiac
+                ? { border: `2px solid #FAA31B` }
+                : {
+                    border: `2px solid ${user?.get_customer.zodiac.color_web_second}`,
+                  }
+            }
             className=" bg-transparent text-white transition-all duration-200 ease-linear
-            border-yelow border-2 text-md font-semibold rounded-lg w-1/2 px-4 py-3
-            hover:bg-background-yelow cursor-pointer"
+            text-md font-semibold rounded-lg w-1/2 px-4 py-3
+            hover:opacity-80 cursor-pointer"
           >
             Xoá giỏ hàng
           </button>
@@ -270,11 +328,22 @@ const CartSider = (props: Props) => {
                 ? setIsCustomerModalOpen((prev: boolean) => true)
                 : navigate("/login");
             }}
+            style={
+              !user?.get_customer?.zodiac
+                ? {
+                    backgroundColor: `#FAA31B`,
+                    color: `#FFFFFF`,
+                    border: "2px solid #FAA31B",
+                  }
+                : {
+                    border: `2px solid ${user?.get_customer.zodiac.color_web_second}`,
+                    backgroundColor: user?.get_customer.zodiac.color_web_second,
+                    color: user?.get_customer.zodiac.color_web_first,
+                  }
+            }
             disabled={props.cart.length === 0}
-            className="bg-background-yelow transition-all duration-200 ease-linear border-yelow border-2
-             text-white w-1/2 text-md font-semibold disabled:bg-gray-50/5 disabled:border-gray-50/40
-            disabled:text-black/20 border-PrimaryContainerLight/40 rounded-lg  px-4 py-3
-            hover:bg-background-blue-dark cursor-pointer
+            className=" transition-all duration-200 ease-linear w-1/2 text-md font-semibold disabled:bg-gray-50/5
+            disabled:text-black/20  rounded-lg  px-4 py-3 hover:opacity-80 cursor-pointer 
             "
           >
             Đặt hàng

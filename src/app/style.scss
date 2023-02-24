@@ -39,6 +39,7 @@
     margin-left: 2rem;
   }
 }
+
 @media screen and (max-width: 1000px) {
   .header-content div h1{
 
@@ -63,7 +64,30 @@
   }
 }
 
+@media screen and (min-width: 1024px) { 
+  #header {
+    bottom: unset !important;
+  }
+}
 
+@media screen and (max-width: 1024px) { 
+  :where(.css-dev-only-do-not-override-ixblex.ant-modal-root .ant-modal-wrap) {
+    margin-bottom: 64px;
+  }
+
+  :where(.css-dev-only-do-not-override-ixblex).ant-modal {
+    padding-bottom: 0;
+  }
+
+  :where(.css-dev-only-do-not-override-ixblex).ant-modal .ant-modal-close {
+    top: 17px;
+    display: none;
+  }
+
+  :where(.css-dev-only-do-not-override-ixblex).ant-dropdown {
+    z-index: 9999999;
+  }
+}
 
 .header-content div img{
   width: 20%;
@@ -89,7 +113,6 @@
   line-height: 42px;
   color: #FFFFFF;
   margin-bottom: 1rem;
-
 }
 
 

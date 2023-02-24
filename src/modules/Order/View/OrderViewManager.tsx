@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { GiJusticeStar } from "react-icons/gi";
+import BestSeller from "../../../components/action/BestSeller";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { RootState } from "../../../redux/store";
 import { formatNumberToMoney } from "../../../utils/numbers";
 import ItemModal from "../Dialog/ItemModal";
 import { productZodiacIndexApi } from "../OrderApi";
 import { addToCart } from "../OrderState";
-import TopSellView from "../../Home/View/TopSellView";
-import BestSeller from "../../../components/action/BestSeller";
-import { GiJusticeStar } from "react-icons/gi";
 
+import Banner from "../../../components/action/Banner";
 import "./style.scss";
 
 type Props = {};
@@ -122,9 +121,14 @@ const OrderViewManager = (props: Props) => {
   };
 
   return (
-    <div className="bg-BackgroundLight w-full flex flex-col max-w-full overflow-hidden">
+    <div className=" w-full flex flex-col max-w-full overflow-hidden h-full">
+      {/* Banner  */}
+      <div className="lg:hidden">
+        <Banner />
+      </div>
+
       {/* Best Seller */}
-      <div className="py-2 ">
+      <div className="py-2 h-full bg-BackgroundLight">
         <BestSeller />
       </div>
       {/* End Bestseller */}
@@ -191,21 +195,21 @@ const OrderViewManager = (props: Props) => {
                 </h1>
               </div>
               <div className="text-center flex items-center justify-center">
-                <span className="w-[200px] border border-solid border-[#fff]"></span>
+                <span className="lg:w-[200px] w-[30%] border border-solid border-[#fff]"></span>
                 <GiJusticeStar
                   color="#fff"
                   className="mx-[6px]"
                   size={"1.2rem"}
                 />
-                <span className="w-[200px] border border-solid border-[#fff]"></span>
+                <span className="lg:w-[200px] w-[30%] border border-solid border-[#fff]"></span>
               </div>
             </div>
           </div>
           {/* End title */}
 
           {/* Tabs */}
-          <div className="flex items-center flex-wrap justify-between py-3 list-cate max-w-full w-width-layout">
-            <div className="px-4 py-3 min-w-[20%]">
+          <div className="flex items-center flex-wrap py-3 list-cate max-w-full w-width-layout">
+            <div className="px-4 py-2 w-1/2 lg:w-1/5 md:w-1/4">
               {user.get_customer?.zodiac.color_web_second ? (
                 <button
                   onClick={() => setSelectedCategory(-1)}
@@ -234,8 +238,8 @@ const OrderViewManager = (props: Props) => {
                   onClick={() => setSelectedCategory(-1)}
                   className={`${
                     selectedCategory === -1
-                      ? "bg-background-yelow hover:bg-transparent border-yelow"
-                      : "bg-transparent hover:bg-background-yelow border-yelow"
+                      ? "bg-background-yelow lg:hover:bg-transparent border-yelow"
+                      : "bg-transparent lg:hover:bg-background-yelow border-yelow"
                   } " uppercase rounded-md cursor-pointer  transition-all 
                      duration-200 ease-linear text-white font-bold 
                      text-[18px] w-full py-2 px-5 border-2 border-solid "
@@ -246,45 +250,47 @@ const OrderViewManager = (props: Props) => {
               )}
             </div>
             {product.map((item: any, index: number) => (
-              <div className="px-4 min-w-[20%]" key={index}>
-                {user.get_customer?.zodiac.color_web_second ? (
-                  <button
-                    onClick={() => setSelectedCategory(index)}
-                    style={
-                      selectedCategory === index
-                        ? {
-                            backgroundColor:
-                              user.get_customer?.zodiac.color_web_second,
-                            border: `2px solid ${user.get_customer?.zodiac.color_web_first}`,
-                            color: `${user.get_customer?.zodiac.color_web_first}`,
-                          }
-                        : {
-                            backgroundColor: "transparent",
-                            border: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
-                            color: `${user.get_customer?.zodiac.color_web_second}`,
-                          }
-                    }
-                    className={
-                      " uppercase rounded-md cursor-pointer hover:opacity-75 transition-all w-full duration-100 ease-linear font-bold  text-[18px] py-2 px-5 "
-                    }
-                  >
-                    {item.name}
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setSelectedCategory(index)}
-                    className={`${
-                      selectedCategory === index
-                        ? "bg-background-yelow hover:bg-transparent border-yelow"
-                        : "bg-transparent hover:bg-background-yelow border-yelow"
-                    } " uppercase rounded-md cursor-pointer  transition-all 
+              <div className="lg:w-1/5 w-1/2 md:w-1/4">
+                <div className="px-4 py-2" key={index}>
+                  {user.get_customer?.zodiac.color_web_second ? (
+                    <button
+                      onClick={() => setSelectedCategory(index)}
+                      style={
+                        selectedCategory === index
+                          ? {
+                              backgroundColor:
+                                user.get_customer?.zodiac.color_web_second,
+                              border: `2px solid ${user.get_customer?.zodiac.color_web_first}`,
+                              color: `${user.get_customer?.zodiac.color_web_first}`,
+                            }
+                          : {
+                              backgroundColor: "transparent",
+                              border: `2px solid ${user.get_customer?.zodiac.color_web_second}`,
+                              color: `${user.get_customer?.zodiac.color_web_second}`,
+                            }
+                      }
+                      className={
+                        " uppercase rounded-md cursor-pointer hover:opacity-75 transition-all w-full duration-100 ease-linear font-bold  text-[18px] py-2 px-5 "
+                      }
+                    >
+                      {item.name}
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => setSelectedCategory(index)}
+                      className={`${
+                        selectedCategory === index
+                          ? "bg-background-yelow lg:hover:bg-transparent border-yelow"
+                          : "bg-transparent lg:hover:bg-background-yelow border-yelow"
+                      } " uppercase rounded-md cursor-pointer  transition-all 
                      duration-200 ease-linear text-white font-bold 
                      text-[18px] w-full py-2 px-5 border-2 border-solid "
                      `}
-                  >
-                    {item.name}
-                  </button>
-                )}
+                    >
+                      {item.name}
+                    </button>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -308,7 +314,7 @@ const OrderViewManager = (props: Props) => {
                       // }}
                     >
                       <div
-                        className="flex-initial h-[300px] w-full  bg-cover bg-center bg-no-repeat"
+                        className="flex-initial lg:h-[300px] h-[230px] w-full  bg-cover bg-center bg-no-repeat"
                         style={{
                           backgroundImage: `url(${item.image_url})`,
                         }}
@@ -380,7 +386,7 @@ const OrderViewManager = (props: Props) => {
                         // }}
                       >
                         <div
-                          className="flex-initial h-[300px] w-full  bg-cover bg-center bg-no-repeat"
+                          className="flex-initial lg:h-[300px] h-[230px]  w-full  bg-cover bg-center bg-no-repeat"
                           style={{
                             backgroundImage: `url(${item.image_url})`,
                           }}

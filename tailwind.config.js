@@ -170,7 +170,7 @@ module.exports = {
         SurfaceTintDark: "#8ccdff",
         OutlineVariantDark: "#41474d",
         CrimDark: "#000000",
-        white:"#ffff",
+        white: "#ffff",
         Libra: "#FCD163",
         Libra2: "#042042",
         color1230: "#002D45",
@@ -188,13 +188,15 @@ module.exports = {
       },
       maxWidth: {
         "width-layout": "1140px",
-        "w-btn": "394px"
+        "w-btn": "394px",
       },
       height: {
         "header-height": "74px",
+        "mb-header-height": "64px",
       },
       margin: {
         "header-height": "74px",
+        "mb-header-height": "64px",
       },
       lineHeight: {
         "header-lineHeight": "74px",
@@ -203,7 +205,6 @@ module.exports = {
         yelow: "#FAA31B",
         "blue-dark": "#002D45",
       },
-      
     },
   },
   plugins: [],

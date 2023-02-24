@@ -44,7 +44,7 @@ const OtpVerify = (props: Props) => {
   return (
     <Card
       style={{ borderRadius: 15 }}
-      className="w-10/12 md:w-1/2 xl:w-2/5 2xl:w-4/12 inset-0 self-center mt-24 md:mt-40 object-center otp"
+      className="w-10/12 md:w-1/2 xl:w-2/5 2xl:w-4/12 inset-0 self-center object-center otp"
     >
       <div className={"text-center mb-5"}>
         <img

@@ -54,9 +54,9 @@ const CustomerHistoryViewManager: React.FC = () => {
       style={{
         backgroundColor: user.get_customer?.zodiac.color_web_first,
       }}
-      className="w-full h-full"
+      className="w-full h-full min-h-[90vh]"
     >
-      <div className="mx-auto flex flex-col py-10">
+      <div className="mx-auto w-width-layout max-w-full px-4 flex flex-col py-10">
         <div
           style={{
             color: "#fff",
@@ -72,7 +72,7 @@ const CustomerHistoryViewManager: React.FC = () => {
           </h1>
         </div>
 
-        <div className="my-8 mx-12 bg-before-white flex justify-center">
+        <div className="bg-before-white flex justify-center">
           <div className="flex items-center justify-center py-6 relative">
             <div className="text-center flex-[1] py-3 px-8">
               <img

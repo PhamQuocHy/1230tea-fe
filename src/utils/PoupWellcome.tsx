@@ -31,7 +31,7 @@ const PoupWellcome: React.FC<Props> = ({ user, handle, status }) => {
         className="fixed top-0 left-0 right-0 bottom-0 z-[99999999]"
       >
         <div className="flex items-center justify-center h-full">
-          <div className="w-[800px] max-w-full">
+          <div className="w-[800px] mb-mb-header-height max-w-full">
             <div
               style={{
                 backgroundImage: `url("https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1150&q=80")`,

@@ -17,7 +17,7 @@ const Banner: React.FC = () => (
         <img
           src="../../image/banner-1.png"
           alt=""
-          className="w-full h-[500px]"
+          className="w-full lg:h-[500px] md:-h-[250px]"
         />
       </div>
     </div>
@@ -27,7 +27,7 @@ const Banner: React.FC = () => (
         <img
           src="../../image/banner-2.png"
           alt=""
-          className="w-full h-[500px]"
+          className="w-full lg:h-[500px] md:-h-[250px]"
         />
       </div>
     </div>

@@ -27,3 +27,24 @@
 .divide-solid > :not([hidden]) ~ :not([hidden]) {
     border-style: none !important;
 }
+
+
+
+
+
+
+@media screen and (max-width: 1024px) { 
+    :where(.css-dev-only-do-not-override-ixblex).ant-modal .ant-modal-body {
+        max-height: 70vh;
+    }
+  }
+
+@media screen and (min-width: 1024px) { 
+    :where(.css-dev-only-do-not-override-ixblex).ant-modal .ant-modal-body {
+        max-height: 75vh;
+    }
+
+    :where(.css-dev-only-do-not-override-ixblex).ant-modal-root .ant-modal-wrap {
+        margin-top: 74px;
+    }
+}

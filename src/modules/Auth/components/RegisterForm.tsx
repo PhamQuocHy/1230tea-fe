@@ -1,5 +1,5 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Form, Input } from "antd";
+import { Button, DatePicker, Form, Input, Select } from "antd";
 import locale from "antd/es/date-picker/locale/vi_VN";
 import moment from "moment";
 import React from "react";
@@ -13,7 +13,7 @@ type Props = {
 
 const RegisterForm = (props: Props) => {
   const onSubmit = (values: any) => {
-    console.log(values);
+    // console.log(values);
     props.handleRegister(values);
   };
 
@@ -36,7 +36,7 @@ const RegisterForm = (props: Props) => {
           <div className="text-OnBackgroundLight text-md">Số điện thoại</div>
         }
         colon={false}
-        style={{fontWeight: 600}}
+        style={{ fontWeight: 600 }}
         required={false}
         name="phone"
         initialValue={"0389606380"}
@@ -61,7 +61,7 @@ const RegisterForm = (props: Props) => {
       <Form.Item
         className=""
         name="password"
-        style={{marginTop: -15, fontWeight: 600}}
+        style={{ marginTop: -15, fontWeight: 600 }}
         required={false}
         label={<div className="text-OnBackgroundLight text-md">Mật khẩu</div>}
         rules={[
@@ -80,7 +80,7 @@ const RegisterForm = (props: Props) => {
       </Form.Item>
       <Form.Item
         className=""
-        style={{marginTop: -15, fontWeight: 600}}
+        style={{ marginTop: -15, fontWeight: 600 }}
         name="confirm-password"
         required={false}
         hasFeedback
@@ -119,7 +119,7 @@ const RegisterForm = (props: Props) => {
       </div>
       <Form.Item
         name={"name"}
-        style={{marginTop: -15, fontWeight: 600}}
+        style={{ marginTop: -15, fontWeight: 600 }}
         required={false}
         label={<div className="text-OnBackgroundLight text-md">Họ và tên</div>}
         rules={[
@@ -138,7 +138,7 @@ const RegisterForm = (props: Props) => {
       <Form.Item
         className=""
         name="birthday"
-        style={{marginTop: -15, fontWeight: 600}}
+        style={{ marginTop: -15, fontWeight: 600 }}
         required={false}
         label={<div className="text-OnBackgroundLight text-md">Sinh nhật</div>}
         rules={[
@@ -158,6 +158,97 @@ const RegisterForm = (props: Props) => {
           format="DD/MM/YYYY"
           placeholder={"Sinh nhật"}
         />
+      </Form.Item>
+      <Form.Item
+        name={"city"}
+        style={{ marginTop: -15, fontWeight: 600 }}
+        required={false}
+        label={
+          <div className="text-OnBackgroundLight text-md">Tỉnh / Thành phố</div>
+        }
+        rules={[
+          {
+            required: true,
+            message: (
+              <div className="text-ErrorLight text-md">
+                Vui lòng chọn tỉnh thành phố
+              </div>
+            ),
+          },
+        ]}
+      >
+        <Select placeholder="--Chọn tỉnh thành phố--">
+          <Select.Option value="2">Chọn tỉnh thành phố</Select.Option>
+          <Select.Option value="1">Chọn tỉnh thành phố</Select.Option>
+        </Select>
+      </Form.Item>
+      <Form.Item
+        name={"district"}
+        style={{ marginTop: -15, fontWeight: 600 }}
+        required={false}
+        label={
+          <div className="text-OnBackgroundLight text-md">Quận / Huyện</div>
+        }
+        rules={[
+          {
+            required: true,
+            message: (
+              <div className="text-ErrorLight text-md">
+                Vui lòng chọn quận huyện
+              </div>
+            ),
+          },
+        ]}
+      >
+        <Select placeholder="--Chọn quận huyện--">
+          <Select.Option value="2">Chọn tỉnh thành phố</Select.Option>
+          <Select.Option value="1">Chọn tỉnh thành phố</Select.Option>
+        </Select>
+      </Form.Item>
+      <Form.Item
+        name={"district"}
+        style={{ marginTop: -15, fontWeight: 600 }}
+        required={false}
+        label={
+          <div className="text-OnBackgroundLight text-md">
+            Phường, Xã / Thị trấn
+          </div>
+        }
+        rules={[
+          {
+            required: true,
+            message: (
+              <div className="text-ErrorLight text-md">
+                Vui lòng chọn phường xã, thị trấn
+              </div>
+            ),
+          },
+        ]}
+      >
+        <Select placeholder="--Chọn phường xã thị trấn--">
+          <Select.Option value="2">Chọn tỉnh thành phố</Select.Option>
+          <Select.Option value="1">Chọn tỉnh thành phố</Select.Option>
+        </Select>
+      </Form.Item>
+      <Form.Item
+        name={"address"}
+        style={{ marginTop: -15, fontWeight: 600 }}
+        required={false}
+        label={
+          <div className="text-OnBackgroundLight text-md">Địa chỉ cụ thể</div>
+        }
+        rules={[
+          {
+            required: true,
+            message: (
+              <div className="text-ErrorLight text-md">
+                Vui lòng nhập địa chỉ
+              </div>
+            ),
+          },
+        ]}
+      >
+        <Input placeholder="Địa chỉ" />
       </Form.Item>
       <Form.Item>
         <Button

@@ -1,19 +1,19 @@
-import { Layout, Menu } from "antd";
-import { Content, Footer, Header } from "antd/es/layout/layout";
-import { ShoppingCartOutlined, HistoryOutlined } from "@ant-design/icons";
-import Sider from "antd/es/layout/Sider";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Layout } from "antd";
+import { Footer, Header } from "antd/es/layout/layout";
 import React, { useEffect } from "react";
-import { LoginOutlined } from "@ant-design/icons";
+import { AiFillInstagram, AiOutlineShoppingCart } from "react-icons/ai";
+import { BiUser } from "react-icons/bi";
+import { FaFacebookF, FaTiktok } from "react-icons/fa";
+import { GiBackwardTime } from "react-icons/gi";
+import { IoLogoYoutube } from "react-icons/io";
 import { Link, Outlet } from "react-router-dom";
+import Banner from "../components/action/Banner";
+import HistoryView from "../modules/history/View/HistoryView";
 import { useAppSelector } from "../redux/hook";
 import { RootState } from "../redux/store";
-import CartSider from "./CartSider";
 import CartModal from "./CartModal";
-import HistoryView from "../modules/history/View/HistoryView";
-import Banner from "../components/action/Banner";
-import { AiFillInstagram } from "react-icons/ai";
-import { FaTiktok, FaFacebookF } from "react-icons/fa";
-import { IoLogoYoutube } from "react-icons/io";
+import CartSider from "./CartSider";
 
 type Props = {};
 
@@ -48,31 +48,35 @@ const OrderTemplate = (props: Props) => {
   useEffect(() => {
     const header: any = document.querySelector("#header");
     const main: any = document.querySelector("#main");
-    if (collapsed === false) {
-      const headerResize = () => {
-        if (window.innerWidth <= 1500) {
-          header.style.width = "calc(100% - 30%)";
-          main.style.width = "calc(100% - 30%)";
-          main.style.marginLeft = "0";
-        } else {
-          header.style.width = "calc(100% - 20%)";
-          main.style.width = "calc(100% - 20%)";
-          main.style.marginLeft = "0";
-        }
-      };
+    if (window.innerWidth >= 1024) {
+      if (collapsed === false) {
+        const headerResize = () => {
+          if (window.innerWidth <= 1500) {
+            header.style.width = "calc(100% - 30%)";
+            main.style.width = "calc(100% - 30%)";
+            // main.style.marginLeft = "0";
+            // main.style.marginRight = "0";
+          } else {
+            header.style.width = "calc(100% - 20%)";
+            main.style.width = "calc(100% - 20%)";
+          }
+        };
 
-      headerResize();
-    } else {
-      header.style.width = "100%";
-      main.style.width = "100%";
-      main.style.marginLeft = "auto";
-      main.style.marginRight = "auto";
+        headerResize();
+      } else {
+        header.style.width = "100%";
+        main.style.width = "100%";
+      }
     }
   }, [collapsed]);
 
+  const handleCloseCart = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
-    <Layout className="h-full bg-white">
-      <div className="md:hidden fixed bottom-24 right-9">
+    <Layout className="h-full bg-white overflow-x-hidden">
+      {/* <div className="md:hidden fixed bottom-24 right-9">
         <button
           onClick={() => {
             setCollapsed((prev) => !prev);
@@ -81,23 +85,24 @@ const OrderTemplate = (props: Props) => {
         >
           <ShoppingCartOutlined className="text-OnPrimaryContainerLight text-4xl" />
         </button>
-      </div>
+      </div> */}
       <Layout className="bg-white">
         <div className="w-full">
+          {/* Header PC */}
           <div
             id="header"
             style={{
               boxShadow: "2px 2px 10px 2px rgb(0,0,0,0.45)",
             }}
-            className=" bg-background-blue-dark fixed top-0 left-0 right-0 z-[99999] transition-all duration-200 ease-linear"
+            className=" bg-background-blue-dark fixed hidden lg:block lg:top-0 left-0 right-0 z-[99999] transition-all duration-200 ease-linear"
           >
             <Header
               // style={{ height: "74px" }}
               className={
-                "h-header-height bg-transparent my-0 mx-auto leading-header-lineHeight w-width-layout flex items-center justify-between p-0 pl-3"
+                "h-header-height  bg-transparent my-0 mx-auto leading-header-lineHeight lg:w-width-layout flex items-center justify-between p-0 lg:pl-3"
               }
             >
-              <div className="col-span-1 grid place-items-center">
+              <div className="h-full hidden lg:block">
                 <img
                   className=" h-header-height shake-vertical"
                   src="../../image/text_logo.png"
@@ -106,22 +111,23 @@ const OrderTemplate = (props: Props) => {
               </div>
               {/* <div className="2xl:col-span-6 md:col-span-3 lg:col-span-3 col-span-2"></div> */}
 
-              <div className="flex items-center">
-                <div className="justify-center min-w-[100px] mx-3">
+              <div className="flex items-center w-full px-4 justify-between lg:justify-end">
+                <div className="justify-center lg:min-w-[100px] lg:mx-3">
                   <div>
                     <Link
                       to="/login"
                       className="flex items-center justify-center h-10 text-md font-semibold text-OnPrimaryLight rounded-lg border-2 border-solid border-yelow bg-background-yelow py-2 px-5"
                     >
-                      Đăng Nhập
+                      Đăng nhập
                     </Link>
                   </div>
                 </div>
 
                 <div
-                  className="justify-center min-w-[100px] mx-3"
+                  className="justify-center lg:min-w-[100px] lg:mx-3"
                   onClick={() => {
-                    setIsHistoryVisible(true);
+                    setIsHistoryVisible(!isHistoryVisible);
+                    // console.log("Click 123");
                   }}
                 >
                   <div className="">
@@ -133,7 +139,7 @@ const OrderTemplate = (props: Props) => {
                 </div>
 
                 <div
-                  className="justify-center min-w-[100px] mx-3"
+                  className="justify-center lg:min-w-[100px] lg:mx-3"
                   onClick={() => {
                     setCollapsed((prev) => !prev);
                   }}
@@ -142,31 +148,100 @@ const OrderTemplate = (props: Props) => {
                     <div
                       className="cart-item text-md flex items-center h-10 justify-center font-semibold cursor-pointer text-OnPrimaryLight
                    bg-transparent border-2 border-solid border-yelow px-5 py-2 rounded-lg transition-all
-                   duration-200 ease-linear hover:bg-background-yelow"
+                   duration-200 ease-linear lg:hover:bg-background-yelow"
                     >
-                      <ShoppingCartOutlined className="text-OnPrimaryLight pr-1 text-lg relative top-[3px]" />{" "}
+                      <ShoppingCartOutlined className="text-OnPrimaryLight hidden sm:block pr-1 text-lg relative top-[3px]" />{" "}
                       <div className="inline text-md mr-1">
                         Giỏ hàng
                         <span className="line-cart border border-solid border-yelow ml-2 mr-1.5 relative top-px"></span>
-                        {/* {cart.length > 0 && ( */}
                         {cart.length}
                       </div>
-                      {/* {cart.length > 0 && (
-                        <div
-                          className={
-                            "inline rounded-full p-1 h-1 w-2 mx-1 text-md text-OnPrimaryLight"
-                          }
-                        >
-                          {cart.length}
-                        </div>
-                      )} */}
                     </div>
                   </div>
                 </div>
               </div>
             </Header>
           </div>
-          <div className="mt-[74px]">
+          {/* End Header PC */}
+
+          {/* Header Mobile */}
+          <div
+            id="header"
+            style={{
+              boxShadow: "2px 2px 10px 2px rgb(0,0,0,0.45)",
+            }}
+            className="bg-background-blue-dark fixed lg:hidden bottom-0 left-0 right-0 z-[99999] transition-all duration-200 ease-linear"
+          >
+            <Header
+              // style={{ height: "74px" }}
+              className={
+                "h-mb-header-height  bg-transparent my-0 mx-auto flex items-center justify-between p-0"
+              }
+            >
+              <div className="flex items-center w-full px-4 justify-between mt-[-4px]">
+                <div className="justify-center">
+                  <div>
+                    <Link
+                      to="/login"
+                      className="flex p-2 items-center leading-none justify-center flex-col text-md font-semibold text-OnPrimaryLight"
+                    >
+                      <span className="mb-1">
+                        <BiUser size={"20px"} />
+                      </span>
+                      <span>Đăng nhập</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <div
+                  className="justify-center"
+                  onClick={() => {
+                    setIsHistoryVisible(!isHistoryVisible);
+                  }}
+                >
+                  <div className="">
+                    <div className="text-md  flex items-center h-10 justify-center font-semibold cursor-pointer text-OnPrimaryLight">
+                      {/* <HistoryOutlined className="text-OnPrimaryLight" />{" "} */}
+                      <div
+                        style={!isHistoryVisible ? {} : { color: "#FAA31B" }}
+                        className="text-md leading-none flex flex-col px-2 text-center"
+                      >
+                        <span className="mb-1">
+                          <GiBackwardTime size={"20px"} />
+                        </span>
+                        <span>Lịch sử</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="justify-center"
+                  onClick={() => {
+                    setCollapsed((prev) => !prev);
+                  }}
+                >
+                  <div className="">
+                    <div className="text-md  flex items-center h-10 justify-center font-semibold cursor-pointer text-OnPrimaryLight">
+                      {/* <HistoryOutlined className="text-OnPrimaryLight" />{" "} */}
+                      <div
+                        style={collapsed ? {} : { color: "#FAA31B" }}
+                        className="text-md leading-none flex flex-col px-2 text-center"
+                      >
+                        <span className="mb-1">
+                          <AiOutlineShoppingCart size={"20px"} />
+                        </span>
+                        <span>Giỏ hàng</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Header>
+          </div>
+          {/* End Header Mobile */}
+
+          <div className="lg:mt-[74px] hidden lg:block">
             <Banner />
           </div>
         </div>
@@ -175,11 +250,13 @@ const OrderTemplate = (props: Props) => {
         </Content> */}
 
         {/* Start Content */}
-        <div
-          id="main"
-          className="flex my-0 place-items-center transition-all duration-300 ease-linear"
-        >
-          <Outlet />
+        <div>
+          <div
+            id="main"
+            className="flex my-0 mx-0 place-items-center transition-all duration-300 ease-linear"
+          >
+            <Outlet />
+          </div>
         </div>
         {/* End Content */}
 
@@ -187,56 +264,63 @@ const OrderTemplate = (props: Props) => {
           style={{ textAlign: "center" }}
           className="bg-background-blue-dark"
         >
-          <div className="pb-2 border-x-0 border-t-0 border-b border-solid border-[#fff]">
-            <div className="flex items-center justify-center">
-              <div>
-                <a href="" className="block px-2">
-                  <FaFacebookF
-                    size={"24px"}
-                    className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
-                  />
-                </a>
-              </div>
-              <div>
-                <a href="" className="block px-2">
-                  <FaTiktok
-                    size={"24px"}
-                    className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
-                  />
-                </a>
-              </div>
-              <div>
-                <a href="" className="block px-2">
-                  <AiFillInstagram
-                    size={"24px"}
-                    className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
-                  />
-                </a>
-              </div>
-              <div>
-                <a href="" className="block px-2">
-                  <IoLogoYoutube
-                    size={"24px"}
-                    className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
-                  />
-                </a>
+          <div className="mb-mb-header-height lg:mb-0">
+            <div className="pb-2 border-x-0 border-t-0 border-b border-solid border-[#fff]">
+              <div className="flex items-center justify-center">
+                <div>
+                  <a href="" className="block px-2">
+                    <FaFacebookF
+                      size={"24px"}
+                      className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="" className="block px-2">
+                    <FaTiktok
+                      size={"24px"}
+                      className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="" className="block px-2">
+                    <AiFillInstagram
+                      size={"24px"}
+                      className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="" className="block px-2">
+                    <IoLogoYoutube
+                      size={"24px"}
+                      className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="pt-2 text-[#fff]">
-            &#169; 2023 <strong>1230 Tea</strong>. All rights reserved
+            <div className="pt-2 text-[#fff]">
+              &#169; 2023 <strong>1230 Tea</strong>. All rights reserved
+            </div>
           </div>
         </Footer>
       </Layout>
-      <CartSider collapsed={collapsed} cart={cart} />
-      {window.innerWidth <= 760 && (
+      {/* {window.innerWidth >= 1024 && (
+        <CartSider collapsed={collapsed} cart={cart} />
+      )} */}
+      {window.innerWidth < 1024 ? (
         <CartModal
           collapsed={collapsed}
-          handleClose={() => setCollapsed(false)}
+          handleClose={handleCloseCart}
           cart={cart}
         />
+      ) : (
+        <CartSider collapsed={collapsed} cart={cart} />
       )}
-      <Menu
+
+      {/* <Menu
         theme="light"
         className="fixed z-30 w-full sm:hidden block bottom-0 left-0"
         defaultSelectedKeys={["1"]}
@@ -257,7 +341,7 @@ const OrderTemplate = (props: Props) => {
             <HistoryOutlined /> Lịch sử
           </a>
         </Menu.Item>
-      </Menu>
+      </Menu> */}
       <HistoryView
         key="history"
         isOpen={isHistoryVisible}

@@ -8,7 +8,7 @@ import {
   StarOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import type { MenuProps } from "antd";
+import { Button, Dropdown, MenuProps } from "antd";
 import { Input, Layout, Menu, theme, Typography } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, Outlet, NavLink } from "react-router-dom";
@@ -25,14 +25,16 @@ import {
   AiOutlineNumber,
   AiOutlineHistory,
   AiOutlineLogin,
+  AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { FaFacebookF, FaTiktok } from "react-icons/fa";
+import { FaFacebookF, FaTiktok, FaGalacticRepublic } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
-import { GiCompass } from "react-icons/gi";
+import { GiCompass, GiBackwardTime } from "react-icons/gi";
 import { BsStars } from "react-icons/bs";
-import { BiUserPin } from "react-icons/bi";
+import { BiUserPin, BiUser } from "react-icons/bi";
 import { ImHistory } from "react-icons/im";
+import { RiHome4Line } from "react-icons/ri";
 
 //
 // import { NoticationView } from "../../utils/NotificationView";
@@ -66,8 +68,9 @@ const SiderDemo: React.FC = () => {
   const { Search } = Input;
 
   const [elementActive, setElementActive] = useState("");
+  const [elementActiveMB, setElementActiveMB] = useState("");
   const [wellcome, setWellcome] = useState(true);
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [isHistoryVisible, setIsHistoryVisible] = React.useState(false);
 
   const [cartCollapsed, setCartCollapsed] = React.useState(true);
@@ -89,24 +92,27 @@ const SiderDemo: React.FC = () => {
   useEffect(() => {
     const header: any = document.querySelector("#header");
     const main: any = document.querySelector("#mainContent");
-    const asideMenuWidth: string = "15%";
-    const contentWidth = `calc(100% - ${asideMenuWidth})`;
-    header.style.width = contentWidth;
-    main.style.width = contentWidth;
-    if (cartCollapsed === false) {
-      const headerResize = () => {
-        if (window.innerWidth <= 1500) {
-          header.style.width = `calc(${contentWidth} - 30%)`;
-          main.style.width = `calc(${contentWidth} - 30%)`;
-        } else {
-          header.style.width = `calc(${contentWidth} - 20%)`;
-          main.style.width = `calc(${contentWidth} - 20%)`;
-        }
-      };
-      headerResize();
-    } else {
+    if (window.innerWidth >= 1024) {
+      const asideMenuWidth: string = "15%";
+      const contentWidth = `calc(100% - ${asideMenuWidth})`;
       header.style.width = contentWidth;
-      main.style.marginLeft = asideMenuWidth;
+      main.style.width = contentWidth;
+
+      if (cartCollapsed === false) {
+        const headerResize = () => {
+          if (window.innerWidth <= 1500) {
+            header.style.width = `calc(${contentWidth} - 30%)`;
+            main.style.width = `calc(${contentWidth} - 30%)`;
+          } else {
+            header.style.width = `calc(${contentWidth} - 20%)`;
+            main.style.width = `calc(${contentWidth} - 20%)`;
+          }
+        };
+        headerResize();
+      } else {
+        header.style.width = contentWidth;
+        main.style.marginLeft = asideMenuWidth;
+      }
     }
   }, [cartCollapsed]);
   //
@@ -167,7 +173,6 @@ const SiderDemo: React.FC = () => {
 
   const setShowPopUp = () => {
     setWellcome(!wellcome);
-    console.log(wellcome);
   };
 
   const handleActiveMenu = (e: any) => {
@@ -195,23 +200,105 @@ const SiderDemo: React.FC = () => {
     }
   };
 
+  const menuZodiac = (
+    <Menu>
+      <Menu.Item key={1}>
+        <NavLink
+          to={"/predict"}
+          onClick={(e) => handleActiveMenuMB(e)}
+          className="flex items-center"
+        >
+          <span className="relative top-[2px] mr-[6px]">
+            <GiCompass />
+          </span>
+          <span>Dự đoán</span>
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item key={2}>
+        <NavLink
+          to={"zodiac"}
+          onClick={(e) => handleActiveMenuMB(e)}
+          className="flex items-center"
+        >
+          <span className="relative top-[2px] mr-[6px]">
+            <FaGalacticRepublic />
+          </span>
+          <span>Cung {user.get_customer?.zodiac.name}</span>
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item key={3}>
+        <NavLink
+          to={"/numerology"}
+          onClick={(e) => handleActiveMenuMB(e)}
+          className="flex items-center"
+        >
+          <span className="relative top-[2px] mr-[6px]">
+            <AiOutlineNumber />
+          </span>
+          <span>Số chủ đạo {user.get_customer?.numberology}</span>
+        </NavLink>
+      </Menu.Item>
+    </Menu>
+  );
+
+  const menuUser = (
+    <Menu>
+      <Menu.Item key={1}>
+        <NavLink
+          to={"/customer-info"}
+          onClick={(e) => handleActiveMenuMB(e)}
+          className="flex items-center"
+        >
+          <span className="relative top-[2px] mr-[6px]">
+            <BiUserPin />
+          </span>
+          <span>Thông tin tài khoản</span>
+        </NavLink>
+      </Menu.Item>
+      <Menu.Item key={2}>
+        <NavLink
+          to={""}
+          onClick={async () => {
+            await dispatch(reset());
+          }}
+          className="flex items-center"
+        >
+          <span className="relative top-[2px] mr-[6px]">
+            <FaGalacticRepublic />
+          </span>
+          <span>Đăng Xuất</span>
+        </NavLink>
+      </Menu.Item>
+    </Menu>
+  );
+
+  const activeMenuMB = () => {
+    const homeMbMenu = document.querySelector(".js-menu-mb-home");
+    const menuItemMB = homeMbMenu as HTMLElement;
+    if (menuItemMB.classList.contains("active")) {
+      menuItemMB.style.color = user.get_customer?.zodiac.color_web_second;
+      } else {
+        menuItemMB.style.color = "#fff";
+      }
+    }
+  };
+
+  const handleActiveMenuMB = (e: any) => {
+    setElementActiveMB(e.target);
+  };
+
+  useEffect(() => {
+    activeMenuMB();
+  }, [elementActiveMB]);
+
   return (
     <div className="flex flex-col h-full">
       <Layout className="h-5/6" hasSider={true}>
-        <div className="md:hidden fixed bottom-24 right-9">
-          <button
-            onClick={() => {
-              setCollapsed((prev) => !prev);
-            }}
-            className="leading-[0] bg-PrimaryContainerLight rounded-xl px-3 pt-2 pb-1 border-none shadow-xl text-center"
-          >
-            <ShoppingCartOutlined className="text-OnPrimaryContainerLight text-4xl" />
-          </button>
-        </div>
-
         {/*  */}
         {<PoupWellcome user={user} handle={setShowPopUp} status={wellcome} />}
         {/*  */}
+
+        {/* Header PC */}
         <Sider
           className={
             "md:block hidden z-20 shadow-xl shadow-OnBackgroundLight/20 fixed w-[15%] top-0 left-0 max-w-[15%] min-w-[15%] bottom-0"
@@ -314,7 +401,8 @@ const SiderDemo: React.FC = () => {
                 }}
                 className="text-sm border-none bg-transparent"
               >
-                <ImHistory className="relative top-[2px] mr-1" /> Lịch sử
+                <ImHistory className="relative top-[2px] mr-1" /> Lịch sử đặt
+                hàng
               </a>
             </Menu.Item>
             <Menu.Item
@@ -350,7 +438,149 @@ const SiderDemo: React.FC = () => {
               </div>
             </Menu.Item>
           </Menu>
+          {/*  */}
+
+          {/*  */}
         </Sider>
+        {/* End Header PC */}
+
+        {/* Start Header Mobile */}
+        <div
+          id="header"
+          style={{
+            boxShadow: "2px 2px 10px 2px rgb(0,0,0,0.45)",
+            backgroundColor: user.get_customer?.zodiac.color_web_first,
+          }}
+          className=" fixed lg:hidden bottom-0 left-0 right-0 z-[99999] transition-all duration-200 ease-linear"
+        >
+          <Header
+            // style={{ height: "74px" }}
+            className={
+              "h-mb-header-height  bg-transparent my-0 mx-auto flex items-center justify-between p-0"
+            }
+          >
+            <div className="flex items-center w-full px-4 justify-between mt-[-4px]">
+              <div className="justify-center ">
+                <div>
+                  <NavLink
+                    to="/"
+                    onClick={(e) => handleActiveMenuMB(e)}
+                    style={{ color: "white" }}
+                    className="flex p-2 js-menu-mb-home items-center leading-none justify-center flex-col text-md"
+                  >
+                    <span className="mb-1">
+                      <RiHome4Line size={"16px"} />
+                    </span>
+                    <span className="text-xs">Trang chủ</span>
+                  </NavLink>
+                </div>
+              </div>
+
+              <div className="justify-center ">
+                <div>
+                  <div className="flex p-2 items-center leading-none justify-center flex-col text-md  text-OnPrimaryLight">
+                    <Dropdown
+                      // menu={{ items }}
+                      // placement="topRight"
+                      overlay={menuZodiac}
+                      placement="topCenter"
+                      arrow={{ pointAtCenter: true }}
+                    >
+                      <Button
+                        style={{ color: "white" }}
+                        className="text-xs js-menu-mb bg-transparent border-none flex flex-col justify-center items-center p-0"
+                      >
+                        <span className="mb-1">
+                          <BsStars size={"16px"} />
+                        </span>
+                        <span className="text-xs">C H Đ</span>
+                      </Button>
+                    </Dropdown>
+                  </div>
+                </div>
+              </div>
+
+              <div className="justify-center ">
+                <div>
+                  <Dropdown
+                    // menu={{ items }}
+                    // placement="topRight"
+                    overlay={menuUser}
+                    placement="topCenter"
+                    arrow={{ pointAtCenter: true }}
+                  >
+                    <Button
+                      style={{ color: "white" }}
+                      className="text-xs bg-transparent js-menu-mb border-none flex flex-col justify-center items-center p-0"
+                    >
+                      <span className="mb-1">
+                        <BiUser size={"16px"} />
+                      </span>
+                      <span className="text-xs">Tôi</span>
+                    </Button>
+                  </Dropdown>
+                </div>
+              </div>
+
+              <div
+                className="justify-center js-menu-mb"
+                onClick={() => {
+                  setIsHistoryVisible(!isHistoryVisible);
+                }}
+              >
+                <div className="">
+                  <div className="text-md  flex items-center h-10 justify-center  cursor-pointer text-OnPrimaryLight">
+                    {/* <HistoryOutlined className="text-OnPrimaryLight" />{" "} */}
+                    <div
+                      style={
+                        !isHistoryVisible
+                          ? {}
+                          : {
+                              color: user.get_customer?.zodiac.color_web_second,
+                            }
+                      }
+                      className="text-md leading-none flex flex-col px-2 text-center"
+                    >
+                      <span className="mb-1">
+                        <GiBackwardTime size={"14px"} />
+                      </span>
+                      <span className="text-xs">Lịch sử</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="justify-center js-menu-mb"
+                onClick={() => {
+                  setCollapsed((prev) => !prev);
+                }}
+              >
+                <div className="">
+                  <div className="text-md  flex items-center h-10 justify-center  cursor-pointer text-OnPrimaryLight">
+                    {/* <HistoryOutlined className="text-OnPrimaryLight" />{" "} */}
+                    <div
+                      style={
+                        collapsed
+                          ? {}
+                          : {
+                              color: user.get_customer?.zodiac.color_web_second,
+                            }
+                      }
+                      className="text-md leading-none flex flex-col px-2 text-center"
+                    >
+                      <span className="mb-1">
+                        <AiOutlineShoppingCart size={"14px"} />
+                      </span>
+                      <span className="text-xs">Giỏ hàng</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Header>
+        </div>
+        {/* End Header Mobile */}
 
         <Layout className="site-layout">
           <div className="hidden sm:block z-20">
@@ -365,7 +595,7 @@ const SiderDemo: React.FC = () => {
                 background: `${user.get_customer?.zodiac.color_web_first}`,
               }}
             >
-              <div className="w-width-layout flex items-center justify-end">
+              <div className="w-width-layout my-0 mx-auto flex items-center justify-end">
                 {/* <div className="md:col-span-4 md:inline-grid hidden row-span-2 justify-start text-md md:text-2xl font-semibold h-full">
                 Xin chào, {user?.first_name}!
               </div>
@@ -457,15 +687,6 @@ const SiderDemo: React.FC = () => {
                       {/* {cart.length > 0 && ( */}
                       {cart.length}
                     </div>
-                    {/* {cart.length > 0 && (
-                        <div
-                          className={
-                            "inline rounded-full p-1 h-1 w-2 mx-1 text-md text-OnPrimaryLight"
-                          }
-                        >
-                          {cart.length}
-                        </div>
-                      )} */}
                   </div>
                 </div>
                 {/* <div className="col-span-2 h-full text-xl font-bold items-start">
@@ -490,64 +711,60 @@ const SiderDemo: React.FC = () => {
           </Header> */}
           <div
             id="mainContent"
-            className="transition-all mt-header-height duration-200 ease-linear"
+            className="transition-all lg:mt-header-height duration-200 ease-linear"
           >
             <Content className="h-full">
               {/* <Breadcrumb style={{ margin: "10px 0" }}>
                 <Breadcrumb.Item></Breadcrumb.Item>
                 <Breadcrumb.Item></Breadcrumb.Item>
               </Breadcrumb> */}
-              <div
-                style={{ minHeight: "90vh" }}
-                className="grid place-items-center"
-              >
+              <div className="place-items-center">
                 <Outlet />
               </div>
               <Footer
-                style={{
-                  textAlign: "center",
-                  backgroundColor: user.get_customer?.zodiac.color_web_first,
-                }}
-                // className="bg-background-blue-dark"
+                style={{ textAlign: "center" }}
+                className="bg-background-blue-dark"
               >
-                <div className="pb-2 border-x-0 border-t-0 border-b border-solid border-[#fff]">
-                  <div className="flex items-center justify-center">
-                    <div>
-                      <a href="" className="block px-2">
-                        <FaFacebookF
-                          size={"24px"}
-                          className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a href="" className="block px-2">
-                        <FaTiktok
-                          size={"24px"}
-                          className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a href="" className="block px-2">
-                        <AiFillInstagram
-                          size={"24px"}
-                          className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a href="" className="block px-2">
-                        <IoLogoYoutube
-                          size={"24px"}
-                          className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
-                        />
-                      </a>
+                <div className="mb-mb-header-height lg:mb-0">
+                  <div className="pb-2 border-x-0 border-t-0 border-b border-solid border-[#fff]">
+                    <div className="flex items-center justify-center">
+                      <div>
+                        <a href="" className="block px-2">
+                          <FaFacebookF
+                            size={"24px"}
+                            className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                          />
+                        </a>
+                      </div>
+                      <div>
+                        <a href="" className="block px-2">
+                          <FaTiktok
+                            size={"24px"}
+                            className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                          />
+                        </a>
+                      </div>
+                      <div>
+                        <a href="" className="block px-2">
+                          <AiFillInstagram
+                            size={"24px"}
+                            className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                          />
+                        </a>
+                      </div>
+                      <div>
+                        <a href="" className="block px-2">
+                          <IoLogoYoutube
+                            size={"24px"}
+                            className="text-[#fff] hover:text-color-yelow transition-all duration-200 ease-linear"
+                          />
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="pt-2 text-[#fff]">
-                  &#169; 2023 <strong>1230 Tea</strong>. All rights reserved
+                  <div className="pt-2 text-[#fff]">
+                    &#169; 2023 <strong>1230 Tea</strong>. All rights reserved
+                  </div>
                 </div>
               </Footer>
             </Content>
@@ -557,7 +774,7 @@ const SiderDemo: React.FC = () => {
         <CartSider collapsed={cartCollapsed} cart={cart} />
         <Menu
           theme="light"
-          className="fixed z-30 w-full sm:hidden block bottom-0 left-0"
+          className="fixed z-30 w-full hidden sm:hidden block bottom-0 left-0"
           defaultSelectedKeys={["1"]}
           mode="horizontal"
         >
@@ -634,10 +851,12 @@ const SiderDemo: React.FC = () => {
             </Menu.Item>
           </Menu.SubMenu>
         </Menu>
+
+        {/*  */}
         {window.innerWidth <= 760 && (
           <CartModal
             collapsed={collapsed}
-            handleClose={() => setCollapsed(false)}
+            handleClose={() => setCollapsed(true)}
             cart={cart}
           />
         )}

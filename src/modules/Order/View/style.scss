@@ -1,13 +1,10 @@
 .content-bg {
     background-image: 
-    // linear-gradient(to right bottom, rgba(0, 20, 40, 0.4),rgba(0, 20, 40, 0.4)),
     url(../../../../public/image/star_background.jpg);
-    // background-image: 
-    // linear-gradient(to right bottom, rgba(2, 33, 50, 0.4),rgba(2, 33, 50, 0.4)),
-    // url(../../../../public/image/star_background.jpg);
-    background-size: 100%;
-    background-repeat: repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
     position: relative;
+    background-attachment: fixed;
 }
 
 .list-cate {
