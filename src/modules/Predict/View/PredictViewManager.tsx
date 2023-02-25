@@ -111,7 +111,7 @@ const PredictHistoryViewManager: React.FC = () => {
   return (
     <Spin spinning={loading}>
       <div
-        className=" sm:p-8 p-2 h-full"
+        className=" sm:p-8 px-2 py-4 h-full"
         style={{
           //     background: `linear-gradient(323deg,  ${user.get_customer?.zodiac.color_web_first}
           // 0%, ${user.get_customer?.zodiac.color_web_second} 99%)`,
@@ -269,9 +269,9 @@ const PredictHistoryViewManager: React.FC = () => {
           </Text> */}
             <div className="auto-rows-max gap-2 justify-items-center">
               <div className="flex justify-between">
-                <div className=" bg-before-white rounded-2xl w-[50%] text-white">
+                <div className="bg-before-white rounded-2xl w-[50%] text-white">
                   <div
-                    className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+                    className="lg:px-5 lg:py-3 p-1 self-center lg:text-[18px] text-[14px] uppercase  font-bold"
                     style={{
                       color: `${user.get_customer?.zodiac.color_web_second}`,
                     }}
@@ -285,7 +285,7 @@ const PredictHistoryViewManager: React.FC = () => {
 
                 <div className="bg-before-white rounded-2xl w-[50%] text-white">
                   <div
-                    className="px-5 py-3  self-center text-[18px] uppercase font-bold"
+                    className="lg:px-5 lg:py-3 p-1 self-center lg:text-[18px] text-[14px] uppercase font-bold"
                     style={{
                       color: `${user.get_customer?.zodiac.color_web_second}`,
                     }}
@@ -301,7 +301,7 @@ const PredictHistoryViewManager: React.FC = () => {
               <div>
                 <div className=" bg-before-white rounded-2xl w-full text-white">
                   <div
-                    className="px-5 py-3 self-center text-[18px] uppercase font-bold"
+                    className="lg:px-5 lg:py-3 p-1 self-center text-[18px] uppercase font-bold"
                     style={{
                       color: `${user.get_customer?.zodiac.color_web_second}`,
                     }}
@@ -317,7 +317,7 @@ const PredictHistoryViewManager: React.FC = () => {
               <div>
                 <div className=" bg-before-white rounded-2xl  w-full text-white">
                   <div
-                    className="px-5 py-3  self-center text-[18px] uppercase  font-bold"
+                    className="lg:px-5 lg:py-3 p-1 self-center text-[18px] uppercase  font-bold"
                     style={{
                       color: `${user.get_customer?.zodiac.color_web_second}`,
                     }}
@@ -333,7 +333,7 @@ const PredictHistoryViewManager: React.FC = () => {
               <div>
                 <div className="bg-before-white rounded-2xl w-full  text-white ">
                   <div
-                    className="px-5 py-3 self-center text-[18px] uppercase font-bold"
+                    className="lg:px-5 lg:py-3 p-1 self-center text-[18px] uppercase font-bold"
                     style={{
                       color: `${user.get_customer?.zodiac.color_web_second}`,
                     }}

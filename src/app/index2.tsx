@@ -247,7 +247,7 @@ const SiderDemo: React.FC = () => {
         <NavLink
           to={"/customer-info"}
           onClick={(e) => handleActiveMenuMB(e)}
-          className="flex items-center"
+          className="flex items-center js-menu-mb-account"
         >
           <span className="relative top-[2px] mr-[6px]">
             <BiUserPin />
@@ -274,13 +274,63 @@ const SiderDemo: React.FC = () => {
 
   const activeMenuMB = () => {
     const homeMbMenu = document.querySelector(".js-menu-mb-home");
-    const zodiacMbMenu = document.querySelector(".js-menu-mb-zodiac");
+    const zodiacMbMenu = document.querySelectorAll(".js-menu-mb-zodiac");
+    const linkZodiacParent = document.querySelector(".js-menu-prmb-zodiac");
+    const accountMbMenu = document.querySelector(".js-menu-mb-account");
+    const linkAccountParent = document.querySelector(".js-menu-prmb-account");
+
     const menuItemMB = homeMbMenu as HTMLElement;
+    const linkZodiacParentItem = linkZodiacParent as HTMLElement;
+    const linkAccountParentItem = linkAccountParent as HTMLElement;
+
     if (menuItemMB.classList.contains("active")) {
       menuItemMB.style.color = user.get_customer?.zodiac.color_web_second;
+      linkZodiacParentItem.style.color = "#fff";
+      linkAccountParentItem.style.color = "#fff";
     } else {
       menuItemMB.style.color = "#fff";
     }
+
+    if (accountMbMenu) {
+      const accountMenu = accountMbMenu as HTMLElement;
+      const parentAccountMB = accountMenu.parentElement?.parentElement;
+      if (parentAccountMB) {
+        if (accountMenu.classList.contains("active")) {
+          accountMenu.style.color = user.get_customer?.zodiac.color_web_second;
+          linkAccountParentItem.style.color =
+            user.get_customer?.zodiac.color_web_second;
+          parentAccountMB.style.backgroundColor =
+            user.get_customer?.zodiac.color_web_first;
+          linkZodiacParentItem.style.color = "#fff";
+        } else {
+          accountMenu.style.color = "#333";
+        }
+      }
+    }
+
+    if (zodiacMbMenu) {
+      for (let i = 0; i < zodiacMbMenu.length; i++) {
+        const zodiacItemMB = zodiacMbMenu[i] as HTMLElement;
+        const parentZodiacMB = zodiacItemMB.parentElement?.parentElement;
+
+        if (parentZodiacMB) {
+          if (zodiacItemMB.classList.contains("active")) {
+            linkZodiacParentItem.style.color =
+              user.get_customer?.zodiac.color_web_second;
+            linkAccountParentItem.style.color = "#fff";
+            parentZodiacMB.style.color =
+              user.get_customer?.zodiac.color_web_second;
+            parentZodiacMB.style.backgroundColor =
+              user.get_customer?.zodiac.color_web_first;
+          } else {
+            parentZodiacMB.style.color = "#333";
+            parentZodiacMB.style.backgroundColor = "transparent";
+          }
+        }
+      }
+    }
+
+    // for (let i = 0; i < zodiacMbMenu.length; i++) {}
   };
 
   const handleActiveMenuMB = (e: any) => {
@@ -476,7 +526,7 @@ const SiderDemo: React.FC = () => {
                 </div>
               </div>
 
-              <div className="justify-center ">
+              <div className="justify-center">
                 <div>
                   <div className="flex p-2 items-center leading-none justify-center flex-col text-md  text-OnPrimaryLight">
                     <Dropdown
@@ -488,7 +538,7 @@ const SiderDemo: React.FC = () => {
                     >
                       <Button
                         style={{ color: "white" }}
-                        className="text-xs js-menu-mb bg-transparent border-none flex flex-col justify-center items-center p-0"
+                        className="text-xs js-menu-prmb-zodiac bg-transparent border-none flex flex-col justify-center items-center p-0"
                       >
                         <span className="mb-1">
                           <BsStars size={"16px"} />
@@ -500,7 +550,7 @@ const SiderDemo: React.FC = () => {
                 </div>
               </div>
 
-              <div className="justify-center ">
+              <div className="justify-center">
                 <div>
                   <Dropdown
                     // menu={{ items }}
@@ -511,7 +561,7 @@ const SiderDemo: React.FC = () => {
                   >
                     <Button
                       style={{ color: "white" }}
-                      className="text-xs bg-transparent js-menu-mb border-none flex flex-col justify-center items-center p-0"
+                      className="text-xs bg-transparent js-menu-prmb-account border-none flex flex-col justify-center items-center p-0"
                     >
                       <span className="mb-1">
                         <BiUser size={"16px"} />
@@ -523,7 +573,7 @@ const SiderDemo: React.FC = () => {
               </div>
 
               <div
-                className="justify-center js-menu-mb"
+                className="justify-center"
                 onClick={() => {
                   setIsHistoryVisible(!isHistoryVisible);
                 }}
@@ -551,7 +601,7 @@ const SiderDemo: React.FC = () => {
               </div>
 
               <div
-                className="justify-center js-menu-mb"
+                className="justify-center"
                 onClick={() => {
                   setCollapsed((prev) => !prev);
                 }}

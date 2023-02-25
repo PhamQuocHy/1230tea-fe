@@ -108,11 +108,11 @@ const NumerologyViewManager: React.FC = () => {
           >
             <h1
               style={{ color: user.get_customer?.zodiac.color_web_second }}
-              className="title-font sm:text-4xl text-3xl mb-4 font-bold uppercase"
+              className="title-font sm:text-4xl text-xl lg:mb-4 mb-0 font-bold uppercase"
             >
               Số chủ đạo
             </h1>
-            <p className="text-5xl my-2 capitalize font-bold">
+            <p className="text-2xl my-2 capitalize font-bold">
               {listPredict.data?.numberology}
             </p>
           </div>
@@ -121,14 +121,14 @@ const NumerologyViewManager: React.FC = () => {
             <div>
               <div className="bg-before-white rounded-2xl col-span-6 h-full w-full text-white text-left">
                 <div
-                  className="py-3  self-center text-[18px] uppercase  font-bold"
+                  className="py-3  self-center text-[18px] uppercase  font-bold lg:text-left text-center"
                   style={{
                     color: `${user.get_customer?.zodiac.color_web_second}`,
                   }}
                 >
                   Tổng quan
                 </div>
-                <p className="whitespace-pre-wrap text-[16px] my-2 leading-relaxed text-white">
+                <p className="whitespace-pre-wrap text-[16px] ml-4 my-2 leading-relaxed text-white">
                   {listPredict.data?.twelve_numerology.summary}
                 </p>
               </div>
@@ -137,7 +137,7 @@ const NumerologyViewManager: React.FC = () => {
             <div>
               <div className="bg-before-white rounded-2xl h-full w-full grid border-slate-400  bg-opacity-10 text-white text-left">
                 <div
-                  className="py-3  self-center text-[18px] uppercase  font-bold"
+                  className="py-3 self-center text-[18px] uppercase font-bold lg:text-left text-center"
                   style={{
                     color: `${user.get_customer?.zodiac.color_web_second}`,
                   }}
@@ -145,7 +145,7 @@ const NumerologyViewManager: React.FC = () => {
                   Nổi bật
                 </div>
 
-                <p className=" whitespace-pre-wrap text-[16px] my-2 text-justify leading-relaxed text-white">
+                <p className=" whitespace-pre-wrap text-[16px] ml-4 my-2 text-justify leading-relaxed text-white">
                   {listPredict.data?.twelve_numerology.salient_features}
                 </p>
               </div>
@@ -154,14 +154,14 @@ const NumerologyViewManager: React.FC = () => {
             <div>
               <div className="bg-before-white rounded-2xl h-full w-full grid  text-white text-left">
                 <div
-                  className="py-3  self-center text-[18px] uppercase  font-bold"
+                  className="py-3 self-center text-[18px] uppercase font-bold lg:text-left text-center"
                   style={{
                     color: `${user.get_customer?.zodiac.color_web_second}`,
                   }}
                 >
                   Cần thay đổi - cố gắng
                 </div>
-                <p className="whitespace-pre-wrap text-[16px] my-2 text-justify leading-relaxed text-white">
+                <p className="whitespace-pre-wrap text-[16px] ml-4 my-2 text-justify leading-relaxed text-white">
                   {listPredict.data?.twelve_numerology.need_to_change}
                 </p>
               </div>
@@ -170,14 +170,14 @@ const NumerologyViewManager: React.FC = () => {
             <div>
               <div className="bg-before-white rounded-2xl h-full w-full grid  text-white text-left">
                 <div
-                  className="py-3  self-center text-[18px] uppercase  font-bold"
+                  className="py-3 self-center text-[18px] uppercase font-bold lg:text-left text-center mb"
                   style={{
                     color: `${user.get_customer?.zodiac.color_web_second}`,
                   }}
                 >
                   Hướng phát triển
                 </div>
-                <p className="leading-relaxed text-white text-left  text-justify whitespace-pre-wrap text-[16px] my-2 ">
+                <p className="leading-relaxed text-white ml-4  text-justify whitespace-pre-wrap text-[16px] my-2 ">
                   {listPredict.data?.twelve_numerology.development}
                 </p>
               </div>

@@ -66,15 +66,15 @@ const CustomerHistoryViewManager: React.FC = () => {
         >
           <h1
             style={{ color: user.get_customer?.zodiac.color_web_second }}
-            className="title-font sm:text-4xl text-3xl mb-4 font-bold uppercase"
+            className="title-font sm:text-4xl text-xl mb-4 font-bold uppercase"
           >
             Thông tin khách hàng
           </h1>
         </div>
 
         <div className="bg-before-white flex justify-center">
-          <div className="flex items-center justify-center py-6 relative">
-            <div className="text-center flex-[1] py-3 px-8">
+          <div className="flex items-center justify-center py-6 relative flex-col lg:flex-row">
+            <div className="text-center flex-[1] lg:py-3 py-5 px-8">
               <img
                 src="../../../../image/2690549.jpg"
                 className="h-40 rounded-full"
@@ -82,8 +82,8 @@ const CustomerHistoryViewManager: React.FC = () => {
             </div>
 
             <div
-              style={{ borderLeft: "3px solid #fff" }}
-              className=" text-OnPrimaryLight flex-[9] py-3 px-8"
+              // style={{ borderLeft: "3px solid #fff" }}
+              className=" text-OnPrimaryLight flex-[9] border-2 border-x-0 border-b-0 lg:border-l-2 lg:border-y-0 border-solid border-white  lg:py-3 py-5 px-8"
             >
               <div className="uppercase">
                 <h2 className="mx-0 mt-0 mb-3 capitalize font-bold">
