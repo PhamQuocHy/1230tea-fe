@@ -11,6 +11,7 @@ type Props = {
 
 const HistoryView = (props: Props) => {
   const user = useAppSelector((state) => state.rootReducer.auth.user);
+  console.log(user?.get_customer);
 
   const history = useAppSelector(
     (state: RootState) => state.rootReducer.history.historyList
@@ -24,11 +25,18 @@ const HistoryView = (props: Props) => {
     <Modal
       title={
         <div
-          style={{
-            backgroundColor: user?.get_customer?.zodiac?.color_web_first,
-            color: user?.get_customer?.zodiac?.color_web_second,
-          }}
-          className="text-xl font-semibold py-2 px-4 uppercase h-full"
+          style={
+            !user?.get_customer
+              ? {
+                  backgroundColor: "#002D45",
+                  color: "#FAA31B",
+                }
+              : {
+                  backgroundColor: user?.get_customer?.zodiac.color_web_first,
+                  color: user?.get_customer?.zodiac?.color_web_second,
+                }
+          }
+          className="text-xl font-semibold py-2 px-4 capitalize h-full"
         >
           Lịch sử đặt hàng
         </div>
@@ -47,10 +55,11 @@ const HistoryView = (props: Props) => {
         }
       }
       width={window.innerWidth <= 760 ? "100%" : "38%"}
+      className="modal-popup"
     >
       <div>
         {history.length < 1 ? (
-          <div>Không có lịch sử</div>
+          <div className="p-4">Không có lịch sử</div>
         ) : (
           <Collapse
             accordion={true}

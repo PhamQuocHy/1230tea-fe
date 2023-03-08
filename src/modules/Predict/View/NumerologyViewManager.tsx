@@ -43,7 +43,7 @@ const NumerologyViewManager: React.FC = () => {
     >
       <div className="w-full h-full absolute grid place-items-center overflow-hidden auto-cols-fr auto-rows-fr">
         <img
-          className="w-full blur-[0px] opacity-[5%] animate-spinn"
+          className="blur-[0px] opacity-[5%] animate-spinn w-[150%] lg:w-[85%]  fixed lg:left-[15%] top-0 left-[-25%] h-full object-contain right-0 bottom-0"
           style={{
             position: "relative",
             zIndex: 5,

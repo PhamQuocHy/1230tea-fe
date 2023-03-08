@@ -342,8 +342,8 @@ const SiderDemo: React.FC = () => {
   }, [elementActiveMB]);
 
   return (
-    <div className="flex flex-col h-full">
-      <Layout className="h-5/6" hasSider={true}>
+    <div className="flex flex-col h-full overflow-auto">
+      <Layout className="h-full" hasSider={true}>
         {/*  */}
         {<PoupWellcome user={user} handle={setShowPopUp} status={wellcome} />}
         {/*  */}

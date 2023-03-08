@@ -43,7 +43,7 @@ const ZodiacViewManager: React.FC = () => {
       <div className="w-full h-full absolute grid place-items-center auto-cols-fr auto-rows-fr">
         <img
           // className="w-1/2 invert blur-[0px] opacity-[15%]"
-          className="w-full blur-[0px] opacity-[15%]"
+          className="w-[150%] lg:w-full blur-[0px] opacity-[15%] fixed top-1/2 left-[-25%] right-0 bottom-0 translate-y-[-50%]"
           alt="hero"
           src={`../../../image/zodiac/${listPredict.data?.zodiac_id}.png`}
         />

@@ -70,23 +70,28 @@
   }
 }
 
-@media screen and (max-width: 1024px) { 
+@media screen and (max-width: 480px) { 
   :where(.css-dev-only-do-not-override-ixblex.ant-modal-root .ant-modal-wrap) {
-    margin-bottom: 64px;
+    // margin-bottom: 64px;
   }
 
-  :where(.css-dev-only-do-not-override-ixblex).ant-modal {
-    padding-bottom: 0;
-  }
+  // :where(.css-dev-only-do-not-override-ixblex).ant-modal {
+  //   padding-bottom: 0;
+  //   top: 0 !important;
+  // }
 
-  :where(.css-dev-only-do-not-override-ixblex).ant-modal .ant-modal-close {
-    top: 17px;
-    display: none;
-  }
+  // :where(.css-dev-only-do-not-override-ixblex).ant-modal .ant-modal-close-x {
+  //   display: none !important;
+  // }
 
-  :where(.css-dev-only-do-not-override-ixblex).ant-dropdown {
-    z-index: 9999999;
-  }
+  // :where(.css-dev-only-do-not-override-ixblex).ant-modal .ant-modal-close {
+  //   top: 17px;
+  //   display: none !important;
+  // }
+
+  // :where(.css-dev-only-do-not-override-ixblex).ant-dropdown {
+  //   z-index: 9999999;
+  // }
 }
 
 .header-content div img{

@@ -140,14 +140,14 @@ const ItemModal = (props: Props) => {
           <div className="text-[20px] leading-5 font-semibold text-color-yelow bg-background-blue-dark py-3 px-5 capitalize">
             <span className="block pr-5">{props.item.name}</span>
           </div>
-          <div>
+          {/* <div>
             <span
               className="absolute right-0 top-0 p-2 lg:hidden"
               onClick={() => props.handleClose()}
             >
               <MdOutlineClose size={"24px"} color={"#fff"} />
             </span>
-          </div>
+          </div> */}
         </div>
       }
       footer={null}
@@ -170,6 +170,7 @@ const ItemModal = (props: Props) => {
         overflow: "auto",
       }}
       width={window.innerWidth <= 760 ? "100%" : "48%"}
+      className="modal-popup"
     >
       <div>
         <div className="flex flex-col px-5 scrollbar-hide overflow-y-scroll">

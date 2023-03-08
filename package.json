@@ -10,7 +10,6 @@
     "@craco/craco": "^7.0.0",
     "@manaflair/redux-batch": "^1.0.0",
     "@react-icons/all-files": "^4.1.0",
-    "@react-spring/web": "^9.6.1",
     "@reduxjs/toolkit": "^1.8.1",
     "@tabler/icons": "^1.68.0",
     "@testing-library/jest-dom": "^5.14.1",

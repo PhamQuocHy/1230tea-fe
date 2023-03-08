@@ -113,17 +113,31 @@ const CartModal = (props: Props) => {
     <Modal
       title={
         <div className="relative">
-          <div className="text-[20px] leading-5 font-semibold text-color-yelow bg-background-blue-dark py-3 px-5 capitalize">
+          <div
+            style={
+              !user?.get_customer
+                ? {
+                    backgroundColor: "#002D45",
+                    color: "#FAA31B",
+                  }
+                : {
+                    backgroundColor:
+                      user?.get_customer?.zodiac?.color_web_first,
+                    color: user?.get_customer?.zodiac?.color_web_second,
+                  }
+            }
+            className="text-[20px] leading-5 font-semibold py-3 px-5 capitalize"
+          >
             <span className="block pr-5">Giỏ hàng</span>
           </div>
-          <div>
+          {/* <div>
             <span
               className="absolute right-0 top-0 p-2 lg:hidden"
               onClick={() => props.handleClose()}
             >
               <MdOutlineClose size={"24px"} color={"#fff"} />
             </span>
-          </div>
+          </div> */}
         </div>
       }
       footer={null}
@@ -134,13 +148,12 @@ const CartModal = (props: Props) => {
       onOk={() => {
         props.handleClose();
       }}
-      style={{
-        top: 0,
-      }}
+      style={{}}
       bodyStyle={{
         height: "80vh",
       }}
       width={"100%"}
+      className="modal-popup"
     >
       {" "}
       <div className="flex flex-col py-2 px-5 gap-4 overflow-y-scroll scrollbar-hide h-[74%] lg:h-[48vh] ">
@@ -293,7 +306,7 @@ const CartModal = (props: Props) => {
             ? { backgroundColor: "#284A5D" }
             : { backgroundColor: user?.get_customer.zodiac.color_web_first }
         }
-        className="flex flex-col justify-center absolute z-10 bottom-0 left-0 right-0 items-center px-5 py-2"
+        className="flex flex-col justify-center rounded-t-[0px] rounded-b-[5px] absolute z-10 bottom-0 left-0 right-0 items-center px-5 py-2"
       >
         <div className="flex flex-row mb-2 justify-between w-full items-center gap-2">
           <div className="lg:text-lg text-[16px] leading-4 font-semibold text-white">

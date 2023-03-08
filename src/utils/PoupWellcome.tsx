@@ -20,11 +20,11 @@ const PoupWellcome: React.FC<Props> = ({ user, handle, status }) => {
 
   return (
     <Modal
-      title="Modal"
       open={status}
       onOk={handle}
       onCancel={handle}
       okText="OK"
+      footer={false}
     >
       <div
         style={{ backgroundColor: "rgba(0,0,0,0.3)" }}

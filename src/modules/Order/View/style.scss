@@ -7,6 +7,14 @@
     background-attachment: fixed;
 }
 
+@media screen and (max-width: 1024px) { 
+    .content-bg {
+        background-image: unset;
+    }
+
+    
+}
+
 .list-cate {
     // max-width: 100%;
     overflow-x : auto;
