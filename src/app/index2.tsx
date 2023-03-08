@@ -112,6 +112,7 @@ const SiderDemo: React.FC = () => {
       } else {
         header.style.width = contentWidth;
         main.style.marginLeft = asideMenuWidth;
+        console.log("Width", header);
       }
     }
   }, [cartCollapsed]);
@@ -496,12 +497,12 @@ const SiderDemo: React.FC = () => {
 
         {/* Start Header Mobile */}
         <div
-          id="header"
+          // id="header"
           style={{
             boxShadow: "2px 2px 10px 2px rgb(0,0,0,0.45)",
             backgroundColor: user.get_customer?.zodiac.color_web_first,
           }}
-          className=" fixed lg:hidden bottom-0 left-0 right-0 z-[99999] transition-all duration-200 ease-linear"
+          className="fixed lg:hidden bottom-0 left-0 right-0 z-[99999] transition-all duration-200 ease-linear"
         >
           <Header
             // style={{ height: "74px" }}
